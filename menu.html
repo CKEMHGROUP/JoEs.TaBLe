@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Menu — JoEs TaBLe · Private Culinary Events</title>
+<meta name="description" content="Spring 2026 tasting menu. Six courses. A culinary journey through Joe's personal history, Michelin-starred experiences, and food culture.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300;1,9..144,400&family=Lora:ital,wght@0,400;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--black:#080706;--ink:#141210;--ink-mid:#1a1714;--parchment:#f4ede0;--gold:#c9a96e;--gold-light:#e2c48a;--text:#b0a898;--text-mid:#7a7168;--text-faint:#4e4842;--rule:rgba(201,169,110,.2);--display:'Fraunces',Georgia,serif;--body:'Lora',Georgia,serif;--mono:'DM Mono','Courier New',monospace;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--black);color:var(--parchment);font-family:var(--body);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:0 40px;height:64px;background:rgba(8,7,6,.96);border-bottom:1px solid var(--rule);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);}
+.nav-logo{font-family:var(--display);font-size:17px;font-weight:400;font-style:italic;color:var(--parchment);text-decoration:none;flex-shrink:0;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;transition:color .25s;min-height:44px;display:flex;align-items:center;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-cta{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0 22px;text-decoration:none;min-height:44px;display:flex;align-items:center;flex-shrink:0;transition:background .25s;}
+.nav-cta:hover{background:var(--gold-light);}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:6px;background:none;border:none;cursor:pointer;padding:10px;min-width:44px;min-height:44px;}
+.hamburger span{display:block;width:22px;height:1px;background:var(--parchment);}
+
+.page-hero{padding:160px 40px 72px;background:linear-gradient(to bottom,var(--ink),var(--black));border-bottom:1px solid var(--rule);}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:16px;}
+.page-title{font-family:var(--display);font-size:clamp(48px,9vw,100px);font-weight:300;line-height:.95;letter-spacing:-.02em;}
+.page-title em{font-style:italic;color:var(--gold);}
+.page-sub{font-family:var(--body);font-style:italic;font-size:19px;color:var(--text);margin-top:20px;max-width:560px;line-height:1.6;}
+
+.section{padding:90px 40px;max-width:1160px;margin:0 auto;}
+.rule-row{display:flex;align-items:center;gap:18px;margin-bottom:44px;}
+.rule-line{flex:1;height:1px;background:var(--rule);}
+
+.courses-list{display:flex;flex-direction:column;border:1px solid var(--rule);}
+.ci{display:grid;grid-template-columns:72px 1fr;border-bottom:1px solid var(--rule);transition:background .25s;}
+.ci:last-child{border-bottom:none;}
+.ci:hover{background:rgba(201,169,110,.03);}
+.ci-n{border-right:1px solid var(--rule);display:flex;align-items:flex-start;justify-content:center;padding:32px 16px;}
+.ci-n span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--gold);margin-top:4px;}
+.ci-body{padding:32px 40px;}
+.ci-label{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-faint);display:block;margin-bottom:6px;}
+.ci-name{font-family:var(--display);font-size:28px;font-weight:300;font-style:italic;margin-bottom:10px;line-height:1.1;}
+.ci-story{color:var(--text);line-height:1.7;font-size:16px;margin-bottom:8px;}
+.ci-story a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;}
+.ci-ingr{font-family:var(--mono);font-size:11px;color:var(--text-faint);letter-spacing:.05em;}
+
+.pricing-block{background:var(--ink);border:1px solid var(--rule);padding:56px;display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:0;}
+.price-main .pl{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-mid);display:block;margin-bottom:6px;}
+.price-main .pa{font-family:var(--display);font-size:72px;font-weight:300;font-style:italic;color:var(--gold);line-height:1;}
+.price-main .ps{font-family:var(--mono);font-size:10px;color:var(--text-faint);}
+.price-div{height:1px;background:var(--rule);margin:28px 0;}
+.price-note{font-size:16px;font-style:italic;color:var(--text);line-height:1.7;}
+.price-note strong{color:var(--parchment);font-style:normal;font-weight:500;}
+
+.pairings-col h3{font-family:var(--display);font-size:24px;font-weight:300;font-style:italic;margin-bottom:20px;}
+.pair-line{display:flex;justify-content:space-between;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--rule);}
+.pair-line:last-child{border-bottom:none;}
+.pair-name{font-family:var(--display);font-size:19px;font-weight:300;font-style:italic;}
+.pair-flag{font-size:15px;margin-left:6px;}
+.pair-price{font-family:var(--mono);font-size:14px;color:var(--gold);}
+.pair-pp{font-size:10px;color:var(--text-mid);font-family:var(--mono);}
+.pair-info{margin-top:24px;background:rgba(201,169,110,.05);border:1px solid var(--rule);padding:16px 18px;font-family:var(--mono);font-size:10px;color:var(--text-mid);line-height:1.7;letter-spacing:.04em;}
+
+.phil-block{background:var(--ink);text-align:center;padding:80px 40px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+.phil-block blockquote{font-family:var(--display);font-size:clamp(18px,2.5vw,28px);font-weight:300;font-style:italic;line-height:1.5;max-width:720px;margin:0 auto 16px;}
+.phil-block cite{font-family:var(--mono);font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);font-style:normal;}
+
+.cta-block{text-align:center;padding:90px 40px;background:var(--ink);}
+.cta-block h2{font-family:var(--display);font-size:clamp(30px,5vw,58px);font-weight:300;margin-bottom:12px;}
+.cta-block h2 em{font-style:italic;color:var(--gold);}
+.cta-block p{color:var(--text);margin-bottom:36px;font-style:italic;}
+.btn-gold{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0 30px;text-decoration:none;display:inline-flex;align-items:center;min-height:48px;transition:background .25s;margin:6px;}
+.btn-gold:hover{background:var(--gold-light);}
+.btn-outline{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--parchment);border:1px solid rgba(244,237,224,.22);padding:0 30px;text-decoration:none;display:inline-flex;align-items:center;min-height:48px;transition:border-color .25s,color .25s;margin:6px;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+.bottom-bar{background:var(--ink-mid);border-top:1px solid var(--rule);padding:13px 40px;text-align:center;}
+.bottom-bar p{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-mid);}
+footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer-copy{font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.07em;line-height:1.7;}
+.footer-copy a{color:var(--text-faint);text-decoration:none;}.footer-copy a:hover{color:var(--gold);}
+.fsocial{display:flex;gap:22px;}
+.fsocial a{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);text-decoration:none;min-height:44px;display:inline-flex;align-items:center;transition:color .25s;}
+.fsocial a:hover{color:var(--gold);}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .75s ease,transform .75s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+
+@media(max-width:860px){
+  nav{padding:0 20px;}.nav-links,.nav-cta{display:none;}.hamburger{display:flex;}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:var(--black);justify-content:center;align-items:center;gap:28px;z-index:199;}
+  .page-hero{padding:120px 20px 52px;}.section{padding:60px 20px;}
+  .pricing-block{grid-template-columns:1fr;gap:36px;padding:36px 24px;}
+  .cta-block,.phil-block,.bottom-bar{padding:60px 20px;}
+  footer{padding:32px 20px;flex-direction:column;align-items:flex-start;}
+  .fsocial{justify-content:flex-start;}
+}
+@media(max-width:480px){
+  .ci{grid-template-columns:1fr;}.ci-n{display:none;}
+  .ci-body{padding:24px 20px;}.pricing-block{padding:28px 18px;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">JoEs TaBLe</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html" class="active">Menu</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="pairings.html">Pairings</a></li>
+  </ul>
+  <a href="https://tally.so/r/pbP7Eb" class="nav-cta" target="_blank" rel="noopener">Book an event</a>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-hero" style="position:relative;">
+  <span class="eyebrow">Menu degustación · Spring 2026</span>
+  <h1 class="page-title">A culinary<br><em>journey</em></h1>
+  <p class="page-sub">Our signature multi-course tasting menu inspired by Joe's travels, personal history, and time in Michelin-starred kitchens.</p>
+</div>
+
+<div class="section">
+  <div class="rule-row reveal"><span class="eyebrow">Soirée d'ouverture</span><span class="rule-line"></span></div>
+  <div class="courses-list reveal">
+    <div class="ci">
+      <div class="ci-n"><span>01</span></div>
+      <div class="ci-body">
+        <span class="ci-label">Amuse-bouche · House Starter</span>
+        <div class="ci-name">Tony B's first Oyster</div>
+        <div class="ci-story">Bourdain's first encounter with a food orgasm? We serve it. <a href="https://www.tastingtable.com/1401642/oyster-anthony-bourdain-childhood-love-food/" target="_blank" rel="noopener">The oyster that changed everything.</a></div>
+        <div class="ci-ingr">Atlantic sea oyster · 12y aged cabernet sauvignon vinegar</div>
+      </div>
+    </div>
+    <div class="ci">
+      <div class="ci-n"><span>02</span></div>
+      <div class="ci-body">
+        <span class="ci-label">First course</span>
+        <div class="ci-name">Object of beauty</div>
+        <div class="ci-story">Basque flavour under a red cap.</div>
+        <div class="ci-ingr">Piquillo · bluefin tuna · anchoa 00 · crème</div>
+      </div>
+    </div>
+    <div class="ci">
+      <div class="ci-n"><span>03</span></div>
+      <div class="ci-body">
+        <span class="ci-label">Second course</span>
+        <div class="ci-name">Truffled Vichyssoise 1920</div>
+        <div class="ci-story">Invented in the first quarter of the 20th century by Louis Diat at the Ritz-Carlton Hotel. The most famous French classic that is actually not French.</div>
+        <div class="ci-ingr">Leek · potato · cream · black truffle · chive</div>
+      </div>
+    </div>
+    <div class="ci">
+      <div class="ci-n"><span>04</span></div>
+      <div class="ci-body">
+        <span class="ci-label">Third course</span>
+        <div class="ci-name">Joe Dog's Mafia Meatballs</div>
+        <div class="ci-story">Ever heard of mobster <a href="https://en.wikipedia.org/wiki/Joseph_Iannuzzi" target="_blank" rel="noopener">Joe "Dogs" Iannuzzi</a>? Personal cook for the Gambino crime family and later FBI informant. Author of the Mafia Cookbook and Frank Sinatra's meatball sauce. Taste Joe's approach on an iconic Italo-New Yorker classic.</div>
+        <div class="ci-ingr">Veal · pork · tomato sugo · basil · parmigiano</div>
+      </div>
+    </div>
+    <div class="ci">
+      <div class="ci-n"><span>05</span></div>
+      <div class="ci-body">
+        <span class="ci-label">Main course</span>
+        <div class="ci-name">Bife à café "Marraré"</div>
+        <div class="ci-story">The iconic dish of a restaurant in Lisbon of the 1800s, opened by an Italian chef who emigrated from Naples and became nationwide famous until the early 20th century for his signature dish.</div>
+        <div class="ci-ingr">Portuguese beef · café sauce · seasonal garnish</div>
+      </div>
+    </div>
+    <div class="ci">
+      <div class="ci-n"><span>06</span></div>
+      <div class="ci-body">
+        <span class="ci-label">Dessert</span>
+        <div class="ci-name">Tarantino's Apfelstrudel</div>
+        <div class="ci-story">The flagship of South Tyrol pastry and protagonist of one of the cult scenes in <a href="https://www.gamberorossointernational.com/news/food-and-cinema-fast-food-and-brands-in-the-films-by-tarantino-and-the-apple-strudel-in-inglourious-basterds/" target="_blank" rel="noopener">Tarantino's Inglourious Basterds</a>.</div>
+        <div class="ci-ingr">Apple · raisin · cinnamon · puff pastry · vanilla cream</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px;height:200px;max-width:1160px;margin:0 auto 0;">
+  <div style="overflow:hidden;"><img src="img/food-gnocchi.webp" style="width:100%;height:100%;object-fit:cover;" alt=""></div>
+  <div style="overflow:hidden;"><img src="img/food-uni-caviar.webp" style="width:100%;height:100%;object-fit:cover;" alt=""></div>
+  <div style="overflow:hidden;"><img src="img/food-burrata.webp" style="width:100%;height:100%;object-fit:cover;" alt=""></div>
+  <div style="overflow:hidden;"><img src="img/food-amuse.webp" style="width:100%;height:100%;object-fit:cover;" alt=""></div>
+</div>
+
+<div style="background:var(--ink);padding:0 40px;">
+  <div style="max-width:1160px;margin:0 auto;padding:80px 0;">
+    <div class="pricing-block reveal">
+      <div class="price-main">
+        <span class="pl">Signature tasting menu</span>
+        <div class="pa">€120</div>
+        <div class="ps">per person · all prices inclusive</div>
+        <div class="price-div"></div>
+        <span class="pl" style="margin-bottom:6px;display:block;">With house wine pairing</span>
+        <div class="pa" style="font-size:52px;">€144</div>
+        <div class="ps">per person · Selection pairing included</div>
+        <div class="price-div"></div>
+        <p class="price-note">The menu changes several times within the year. <strong>Strong focus on organic, sustainable produce.</strong> Slow food and farm-to-table principles throughout. Local farmers and likeminded producers only.</p>
+      </div>
+      <div class="pairings-col">
+        <h3>Wine pairings</h3>
+        <div class="pair-line"><div><span class="pair-name">Selection</span><span class="pair-flag">🍇</span></div><div><span class="pair-price">€48</span><span class="pair-pp"> pp</span></div></div>
+        <div class="pair-line"><div><span class="pair-name">Lusitano</span><span class="pair-flag">🇵🇹</span></div><div><span class="pair-price">€70</span><span class="pair-pp"> pp</span></div></div>
+        <div class="pair-line"><div><span class="pair-name">Iberico</span><span class="pair-flag">🇪🇸</span></div><div><span class="pair-price">€80</span><span class="pair-pp"> pp</span></div></div>
+        <div class="pair-line"><div><span class="pair-name">Tricolore</span><span class="pair-flag">🇫🇷</span></div><div><span class="pair-price">€95</span><span class="pair-pp"> pp</span></div></div>
+        <div class="pair-info">Some wines need aeration to reach their best characteristics. We advise booking pairings when confirming your reservation.</div>
+        <div style="margin-top:20px;"><a href="pairings.html" style="font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:2px;">About our wines →</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="phil-block">
+  <div style="max-width:480px;margin:0 auto 36px;opacity:0.55;border-radius:2px;overflow:hidden;">
+      <img src="img/culture-picasso.webp" alt="Picasso at table — food culture" style="width:100%;height:auto;display:block;filter:grayscale(60%);">
+    </div>
+    <blockquote>"Our signature tasting menu is a multi-course sensory experience inspired by Joe's travels, personal history, and time in Michelin-starred kitchens — what he describes as food culture."</blockquote>
+  <cite>Joe D'Costa · Chef and founder · JoEs TaBLe</cite>
+</div>
+
+<div class="cta-block">
+  <h2>Submit your <em>enquiry</em></h2>
+  <p>Spots are limited. All events by reservation only.</p>
+  <a href="https://tally.so/r/pbP7Eb" class="btn-gold" target="_blank" rel="noopener">Book now</a>
+  <a href="about.html" class="btn-outline">About us</a>
+</div>
+
+<div class="bottom-bar">
+  <p>Private culinary events &nbsp;·&nbsp; Corporate &amp; private clients &nbsp;·&nbsp; By reservation only &nbsp;·&nbsp; booking@josestable.com</p>
+</div>
+
+<footer>
+  <p class="footer-copy">JoEs TaBLe &copy; 2026 &nbsp;·&nbsp; A brand of <a href="https://clandestino.kitchen">CK Events Management &amp; Hospitality Group LLC</a> &nbsp;·&nbsp; <a href="terms.html">Terms &amp; Privacy</a></p>
+  <div class="fsocial">
+    <a href="https://www.instagram.com/joses.table" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/company/joestable/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:support@josestable.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+const hamburger=document.getElementById('hamburger');
+const navLinks=document.getElementById('navLinks');
+hamburger.addEventListener('click',()=>{const o=navLinks.classList.toggle('open');hamburger.setAttribute('aria-expanded',String(o));});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+const io=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

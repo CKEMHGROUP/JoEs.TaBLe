@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Wine Pairings — JoEs TaBLe · Private Culinary Events</title>
+<meta name="description" content="Hand-selected wine pairings for JoEs TaBLe events. Four tiers: Selection, Lusitano, Iberico, Tricolore. Low-intervention producers across Portugal, Spain, and France.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300;1,9..144,400&family=Lora:ital,wght@0,400;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--black:#080706;--ink:#141210;--ink-mid:#1a1714;--parchment:#f4ede0;--gold:#c9a96e;--gold-light:#e2c48a;--text:#b0a898;--text-mid:#7a7168;--text-faint:#4e4842;--rule:rgba(201,169,110,.2);--display:'Fraunces',Georgia,serif;--body:'Lora',Georgia,serif;--mono:'DM Mono','Courier New',monospace;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--black);color:var(--parchment);font-family:var(--body);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:0 40px;height:64px;background:rgba(8,7,6,.96);border-bottom:1px solid var(--rule);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);}
+.nav-logo{font-family:var(--display);font-size:17px;font-weight:400;font-style:italic;color:var(--parchment);text-decoration:none;flex-shrink:0;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;transition:color .25s;min-height:44px;display:flex;align-items:center;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-cta{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0 22px;text-decoration:none;min-height:44px;display:flex;align-items:center;flex-shrink:0;transition:background .25s;}
+.nav-cta:hover{background:var(--gold-light);}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:6px;background:none;border:none;cursor:pointer;padding:10px;min-width:44px;min-height:44px;}
+.hamburger span{display:block;width:22px;height:1px;background:var(--parchment);}
+.page-hero{padding:160px 40px 72px;background:linear-gradient(to bottom,var(--ink),var(--black));border-bottom:1px solid var(--rule);}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:16px;}
+.page-title{font-family:var(--display);font-size:clamp(44px,8vw,96px);font-weight:300;line-height:.95;letter-spacing:-.02em;}
+.page-title em{font-style:italic;color:var(--gold);}
+.page-sub{font-style:italic;color:var(--text);margin-top:18px;max-width:520px;font-size:18px;line-height:1.6;}
+.section{padding:90px 40px;max-width:1160px;margin:0 auto;}
+.rule-row{display:flex;align-items:center;gap:18px;margin-bottom:44px;}
+.rule-line{flex:1;height:1px;background:var(--rule);}
+.tier{display:grid;grid-template-columns:180px 1fr;border:1px solid var(--rule);margin-bottom:3px;transition:background .25s;}
+.tier:hover{background:rgba(201,169,110,.02);}
+.tier-flag{background:var(--ink);border-right:1px solid var(--rule);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px 28px;gap:12px;}
+.tier-emoji{font-size:44px;}
+.tier-price{font-family:var(--mono);font-size:26px;color:var(--gold);}
+.tier-pp{font-family:var(--mono);font-size:10px;color:var(--text-mid);}
+.tier-body{background:var(--ink);padding:44px 52px;}
+.tier-name{font-family:var(--display);font-size:38px;font-weight:300;font-style:italic;margin-bottom:6px;}
+.tier-label{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:20px;}
+.tier-desc{color:var(--text);line-height:1.75;font-size:16px;margin-bottom:18px;}
+.tier-note{font-family:var(--mono);font-size:10px;color:var(--text-mid);letter-spacing:.04em;line-height:1.65;padding:14px 18px;border:1px solid var(--rule);display:inline-block;}
+.how-section{padding:90px 40px;}
+.how-inner{max-width:860px;margin:0 auto;}
+.steps{border:1px solid var(--rule);}
+.step{display:grid;grid-template-columns:72px 1fr;border-bottom:1px solid var(--rule);}
+.step:last-child{border-bottom:none;}
+.step-n{border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;padding:26px 16px;}
+.step-n span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--gold);}
+.step-body{padding:26px 36px;}
+.step-title{font-family:var(--display);font-size:20px;font-weight:300;font-style:italic;margin-bottom:7px;}
+.step-text{font-family:var(--mono);font-size:11px;color:var(--text-mid);line-height:1.65;letter-spacing:.04em;}
+.phil{background:var(--ink);text-align:center;padding:80px 40px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+.phil blockquote{font-family:var(--display);font-size:clamp(18px,2.5vw,28px);font-weight:300;font-style:italic;max-width:680px;margin:0 auto 16px;line-height:1.5;}
+.phil cite{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-style:normal;}
+.cta-block{text-align:center;padding:90px 40px;background:var(--ink);}
+.cta-block h2{font-family:var(--display);font-size:clamp(28px,5vw,56px);font-weight:300;margin-bottom:12px;}
+.cta-block h2 em{font-style:italic;color:var(--gold);}
+.cta-block p{color:var(--text);margin-bottom:36px;font-style:italic;}
+.btn-gold{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0 30px;text-decoration:none;display:inline-flex;align-items:center;min-height:48px;transition:background .25s;margin:6px;}
+.btn-gold:hover{background:var(--gold-light);}
+.btn-outline{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--parchment);border:1px solid rgba(244,237,224,.22);padding:0 30px;text-decoration:none;display:inline-flex;align-items:center;min-height:48px;transition:border-color .25s,color .25s;margin:6px;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.bottom-bar{background:var(--ink-mid);border-top:1px solid var(--rule);padding:13px 40px;text-align:center;}
+.bottom-bar p{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-mid);}
+footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer-copy{font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.07em;line-height:1.7;}
+.footer-copy a{color:var(--text-faint);text-decoration:none;}.footer-copy a:hover{color:var(--gold);}
+.fsocial{display:flex;gap:22px;}
+.fsocial a{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);text-decoration:none;min-height:44px;display:inline-flex;align-items:center;transition:color .25s;}
+.fsocial a:hover{color:var(--gold);}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .75s ease,transform .75s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+@media(max-width:860px){
+  nav{padding:0 20px;}.nav-links,.nav-cta{display:none;}.hamburger{display:flex;}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:var(--black);justify-content:center;align-items:center;gap:28px;z-index:199;}
+  .page-hero,.section,.how-section,.phil,.cta-block,.bottom-bar{padding:60px 20px;}
+  footer{padding:32px 20px;flex-direction:column;align-items:flex-start;}
+  .tier{grid-template-columns:1fr;}
+  .tier-flag{border-right:none;border-bottom:1px solid var(--rule);flex-direction:row;justify-content:space-between;padding:20px 24px;}
+  .tier-body{padding:28px 24px;}
+  .step{grid-template-columns:1fr;}.step-n{display:none;}.step-body{padding:24px 20px;}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">JoEs TaBLe</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="pairings.html" class="active">Pairings</a></li>
+  </ul>
+  <a href="https://tally.so/r/pbP7Eb" class="nav-cta" target="_blank" rel="noopener">Book an event</a>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-hero" style="position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;z-index:0;"><img src="img/food-oysters.webp" alt="Fresh oysters on ice" style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:0.25;"></div>
+  <div style="position:relative;z-index:1;">
+  <span class="eyebrow">Wine pairings · Hand-selected</span>
+  <h1 class="page-title">The<br><em>wine list</em></h1>
+  <p class="page-sub">Handpicked in person by our sommelier from low-intervention producers. Distinct regions. Four tiers. Crafted to match our philosophy.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="rule-row reveal"><span class="eyebrow">Four pairings · Four philosophies</span><span class="rule-line"></span></div>
+  <div class="reveal">
+    <div class="tier">
+      <div class="tier-flag"><span class="tier-emoji">🍇</span><span class="tier-price">€48</span><span class="tier-pp">per person</span></div>
+      <div class="tier-body"><div class="tier-name">Selection</div><span class="tier-label">House pairing · Curated by our sommelier</span><p class="tier-desc">A curated selection across different appellations and styles, chosen specifically to complement the current tasting menu. This is the sommelier's choice — the most expressive pairing for the evening's courses. Wines purchased and provided by JoEs TaBLe.</p><span class="tier-note">Included when booking the menu + pairing option at €144 per person</span></div>
+    </div>
+    <div class="tier">
+      <div class="tier-flag"><span class="tier-emoji">🇵🇹</span><span class="tier-price">€70</span><span class="tier-pp">per person</span></div>
+      <div class="tier-body"><div class="tier-name">Lusitano</div><span class="tier-label">Portugal · Natural producers · Unique personalities</span><p class="tier-desc">Portugal's finest natural wine producers. A journey through the Douro, Alentejo, Dão, and the Azores. Low-intervention winemaking by craftsmen who care. Sourced directly in person by our sommelier from producers who share our philosophy.</p></div>
+    </div>
+    <div class="tier">
+      <div class="tier-flag"><span class="tier-emoji">🇪🇸</span><span class="tier-price">€80</span><span class="tier-pp">per person</span></div>
+      <div class="tier-body"><div class="tier-name">Iberico</div><span class="tier-label">Spain · Emblematic terroir · Estate-bottled</span><p class="tier-desc">Spain's emblematic terroir expressed through estate producers. Priorat, Ribera del Duero, Jerez, and beyond. Wines with identity, with place, with character — chosen to connect the evening's culinary narrative to the Iberian landscape.</p></div>
+    </div>
+    <div class="tier">
+      <div class="tier-flag"><span class="tier-emoji">🇫🇷</span><span class="tier-price">€95</span><span class="tier-pp">per person</span></div>
+      <div class="tier-body"><div class="tier-name">Tricolore</div><span class="tier-label">France · Great appellations · Grower champagnes</span><p class="tier-desc">France's great appellations alongside small grower champagnes. Burgundy, Bordeaux, the Loire, and the finest grower producers of Champagne. The pinnacle of the wine world, curated with precision and restraint.</p></div>
+    </div>
+  </div>
+</div>
+
+<div style="background:var(--ink);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:40px;">
+  <div style="max-width:900px;margin:0 auto;">
+    <p style="font-family:var(--mono);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:28px;">Our producers</p>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:36px 48px;filter:grayscale(100%);opacity:0.45;">
+      <img src="img/wine-lafleur.webp" alt="Lafleur — Pomerol" style="height:52px;width:auto;object-fit:contain;">
+      <img src="img/wine-raulperez.webp" alt="Raúl Pérez Bodegas y Viñedos" style="height:36px;width:auto;object-fit:contain;">
+      <img src="img/wine-lopezheredia.webp" alt="R. López de Heredia" style="height:44px;width:auto;object-fit:contain;">
+      <img src="img/supplier-casacerdanya.webp" alt="Casa Cerdanya — Carn ecològica" style="height:44px;width:auto;object-fit:contain;">
+    </div>
+  </div>
+</div>
+
+<div class="phil reveal">
+  <blockquote>"Handpicked world-class wines produced by some of the most unique personalities and craftsmen in the world. Handpicked in person by our sommelier with great care, to match our philosophy."</blockquote>
+  <cite>JoEs TaBLe</cite>
+</div>
+
+<div class="how-section">
+  <div class="how-inner">
+    <div class="rule-row reveal"><span class="eyebrow">How to add a pairing</span><span class="rule-line"></span></div>
+    <div class="steps reveal">
+      <div class="step"><div class="step-n"><span>01</span></div><div class="step-body"><div class="step-title">Choose your pairing when booking</div><div class="step-text">We recommend choosing your pairing when submitting your reservation enquiry. This allows us to reserve the wines and ensure they are prepared correctly for your evening.</div></div></div>
+      <div class="step"><div class="step-n"><span>02</span></div><div class="step-body"><div class="step-title">Why booking in advance matters</div><div class="step-text">Some wines need aeration to reach their best characteristics. Time is part of the experience. Booking in advance allows us to prepare your pairing with care.</div></div></div>
+      <div class="step"><div class="step-n"><span>03</span></div><div class="step-body"><div class="step-title">Or decide at the event</div><div class="step-text">You may also choose your pairing on the evening. Our sommelier or chef will be happy to assist and advise. All pairings are per person.</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-block">
+  <h2>Reserve with<br><em>your pairing</em></h2>
+  <p>All events by reservation. Add a pairing when you submit your enquiry.</p>
+  <a href="https://tally.so/r/pbP7Eb" class="btn-gold" target="_blank" rel="noopener">Book now</a>
+  <a href="menu.html" class="btn-outline">View the menu</a>
+</div>
+
+<div class="bottom-bar">
+  <p>Private culinary events &nbsp;·&nbsp; Corporate &amp; private clients &nbsp;·&nbsp; By reservation only &nbsp;·&nbsp; booking@josestable.com</p>
+</div>
+
+<footer>
+  <p class="footer-copy">JoEs TaBLe &copy; 2026 &nbsp;·&nbsp; A brand of <a href="https://clandestino.kitchen">CK Events Management &amp; Hospitality Group LLC</a> &nbsp;·&nbsp; <a href="terms.html">Terms &amp; Privacy</a></p>
+  <div class="fsocial">
+    <a href="https://www.instagram.com/joses.table" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/company/joestable/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:support@josestable.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+const hamburger=document.getElementById('hamburger');
+const navLinks=document.getElementById('navLinks');
+hamburger.addEventListener('click',()=>{const o=navLinks.classList.toggle('open');hamburger.setAttribute('aria-expanded',String(o));});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+const io=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

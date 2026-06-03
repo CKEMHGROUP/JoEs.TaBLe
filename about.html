@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>About — JoEs TaBLe · Private Culinary Events</title>
+<meta name="description" content="JoEs TaBLe is a private culinary event concept for corporate and private clients. Not a restaurant — an experience design format. Based on food culture.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;1,9..144,300;1,9..144,400&family=Lora:ital,wght@0,400;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--black:#080706;--ink:#141210;--ink-mid:#1a1714;--parchment:#f4ede0;--gold:#c9a96e;--gold-light:#e2c48a;--text:#b0a898;--text-mid:#7a7168;--text-faint:#4e4842;--rule:rgba(201,169,110,.2);--display:'Fraunces',Georgia,serif;--body:'Lora',Georgia,serif;--mono:'DM Mono','Courier New',monospace;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{background:var(--black);color:var(--parchment);font-family:var(--body);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:0 40px;height:64px;background:rgba(8,7,6,.96);border-bottom:1px solid var(--rule);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);}
+.nav-logo{font-family:var(--display);font-size:17px;font-weight:400;font-style:italic;color:var(--parchment);text-decoration:none;flex-shrink:0;}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;transition:color .25s;min-height:44px;display:flex;align-items:center;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-cta{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0 22px;text-decoration:none;min-height:44px;display:flex;align-items:center;flex-shrink:0;transition:background .25s;}
+.nav-cta:hover{background:var(--gold-light);}
+.hamburger{display:none;flex-direction:column;justify-content:center;gap:6px;background:none;border:none;cursor:pointer;padding:10px;min-width:44px;min-height:44px;}
+.hamburger span{display:block;width:22px;height:1px;background:var(--parchment);}
+.page-hero{padding:160px 40px 72px;background:linear-gradient(to bottom,var(--ink),var(--black));border-bottom:1px solid var(--rule);}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:16px;}
+.page-title{font-family:var(--display);font-size:clamp(44px,8vw,96px);font-weight:300;line-height:.95;letter-spacing:-.02em;}
+.page-title em{font-style:italic;color:var(--gold);}
+.section{padding:90px 40px;max-width:1160px;margin:0 auto;}
+.full-section{padding:90px 40px;}
+.rule-row{display:flex;align-items:center;gap:18px;margin-bottom:44px;}
+.rule-line{flex:1;height:1px;background:var(--rule);}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+.story-text p{color:var(--text);line-height:1.75;margin-bottom:18px;}
+.story-text p:last-child{margin-bottom:0;}
+.story-text a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--rule);}
+.aside-card{background:var(--ink);border:1px solid var(--rule);padding:28px;margin-bottom:16px;}
+.aside-title{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.aside-text{font-size:16px;color:var(--text);line-height:1.65;}
+.manifesto{background:var(--ink);}
+.manifesto-inner{max-width:860px;margin:0 auto;padding:90px 40px;}
+.manifesto-text{font-family:var(--display);font-size:clamp(18px,2.5vw,24px);font-weight:300;line-height:1.7;margin-bottom:22px;}
+.manifesto-text strong{color:var(--gold);font-weight:300;}
+.manifesto-text em{font-style:italic;}
+.press-section{background:var(--ink);padding:90px 40px;}
+.press-inner{max-width:960px;margin:0 auto;}
+.press-article{border:1px solid var(--rule);padding:52px;position:relative;background:#100d0a;}
+.press-article::before{content:'"';position:absolute;top:-16px;left:36px;font-family:var(--display);font-size:100px;font-style:italic;color:var(--gold);opacity:.2;line-height:1;}
+.press-body{font-size:16px;color:var(--text);line-height:1.75;column-count:2;column-gap:44px;}
+.press-body p{margin-bottom:14px;break-inside:avoid;}
+.press-byline{margin-top:36px;padding-top:28px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;}
+.press-name{font-family:var(--display);font-size:18px;font-style:italic;font-weight:300;}
+.press-src{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;}
+.press-link{font-family:var(--mono);font-size:10px;letter-spacing:.13em;color:var(--text-mid);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;display:inline-block;margin-top:14px;transition:color .25s,border-color .25s;}
+.press-link:hover{color:var(--gold);border-color:var(--gold);}
+.policies-section{padding:90px 40px;}
+.policies-inner{max-width:860px;margin:0 auto;}
+.policy-block{margin-bottom:44px;}
+.policy-title{font-family:var(--display);font-size:22px;font-weight:300;font-style:italic;margin-bottom:12px;}
+.policy-text{color:var(--text);line-height:1.75;font-size:16px;}
+.policy-text strong{color:var(--parchment);font-weight:500;}
+.bourdain{background:var(--ink);text-align:center;padding:90px 40px;}
+.bourdain blockquote{font-family:var(--display);font-size:clamp(20px,3vw,34px);font-weight:300;font-style:italic;line-height:1.45;max-width:740px;margin:0 auto 18px;}
+.bourdain cite{font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-style:normal;}
+.cta-block{text-align:center;padding:90px 40px;}
+.cta-block h2{font-family:var(--display);font-size:clamp(28px,5vw,56px);font-weight:300;margin-bottom:12px;}
+.cta-block h2 em{font-style:italic;color:var(--gold);}
+.cta-block p{color:var(--text);margin-bottom:36px;font-style:italic;}
+.btn-gold{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0 30px;text-decoration:none;display:inline-flex;align-items:center;min-height:48px;transition:background .25s;margin:6px;}
+.btn-gold:hover{background:var(--gold-light);}
+.btn-outline{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--parchment);border:1px solid rgba(244,237,224,.22);padding:0 30px;text-decoration:none;display:inline-flex;align-items:center;min-height:48px;transition:border-color .25s,color .25s;margin:6px;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.bottom-bar{background:var(--ink-mid);border-top:1px solid var(--rule);padding:13px 40px;text-align:center;}
+.bottom-bar p{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-mid);}
+footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer-copy{font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.07em;line-height:1.7;}
+.footer-copy a{color:var(--text-faint);text-decoration:none;}.footer-copy a:hover{color:var(--gold);}
+.fsocial{display:flex;gap:22px;}
+.fsocial a{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);text-decoration:none;min-height:44px;display:inline-flex;align-items:center;transition:color .25s;}
+.fsocial a:hover{color:var(--gold);}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .75s ease,transform .75s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+@media(max-width:860px){
+  nav{padding:0 20px;}.nav-links,.nav-cta{display:none;}.hamburger{display:flex;}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:var(--black);justify-content:center;align-items:center;gap:28px;z-index:199;}
+  .page-hero,.manifesto-inner,.section,.policies-section,.bourdain,.cta-block{padding:60px 20px;}
+  .press-section{padding:60px 20px;}.bottom-bar{padding:13px 20px;}
+  footer{padding:32px 20px;flex-direction:column;align-items:flex-start;}
+  .story-grid{grid-template-columns:1fr;gap:36px;}
+  .press-body{column-count:1;}
+  .press-article{padding:36px 22px;}
+}
+</style>
+</head>
+<body>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">JoEs TaBLe</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="pairings.html">Pairings</a></li>
+  </ul>
+  <a href="https://tally.so/r/pbP7Eb" class="nav-cta" target="_blank" rel="noopener">Book an event</a>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-hero">
+  <span class="eyebrow">JoEs TaBLe · Private culinary events</span>
+  <h1 class="page-title">Food is<br><em>everything we are</em></h1>
+</div>
+
+<div class="manifesto">
+  <div class="manifesto-inner">
+    <div class="rule-row reveal"><span class="eyebrow" style="white-space:nowrap;">Who we are</span><span class="rule-line"></span></div>
+    <p class="manifesto-text reveal">We are an <strong>exclusive private culinary event format</strong>, producing one-table experiences at hand-selected locations. Each event is designed, staffed, and executed from scratch — for the occasion, for the guests, for the brief.</p>
+    <p class="manifesto-text reveal">We are <em>not a restaurant</em>. We hold no premises. We have no fixed address to visit. What we have is a network of outstanding chefs, venue partners, and logistics operators who assemble wherever we are needed, and a culinary vision built on <strong>food culture</strong> as the deepest form of human connection.</p>
+    <p class="manifesto-text reveal">We serve corporate clients who want something genuinely different, and private guests who understand that the most memorable evenings are never the obvious ones.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="rule-row reveal"><span class="eyebrow">The concept</span><span class="rule-line"></span></div>
+  <div class="story-grid">
+    <div class="story-text reveal">
+      <p>Private dining concepts share their philosophy and nature with the speakeasy bars and clubs born during Prohibition in Chicago. Although those were born out of political circumstances, the core sense is the same — something exclusive, discovered rather than advertised, experienced rather than consumed. The most famous example of its time was <a href="https://www.21club.com/history" target="_blank" rel="noopener">Club 21 in New York City</a>.</p>
+      <p>JoEs TaBLe operates at the forefront of a new culinary movement — alongside NOMA's innovative pop-up concept, Milesi's UNA, Bruno's philosophy at Verjus TABLE, and Junghyun's ATOMIX. An event format rooted in the same conviction: that a table is a stage, and what happens around it is culture.</p>
+      <p>We operate on a reservation-only basis. All events are by enquiry. A seasonal, multi-course tasting menu is prepared for each occasion, with wine pairings selected in person by our sommelier from producers who share our philosophy.</p>
+    </div>
+    <div class="story-aside reveal">
+      <div style="margin-bottom:16px;overflow:hidden;border-radius:2px;"><img src="img/brand-badge.webp" alt="JoEs TaBLe — By Appointment Only" style="width:100%;max-width:320px;height:auto;display:block;margin:0 auto;"></div>
+      <div class="aside-card"><div class="aside-title">The event format</div><div class="aside-text">One table. Curated location. Changing throughout the year. A multi-course sensory occasion where each dish carries a story.</div></div>
+      <div class="aside-card"><div class="aside-title">Our philosophy</div><div class="aside-text">We are not focused on molecular tricks or theatrical effects. We approach your taste with a different perspective of what food should be: memories, stories, and honest produce.</div></div>
+      <div class="aside-card"><div class="aside-title">The dedication</div><div class="aside-text">Dedicated to and inspired by the lifetime story of a remarkable chef: Anthony Bourdain.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="bourdain reveal" style="position:relative;">
+  <div style="max-width:600px;margin:0 auto 40px;opacity:0.45;overflow:hidden;border-radius:2px;"><img src="img/culture-picasso.webp" alt="Sharing at the table — food culture" style="width:100%;height:auto;display:block;filter:grayscale(80%);"></div>
+  <blockquote>"Food culture is one of the most important pillars of civilization. An extension of our nationalistic feeling, our ethnic feeling, our personal history, our province, our region, our tribe, our origins. Food is everything we are."</blockquote>
+  <cite>Anthony Bourdain</cite>
+</div>
+
+<div class="policies-section">
+  <div class="policies-inner">
+    <div class="rule-row reveal"><span class="eyebrow">Reservations &amp; policies</span><span class="rule-line"></span></div>
+    <div class="policy-block reveal">
+      <div class="policy-title">How to book</div>
+      <div class="policy-text">All events are by reservation only. Submit an enquiry via our booking form and we will confirm availability and send payment instructions. No event is confirmed until the booking fee is received.</div>
+    </div>
+    <div class="policy-block reveal">
+      <div class="policy-title">Cancellation policy</div>
+      <div class="policy-text"><strong>Grace period (up to 48 hours before the event):</strong> If you cancel within this window, your booking fee will be fully released. Grace periods for group and corporate events vary — minimum 7 days before the event date.<br><br><strong>No-show:</strong> If you do not cancel before the grace period ends, the full reservation amount will be charged. No-shows are non-refundable.<br><br><strong>Cancellation with notice:</strong> No charge within the grace period (5% processing fee applies).</div>
+    </div>
+    <div class="policy-block reveal">
+      <div class="policy-title">Transferable bookings</div>
+      <div class="policy-text">If you are unable to attend after the grace period ends, you may transfer your booking to someone else. We ask all guests to notify us as early as possible.</div>
+    </div>
+    <div class="policy-block reveal">
+      <div class="policy-title">Dietary requirements</div>
+      <div class="policy-text">If you have allergies, intolerances, or dietary restrictions, please contact us in advance. We will do our best to accommodate, but menu adjustments on the day are not guaranteed.</div>
+    </div>
+    <div class="policy-block reveal">
+      <div class="policy-text">For full terms, policies, or any enquiries: <a href="mailto:support@josestable.com" style="color:var(--gold);text-decoration:none;">support@josestable.com</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="press-section">
+  <div class="press-inner">
+    <div style="height:260px;overflow:hidden;border-radius:2px;margin-bottom:40px;"><img src="img/event-applause.webp" alt="JoEs TaBLe event — guests applauding" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;"></div>
+    <div class="rule-row reveal"><span class="eyebrow">In the press</span><span class="rule-line"></span></div>
+    <div class="press-article reveal">
+      <div class="press-body">
+        <p>Finding Joe's pop-up spot in a dark alley, far from our hotel, in a neighbourhood where our taxi driver warned us to keep our hands on our wallets, heightened our sense of adventure. Soon, we were spotted by one of Joe's staff and invited in.</p>
+        <p>Like a great Broadway show, the meal was divided into acts: The Overture, The Prelude, The Suite, and The Finale. During The Overture, we were treated to Cicchetti Iberico — three different and fabulous strips of ham on crusty bread.</p>
+        <p>The wine continued to flow, and the food was amazing. The most touching story of the night came from Joe, who previously worked at some of the finest restaurants, honing his craft as a chef. But his true love and passion for cooking came from his late grandmother, whom he loved dearly. In creating Joe's Table, he paid homage to her. His eyes welled up as he told us. Our eyes welled, too.</p>
+        <p>What I learned is that it is not about the eating. It is all about the sharing.</p>
+      </div>
+      <div class="press-byline">
+        <div><div class="press-name">Richard Reiss</div><div class="press-src">The Berkshire Eagle · New England Newspapers Inc.</div><a href="https://www.berkshireeagle.com/opinion/columnists/richard-reiss-food-for-thought/article_72578b9c-53c1-11ed-8d63-cf52e38cefab.html" target="_blank" rel="noopener" class="press-link">Read the full article →</a>
+      <div style="margin-top:28px;padding-top:24px;border-top:1px solid var(--rule);"><img src="img/press-logos.webp" alt="As seen in" style="max-width:600px;width:100%;height:auto;opacity:0.5;filter:grayscale(100%);"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-block" style="background:var(--ink);">
+  <h2>Come to our <em>table</em></h2>
+  <p>All events by reservation. Enquiries welcome.</p>
+  <a href="https://tally.so/r/pbP7Eb" class="btn-gold" target="_blank" rel="noopener">Book an event</a>
+  <a href="mailto:booking@josestable.com?subject=Corporate%20Event%20Enquiry" class="btn-outline">Corporate enquiry</a>
+</div>
+
+<div class="bottom-bar">
+  <p>Private culinary events &nbsp;·&nbsp; Corporate &amp; private clients &nbsp;·&nbsp; By reservation only &nbsp;·&nbsp; booking@josestable.com</p>
+</div>
+
+<footer>
+  <p class="footer-copy">JoEs TaBLe &copy; 2026 &nbsp;·&nbsp; A brand of <a href="https://clandestino.kitchen">CK Events Management &amp; Hospitality Group LLC</a> &nbsp;·&nbsp; <a href="terms.html">Terms &amp; Privacy</a></p>
+  <div class="fsocial">
+    <a href="https://www.instagram.com/joses.table" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/company/joestable/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:support@josestable.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+const hamburger=document.getElementById('hamburger');
+const navLinks=document.getElementById('navLinks');
+hamburger.addEventListener('click',()=>{const o=navLinks.classList.toggle('open');hamburger.setAttribute('aria-expanded',String(o));});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+const io=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
