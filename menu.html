@@ -102,6 +102,33 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
   .ci{grid-template-columns:1fr;}.ci-n{display:none;}
   .ci-body{padding:24px 20px;}.pricing-block{padding:28px 18px;}
 }
+
+/* Course row image backgrounds */
+.ci {
+  position: relative;
+  overflow: hidden;
+}
+.ci-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 0;
+}
+.ci:hover .ci-bg { opacity: 1; }
+.ci-n, .ci-body { position: relative; z-index: 1; }
+.ci::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, rgba(8,7,6,0.97) 0%, rgba(8,7,6,0.88) 60%, rgba(8,7,6,0.65) 100%);
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.ci:hover::after { opacity: 1; }
 </style>
 </head>
 <body>
@@ -128,6 +155,7 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
   <div class="rule-row reveal"><span class="eyebrow">Soirée d'ouverture</span><span class="rule-line"></span></div>
   <div class="courses-list reveal">
     <div class="ci">
+      <div class="ci-bg" style="background-image:url('img/menu-oyster.webp');"></div>
       <div class="ci-n"><span>01</span></div>
       <div class="ci-body">
         <span class="ci-label">Amuse-bouche · House Starter</span>
@@ -137,6 +165,7 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
       </div>
     </div>
     <div class="ci">
+      <div class="ci-bg" style="background-image:url('img/menu-baccala.webp');"></div>
       <div class="ci-n"><span>02</span></div>
       <div class="ci-body">
         <span class="ci-label">First course</span>
@@ -146,6 +175,7 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
       </div>
     </div>
     <div class="ci">
+      <div class="ci-bg" style="background-image:url('img/menu-vichyssoise.webp');"></div>
       <div class="ci-n"><span>03</span></div>
       <div class="ci-body">
         <span class="ci-label">Second course</span>
@@ -155,6 +185,7 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
       </div>
     </div>
     <div class="ci">
+      <div class="ci-bg" style="background-image:url('img/menu-meatballs.webp');"></div>
       <div class="ci-n"><span>04</span></div>
       <div class="ci-body">
         <span class="ci-label">Third course</span>
@@ -164,6 +195,7 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
       </div>
     </div>
     <div class="ci">
+      <div class="ci-bg" style="background-image:url('img/menu-bife.webp');"></div>
       <div class="ci-n"><span>05</span></div>
       <div class="ci-body">
         <span class="ci-label">Main course</span>
@@ -173,6 +205,7 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
       </div>
     </div>
     <div class="ci">
+      <div class="ci-bg" style="background-image:url('img/menu-strudel.webp');"></div>
       <div class="ci-n"><span>06</span></div>
       <div class="ci-body">
         <span class="ci-label">Dessert</span>
