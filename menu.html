@@ -216,6 +216,33 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
   #dish-lb-close { top: -12px; right: -12px; }
   #dish-lb-name { font-size: 18px; }
 }
+
+/* Course row — persistent dim background image */
+.dish-trigger {
+  background-size: cover;
+  background-position: center;
+  transition: background-color 0.4s;
+}
+.dish-trigger::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.12;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+.dish-trigger:hover::before {
+  opacity: 0.38;
+}
+.dish-trigger .ci-n,
+.dish-trigger .ci-body {
+  position: relative;
+  z-index: 1;
+}
 </style>
 </head>
 <body>
@@ -241,7 +268,7 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
 <div class="section">
   <div class="rule-row reveal"><span class="eyebrow">Soirée d'ouverture</span><span class="rule-line"></span></div>
   <div class="courses-list reveal">
-    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-oyster.webp" data-name="Tony B's first Oyster" data-ingr="Atlantic sea oyster · 12y aged cabernet sauvignon vinegar">
+    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-oyster.webp" data-name="Tony B's first Oyster" data-ingr="Atlantic sea oyster · 12y aged cabernet sauvignon vinegar" style="background-image:url('img/menu-oyster.webp');">
       <div class="ci-n"><span>01</span></div>
       <div class="ci-body">
         <span class="ci-label">Amuse-bouche · House Starter</span>
@@ -251,7 +278,7 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
           <span class="ci-peek">View dish ↗</span>
       </div>
     </div>
-    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-baccala.webp" data-name="Object of beauty" data-ingr="Piquillo · bluefin tuna · anchoa 00 · crème">
+    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-baccala.webp" data-name="Object of beauty" data-ingr="Piquillo · bluefin tuna · anchoa 00 · crème" style="background-image:url('img/menu-baccala.webp');">
       <div class="ci-n"><span>02</span></div>
       <div class="ci-body">
         <span class="ci-label">First course</span>
@@ -261,7 +288,7 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
           <span class="ci-peek">View dish ↗</span>
       </div>
     </div>
-    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-vichyssoise.webp" data-name="Truffled Vichyssoise 1920" data-ingr="Leek · potato · cream · black truffle · chive">
+    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-vichyssoise.webp" data-name="Truffled Vichyssoise 1920" data-ingr="Leek · potato · cream · black truffle · chive" style="background-image:url('img/menu-vichyssoise.webp');">
       <div class="ci-n"><span>03</span></div>
       <div class="ci-body">
         <span class="ci-label">Second course</span>
@@ -271,7 +298,7 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
           <span class="ci-peek">View dish ↗</span>
       </div>
     </div>
-    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-meatballs.webp" data-name="Joe Dog's Mafia Meatballs" data-ingr="Veal · pork · tomato sugo · basil · parmigiano">
+    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-meatballs.webp" data-name="Joe Dog's Mafia Meatballs" data-ingr="Veal · pork · tomato sugo · basil · parmigiano" style="background-image:url('img/menu-meatballs.webp');">
       <div class="ci-n"><span>04</span></div>
       <div class="ci-body">
         <span class="ci-label">Third course</span>
@@ -281,7 +308,7 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
           <span class="ci-peek">View dish ↗</span>
       </div>
     </div>
-    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-bife.webp" data-name="Bife à café "Marraré"" data-ingr="Portuguese beef · café sauce · seasonal garnish">
+    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-bife.webp" data-name="Bife à café "Marraré"" data-ingr="Portuguese beef · café sauce · seasonal garnish" style="background-image:url('img/menu-bife.webp');">
       <div class="ci-n"><span>05</span></div>
       <div class="ci-body">
         <span class="ci-label">Main course</span>
@@ -291,7 +318,7 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
           <span class="ci-peek">View dish ↗</span>
       </div>
     </div>
-    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-strudel.webp" data-name="Tarantino's Apfelstrudel" data-ingr="Apple · raisin · cinnamon · puff pastry · vanilla cream">
+    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-strudel.webp" data-name="Tarantino's Apfelstrudel" data-ingr="Apple · raisin · cinnamon · puff pastry · vanilla cream" style="background-image:url('img/menu-strudel.webp');">
       <div class="ci-n"><span>06</span></div>
       <div class="ci-body">
         <span class="ci-label">Dessert</span>
