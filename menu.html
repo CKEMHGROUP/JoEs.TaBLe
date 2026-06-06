@@ -103,32 +103,119 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
   .ci-body{padding:24px 20px;}.pricing-block{padding:28px 18px;}
 }
 
-/* Course row image backgrounds */
-.ci {
+/* ── DISH LIGHTBOX ── */
+.dish-trigger {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.dish-trigger:hover .ci-name {
+  color: var(--gold);
+}
+.dish-trigger .ci-peek {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0;
+  transition: opacity .25s;
+  margin-top: 8px;
+}
+.dish-trigger:hover .ci-peek { opacity: 1; }
+
+/* Lightbox overlay */
+#dish-lb {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(5,4,3,.92);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  cursor: pointer;
+}
+#dish-lb.open { display: flex; }
+
+#dish-lb-inner {
   position: relative;
-  overflow: hidden;
+  max-width: 680px;
+  width: 100%;
+  cursor: default;
+  animation: lbIn .3s cubic-bezier(.22,1,.36,1) forwards;
 }
-.ci-bg {
+
+#dish-lb-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+  max-height: 75vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+#dish-lb-caption {
+  padding: 16px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+#dish-lb-name {
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--parchment);
+}
+
+#dish-lb-ingr {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-mid);
+  letter-spacing: .06em;
+  margin-top: 5px;
+}
+
+#dish-lb-close {
   position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-  z-index: 0;
+  top: -16px;
+  right: -16px;
+  width: 36px;
+  height: 36px;
+  background: var(--gold);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--black);
+  font-family: var(--mono);
+  transition: background .2s;
+  flex-shrink: 0;
 }
-.ci:hover .ci-bg { opacity: 1; }
-.ci-n, .ci-body { position: relative; z-index: 1; }
-.ci::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(8,7,6,0.97) 0%, rgba(8,7,6,0.88) 60%, rgba(8,7,6,0.65) 100%);
-  z-index: 0;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+#dish-lb-close:hover { background: var(--gold-light); }
+
+@keyframes lbIn {
+  from { opacity: 0; transform: scale(.94) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
 }
-.ci:hover::after { opacity: 1; }
+
+@media (max-width: 480px) {
+  #dish-lb { padding: 16px; }
+  #dish-lb-inner { max-width: 100%; }
+  #dish-lb-close { top: -12px; right: -12px; }
+  #dish-lb-name { font-size: 18px; }
+}
 </style>
 </head>
 <body>
@@ -154,64 +241,64 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
 <div class="section">
   <div class="rule-row reveal"><span class="eyebrow">Soirée d'ouverture</span><span class="rule-line"></span></div>
   <div class="courses-list reveal">
-    <div class="ci">
-      <div class="ci-bg" style="background-image:url('img/menu-oyster.webp');"></div>
+    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-oyster.webp" data-name="Tony B's first Oyster" data-ingr="Atlantic sea oyster · 12y aged cabernet sauvignon vinegar">
       <div class="ci-n"><span>01</span></div>
       <div class="ci-body">
         <span class="ci-label">Amuse-bouche · House Starter</span>
         <div class="ci-name">Tony B's first Oyster</div>
         <div class="ci-story">Bourdain's first encounter with a food orgasm? We serve it. <a href="https://www.tastingtable.com/1401642/oyster-anthony-bourdain-childhood-love-food/" target="_blank" rel="noopener">The oyster that changed everything.</a></div>
         <div class="ci-ingr">Atlantic sea oyster · 12y aged cabernet sauvignon vinegar</div>
+          <span class="ci-peek">View dish ↗</span>
       </div>
     </div>
-    <div class="ci">
-      <div class="ci-bg" style="background-image:url('img/menu-baccala.webp');"></div>
+    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-baccala.webp" data-name="Object of beauty" data-ingr="Piquillo · bluefin tuna · anchoa 00 · crème">
       <div class="ci-n"><span>02</span></div>
       <div class="ci-body">
         <span class="ci-label">First course</span>
         <div class="ci-name">Object of beauty</div>
         <div class="ci-story">Basque flavour under a red cap.</div>
         <div class="ci-ingr">Piquillo · bluefin tuna · anchoa 00 · crème</div>
+          <span class="ci-peek">View dish ↗</span>
       </div>
     </div>
-    <div class="ci">
-      <div class="ci-bg" style="background-image:url('img/menu-vichyssoise.webp');"></div>
+    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-vichyssoise.webp" data-name="Truffled Vichyssoise 1920" data-ingr="Leek · potato · cream · black truffle · chive">
       <div class="ci-n"><span>03</span></div>
       <div class="ci-body">
         <span class="ci-label">Second course</span>
         <div class="ci-name">Truffled Vichyssoise 1920</div>
         <div class="ci-story">Invented in the first quarter of the 20th century by Louis Diat at the Ritz-Carlton Hotel. The most famous French classic that is actually not French.</div>
         <div class="ci-ingr">Leek · potato · cream · black truffle · chive</div>
+          <span class="ci-peek">View dish ↗</span>
       </div>
     </div>
-    <div class="ci">
-      <div class="ci-bg" style="background-image:url('img/menu-meatballs.webp');"></div>
+    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-meatballs.webp" data-name="Joe Dog's Mafia Meatballs" data-ingr="Veal · pork · tomato sugo · basil · parmigiano">
       <div class="ci-n"><span>04</span></div>
       <div class="ci-body">
         <span class="ci-label">Third course</span>
         <div class="ci-name">Joe Dog's Mafia Meatballs</div>
         <div class="ci-story">Ever heard of mobster <a href="https://en.wikipedia.org/wiki/Joseph_Iannuzzi" target="_blank" rel="noopener">Joe "Dogs" Iannuzzi</a>? Personal cook for the Gambino crime family and later FBI informant. Author of the Mafia Cookbook and Frank Sinatra's meatball sauce. Taste Joe's approach on an iconic Italo-New Yorker classic.</div>
         <div class="ci-ingr">Veal · pork · tomato sugo · basil · parmigiano</div>
+          <span class="ci-peek">View dish ↗</span>
       </div>
     </div>
-    <div class="ci">
-      <div class="ci-bg" style="background-image:url('img/menu-bife.webp');"></div>
+    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-bife.webp" data-name="Bife à café "Marraré"" data-ingr="Portuguese beef · café sauce · seasonal garnish">
       <div class="ci-n"><span>05</span></div>
       <div class="ci-body">
         <span class="ci-label">Main course</span>
         <div class="ci-name">Bife à café "Marraré"</div>
         <div class="ci-story">The iconic dish of a restaurant in Lisbon of the 1800s, opened by an Italian chef who emigrated from Naples and became nationwide famous until the early 20th century for his signature dish.</div>
         <div class="ci-ingr">Portuguese beef · café sauce · seasonal garnish</div>
+          <span class="ci-peek">View dish ↗</span>
       </div>
     </div>
-    <div class="ci">
-      <div class="ci-bg" style="background-image:url('img/menu-strudel.webp');"></div>
+    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-strudel.webp" data-name="Tarantino's Apfelstrudel" data-ingr="Apple · raisin · cinnamon · puff pastry · vanilla cream">
       <div class="ci-n"><span>06</span></div>
       <div class="ci-body">
         <span class="ci-label">Dessert</span>
         <div class="ci-name">Tarantino's Apfelstrudel</div>
         <div class="ci-story">The flagship of South Tyrol pastry and protagonist of one of the cult scenes in <a href="https://www.gamberorossointernational.com/news/food-and-cinema-fast-food-and-brands-in-the-films-by-tarantino-and-the-apple-strudel-in-inglourious-basterds/" target="_blank" rel="noopener">Tarantino's Inglourious Basterds</a>.</div>
         <div class="ci-ingr">Apple · raisin · cinnamon · puff pastry · vanilla cream</div>
+          <span class="ci-peek">View dish ↗</span>
       </div>
     </div>
   </div>
@@ -286,6 +373,60 @@ hamburger.addEventListener('click',()=>{const o=navLinks.classList.toggle('open'
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
 const io=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:.08});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+<!-- DISH LIGHTBOX -->
+<div id="dish-lb" role="dialog" aria-modal="true" aria-label="Dish image">
+  <div id="dish-lb-inner">
+    <button id="dish-lb-close" aria-label="Close">✕</button>
+    <img id="dish-lb-img" src="" alt="">
+    <div id="dish-lb-caption">
+      <div>
+        <div id="dish-lb-name"></div>
+        <div id="dish-lb-ingr"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Dish lightbox
+const lb = document.getElementById('dish-lb');
+const lbImg = document.getElementById('dish-lb-img');
+const lbName = document.getElementById('dish-lb-name');
+const lbIngr = document.getElementById('dish-lb-ingr');
+const lbClose = document.getElementById('dish-lb-close');
+
+function openLB(img, name, ingr) {
+  lbImg.src = img;
+  lbImg.alt = name;
+  lbName.textContent = name;
+  lbIngr.textContent = ingr;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLB() {
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+  // Small delay before clearing src so close animation looks clean
+  setTimeout(() => { lbImg.src = ''; }, 300);
+}
+
+lbClose.addEventListener('click', closeLB);
+lb.addEventListener('click', (e) => { if (e.target === lb) closeLB(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLB(); });
+
+// Attach to all dish triggers
+document.querySelectorAll('.dish-trigger').forEach(el => {
+  el.addEventListener('click', () => {
+    openLB(
+      el.dataset.img,
+      el.dataset.name,
+      el.dataset.ingr
+    );
+  });
+});
 </script>
 </body>
 </html>
