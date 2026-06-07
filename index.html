@@ -3,26 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Menu — JoEs TaBLe · Private Culinary Events</title>
-<meta name="description" content="Spring 2026 tasting menu. Six courses. A culinary journey through Joe's personal history, Michelin-starred experiences, and food culture.">
+<title>JoEs TaBLe — Private Culinary Events</title>
+<meta name="description" content="JoEs TaBLe designs and produces exclusive private culinary events for corporate and private clients. Curated locations. Vanguard cuisine. By reservation only.">
+<meta property="og:title" content="JoEs TaBLe — Private Culinary Events">
+<meta property="og:description" content="Exclusive private culinary events. Curated locations. Vanguard cuisine.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="img/hero-event-table.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;1,9..144,200;1,9..144,300;1,9..144,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --black:#080706;--ink:#0e0c0a;--ink-mid:#141210;
-  --parchment:#f0e8d8;--gold:#c9a96e;--gold-light:#dfc08a;
+  --black:#080706;--ink:#0e0c0a;
+  --parchment:#f0e8d8;--cream:#d8cfc0;
+  --gold:#c9a96e;--gold-light:#dfc08a;--gold-dim:#8a6e3e;
   --text:#9a9088;--text-mid:#6a6058;--text-faint:#3e3830;
   --rule:rgba(201,169,110,.15);--rule-s:rgba(201,169,110,.35);
-  --d:'Fraunces',Georgia,serif;--m:'DM Mono','Courier New',monospace;
+  --d:'Fraunces',Georgia,serif;
+  --m:'DM Mono','Courier New',monospace;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
 body{background:var(--black);color:var(--parchment);font-family:var(--d);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;padding:0 48px;height:60px;background:rgba(8,7,6,.95);border-bottom:1px solid var(--rule);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);}
-.nav-logo{font-family:var(--d);font-size:15px;font-weight:300;font-style:italic;color:var(--parchment);text-decoration:none;}
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;padding:0 48px;height:60px;transition:background .5s,border-color .5s;border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(8,7,6,.95);border-bottom-color:var(--rule);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);}
+.nav-logo{font-family:var(--d);font-size:15px;font-weight:300;font-style:italic;letter-spacing:.06em;color:var(--parchment);text-decoration:none;}
 .nav-links{display:flex;gap:36px;list-style:none;}
 .nav-links a{font-family:var(--m);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;transition:color .3s;min-height:44px;display:flex;align-items:center;}
 .nav-links a:hover,.nav-links a.active{color:var(--gold);}
@@ -31,358 +38,404 @@ nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content
 .hamburger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer;padding:10px;min-width:44px;min-height:44px;justify-content:center;}
 .hamburger span{display:block;width:20px;height:1px;background:var(--parchment);}
 
-/* PAGE HERO */
-.page-hero{padding:140px 48px 80px;background:var(--ink);border-bottom:1px solid var(--rule);}
-.eyebrow{font-family:var(--m);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:16px;}
-.page-title{font-family:var(--d);font-size:clamp(52px,10vw,112px);font-weight:200;line-height:.9;letter-spacing:-.025em;}
-.page-title em{font-style:italic;color:var(--gold);}
-.page-sub{font-family:var(--m);font-size:11px;letter-spacing:.06em;color:var(--text);margin-top:24px;max-width:480px;line-height:1.8;}
+/* ━━━━━━━━━━━━━━━ 1. HERO ━━━━━━━━━━━━━━━ */
+.hero{height:100svh;height:100vh;min-height:600px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 25%;}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,7,6,0) 20%,rgba(8,7,6,.5) 55%,rgba(8,7,6,.98) 100%);}
+.hero-ig{position:absolute;top:76px;right:48px;z-index:2;font-family:var(--m);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,169,110,.7);text-decoration:none;transition:color .3s;}
+.hero-ig:hover{color:var(--gold);}
+.hero-body{position:relative;z-index:2;padding:0 48px 56px;}
+.hero-scarcity{font-family:var(--m);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px;margin-bottom:20px;opacity:0;animation:rise 1s .2s forwards;}
+.hero-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+.hero-title{font-family:var(--d);font-size:clamp(72px,13vw,172px);font-weight:200;line-height:.88;letter-spacing:-.03em;opacity:0;animation:rise 1.1s .35s forwards;}
+.hero-title em{font-style:italic;color:var(--gold);}
+.hero-cta{display:inline-flex;align-items:center;margin-top:32px;font-family:var(--m);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0 32px;min-height:48px;text-decoration:none;transition:background .25s;opacity:0;animation:rise 1s .55s forwards;}
+.hero-cta:hover{background:var(--gold-light);}
+@keyframes rise{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
-/* COURSES */
-.courses-wrap{max-width:1160px;margin:0 auto;padding:80px 48px;}
-.courses-list{display:flex;flex-direction:column;border:1px solid var(--rule);}
+/* ━━━━━━━━━━━━━━━ 2. IDENTITY ━━━━━━━━━━━━━━━ */
+.identity{background:var(--ink);padding:80px 48px;text-align:center;border-bottom:1px solid var(--rule);}
+.identity img{max-width:660px;width:92%;height:auto;display:block;margin:0 auto 18px;}
+.identity-line{font-family:var(--m);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--text-faint);}
 
-/* Each course row — image always visible, brightens on hover, click = lightbox */
-.ci{
-  display:grid;
-  grid-template-columns:72px 1fr;
-  border-bottom:1px solid var(--rule);
-  position:relative;
-  overflow:hidden;
-  cursor:pointer;
-  user-select:none;
-  -webkit-user-select:none;
-  transition:background .3s;
-}
-.ci:last-child{border-bottom:none;}
+/* ━━━━━━━━━━━━━━━ 3. 50 BEST — full bleed ━━━━━━━━━━━━━━━ */
+.fifty{height:90vh;min-height:520px;position:relative;overflow:hidden;display:flex;align-items:center;}
+.fifty-img{position:absolute;inset:0;}
+.fifty-img img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.fifty-veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,7,6,.92) 0%,rgba(8,7,6,.6) 55%,rgba(8,7,6,.1) 100%);}
+.fifty-body{position:relative;z-index:1;padding:0 80px;max-width:600px;}
+.fifty-badge{font-family:var(--m);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:20px;}
+.fifty-title{font-family:var(--d);font-size:clamp(56px,9vw,116px);font-weight:200;line-height:.88;letter-spacing:-.02em;margin-bottom:24px;}
+.fifty-title em{font-style:italic;color:var(--gold);}
+.fifty-text{font-family:var(--m);font-size:11px;letter-spacing:.05em;color:var(--text);line-height:1.8;max-width:340px;}
 
-/* Persistent dim background image via dedicated child — no ::before flash */
-.ci-bg{
-  position:absolute;
-  inset:0;
-  background-size:cover;
-  background-position:center;
-  opacity:.1;
-  transition:opacity .55s ease;
-  pointer-events:none;
-  z-index:0;
-}
-.ci:hover .ci-bg{opacity:.3;}
+/* ━━━━━━━━━━━━━━━ 4. CLIENTS ━━━━━━━━━━━━━━━ */
+.clients{background:var(--black);padding:72px 48px;text-align:center;border-bottom:1px solid var(--rule);}
+.section-eyebrow{font-family:var(--m);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:40px;}
+.clients-img{max-width:920px;width:100%;height:auto;display:block;margin:0 auto;}
 
-/* Number column and body always above the bg */
-.ci-n,.ci-body{position:relative;z-index:1;}
-.ci-n{border-right:1px solid var(--rule);display:flex;align-items:flex-start;justify-content:center;padding:36px 16px;}
-.ci-n span{font-family:var(--m);font-size:11px;letter-spacing:.1em;color:var(--gold);margin-top:4px;}
-.ci-body{padding:36px 44px;}
-.ci-label{font-family:var(--m);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-faint);display:block;margin-bottom:8px;}
-.ci-name{font-family:var(--d);font-size:clamp(22px,3vw,32px);font-weight:200;font-style:italic;margin-bottom:10px;line-height:1.05;transition:color .25s;}
-.ci:hover .ci-name{color:var(--gold);}
-.ci-story{font-family:var(--m);font-size:11px;color:var(--text);line-height:1.75;margin-bottom:8px;letter-spacing:.03em;}
-.ci-story a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--rule-s);padding-bottom:1px;}
-.ci-ingr{font-family:var(--m);font-size:10px;color:var(--text-faint);letter-spacing:.06em;}
-.ci-peek{font-family:var(--m);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);opacity:0;transition:opacity .25s;margin-top:10px;display:block;}
-.ci:hover .ci-peek{opacity:1;}
+/* ━━━━━━━━━━━━━━━ 5. GALLERY ━━━━━━━━━━━━━━━ */
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:320px 280px;gap:3px;background:var(--rule);}
+.gslot{position:relative;overflow:hidden;background:var(--ink);}
+.gslot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .9s cubic-bezier(.25,.46,.45,.94);}
+.gslot:hover img{transform:scale(1.06);}
+.gslot.span-col{grid-column:1/2;grid-row:1/3;}
+.gslot.tall{grid-row:1/3;}
 
-/* LIGHTBOX */
-#lb{display:none;position:fixed;inset:0;z-index:500;background:rgba(5,4,3,.92);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);align-items:center;justify-content:center;padding:24px;cursor:pointer;}
-#lb.open{display:flex;}
-#lb-inner{position:relative;max-width:700px;width:100%;cursor:default;animation:lbIn .32s cubic-bezier(.22,1,.36,1) forwards;}
-#lb-img{width:100%;height:auto;display:block;border-radius:1px;max-height:78vh;object-fit:cover;object-position:center;}
-#lb-cap{padding:18px 0 0;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;}
-#lb-name{font-family:var(--d);font-size:22px;font-weight:200;font-style:italic;color:var(--parchment);}
-#lb-ingr{font-family:var(--m);font-size:10px;color:var(--text-mid);letter-spacing:.06em;margin-top:4px;}
-#lb-close{position:absolute;top:-14px;right:-14px;width:34px;height:34px;background:var(--gold);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--black);font-family:var(--m);transition:background .2s;}
-#lb-close:hover{background:var(--gold-light);}
-@keyframes lbIn{from{opacity:0;transform:scale(.93) translateY(14px);}to{opacity:1;transform:scale(1) translateY(0);}}
-@media(max-width:480px){#lb{padding:16px;}#lb-close{top:-10px;right:-10px;}#lb-name{font-size:18px;}}
+/* ━━━━━━━━━━━━━━━ 6. MARQUEE ━━━━━━━━━━━━━━━ */
+.marquee-wrap{overflow:hidden;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:16px 0;background:var(--ink);}
+.marquee-track{display:flex;white-space:nowrap;animation:ticker 45s linear infinite;}
+.mi{font-family:var(--m);font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--text-faint);padding:0 32px;flex-shrink:0;}
+.mi.dot{color:var(--gold);padding:0 8px;}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@media(prefers-reduced-motion:reduce){.marquee-track{animation:none;}.mi:nth-child(n+17){display:none;}}
 
-/* FOOD STRIP — 3 course images, full width between courses and pricing */
-.food-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;height:280px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
-.fs-slot{position:relative;overflow:hidden;background:var(--ink);}
-.fs-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .9s ease;}
-.fs-slot:hover img{transform:scale(1.06);}
+/* ━━━━━━━━━━━━━━━ 7. MENU TEASE ━━━━━━━━━━━━━━━ */
+.menu-tease{display:grid;grid-template-columns:1fr 1fr;min-height:600px;border-top:1px solid var(--rule);}
+.mt-left{position:relative;overflow:hidden;}
+.mt-left img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;}
+.mt-right{background:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:80px 72px;}
+.mt-season{font-family:var(--m);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:32px;}
+.mt-title{font-family:var(--d);font-size:clamp(44px,6vw,78px);font-weight:200;line-height:.92;letter-spacing:-.02em;margin-bottom:28px;}
+.mt-title em{font-style:italic;color:var(--gold);}
+.mt-desc{font-family:var(--m);font-size:11px;letter-spacing:.05em;color:var(--text);line-height:1.8;margin-bottom:44px;max-width:320px;}
+.mt-link{font-family:var(--m);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0 28px;min-height:46px;display:inline-flex;align-items:center;text-decoration:none;transition:background .25s;align-self:flex-start;}
+.mt-link:hover{background:var(--gold-light);}
 
-/* PRICING */
-.pricing-section{background:var(--ink);padding:80px 48px;}
-.pricing-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;}
-.price-label{font-family:var(--m);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-mid);display:block;margin-bottom:8px;}
-.price-amount{font-family:var(--d);font-size:80px;font-weight:200;font-style:italic;color:var(--gold);line-height:1;}
-.price-sub{font-family:var(--m);font-size:10px;color:var(--text-faint);margin-top:4px;display:block;}
-.price-div{height:1px;background:var(--rule);margin:32px 0;}
-.price-note{font-family:var(--m);font-size:11px;color:var(--text);line-height:1.8;letter-spacing:.04em;}
-.pairings-col h3{font-family:var(--d);font-size:26px;font-weight:200;font-style:italic;margin-bottom:24px;}
-.pair-line{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--rule);}
-.pair-line:last-child{border-bottom:none;}
-.pair-name{font-family:var(--d);font-size:20px;font-weight:200;font-style:italic;}
-.pair-flag{font-size:14px;margin-left:6px;}
-.pair-price{font-family:var(--m);font-size:15px;color:var(--gold);}
-.pair-pp{font-size:9px;color:var(--text-mid);font-family:var(--m);}
-.pair-note{margin-top:28px;padding:16px 20px;border:1px solid var(--rule);font-family:var(--m);font-size:10px;color:var(--text-mid);line-height:1.75;letter-spacing:.04em;}
+/* ━━━━━━━━━━━━━━━ 8. PRESS ━━━━━━━━━━━━━━━ */
+.press{background:var(--black);padding:72px 48px;text-align:center;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+.press-logos-wrap{max-width:820px;margin:0 auto;}
+.press-logos-img{width:100%;height:auto;display:block;}
 
-/* PHILOSOPHY */
-.phil{background:var(--black);text-align:center;padding:100px 48px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
-.phil blockquote{font-family:var(--d);font-size:clamp(18px,2.5vw,28px);font-weight:200;font-style:italic;line-height:1.5;max-width:740px;margin:0 auto 16px;}
-.phil cite{font-family:var(--m);font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);font-style:normal;}
+/* ━━━━━━━━━━━━━━━ 9. PRODUCERS ━━━━━━━━━━━━━━━ */
+.producers{background:var(--ink);padding:80px 48px;border-bottom:1px solid var(--rule);}
+.producers-inner{max-width:1000px;margin:0 auto;text-align:center;}
+.producers-sub{font-family:var(--d);font-style:italic;font-weight:200;font-size:clamp(18px,2vw,24px);color:var(--text);margin-bottom:52px;line-height:1.5;}
+.prod-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:44px 60px;}
+.prod-logos img{object-fit:contain;filter:grayscale(100%);opacity:.38;transition:opacity .5s,filter .5s;}
+.prod-logos img:hover{opacity:1;filter:grayscale(0%);}
 
-/* FINAL CTA */
-.cta{text-align:center;padding:100px 48px;background:var(--ink);}
-.cta h2{font-family:var(--d);font-size:clamp(36px,6vw,72px);font-weight:200;line-height:.92;margin-bottom:40px;}
-.cta h2 em{font-style:italic;color:var(--gold);}
-.btn-g{font-family:var(--m);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0 32px;text-decoration:none;display:inline-flex;align-items:center;min-height:48px;transition:background .25s;margin:6px;}
+/* ━━━━━━━━━━━━━━━ 10. INSTAGRAM — real grid ━━━━━━━━━━━━━━━ */
+.insta-section{background:var(--black);padding:80px 48px 0;border-top:1px solid var(--rule);}
+.insta-header{text-align:center;margin-bottom:48px;}
+.insta-title{font-family:var(--d);font-size:clamp(40px,6vw,80px);font-weight:200;font-style:italic;line-height:.92;margin-bottom:10px;}
+.insta-handle{font-family:var(--m);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);}
+.insta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}
+.insta-slot{aspect-ratio:1;position:relative;overflow:hidden;background:var(--ink);display:block;}
+.insta-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .8s ease;}
+.insta-slot:hover img{transform:scale(1.08);}
+.insta-follow{display:block;text-align:center;padding:36px;border-top:1px solid var(--rule);}
+.insta-follow a{font-family:var(--m);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;border-bottom:1px solid var(--rule-s);padding-bottom:2px;transition:color .25s,border-color .25s;}
+.insta-follow a:hover{color:var(--gold);border-color:var(--gold);}
+
+/* ━━━━━━━━━━━━━━━ 11. FINAL CTA ━━━━━━━━━━━━━━━ */
+.final{background:var(--ink);padding:120px 48px;text-align:center;border-top:1px solid var(--rule);}
+.final-title{font-family:var(--d);font-size:clamp(52px,10vw,128px);font-weight:200;line-height:.88;letter-spacing:-.025em;margin-bottom:48px;}
+.final-title em{font-style:italic;color:var(--gold);}
+.final-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:20px;}
+.btn-g{font-family:var(--m);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0 36px;min-height:50px;text-decoration:none;display:inline-flex;align-items:center;transition:background .25s;}
 .btn-g:hover{background:var(--gold-light);}
-.btn-o{font-family:var(--m);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--parchment);border:1px solid rgba(240,232,216,.18);padding:0 32px;text-decoration:none;display:inline-flex;align-items:center;min-height:48px;transition:border-color .25s,color .25s;margin:6px;}
+.btn-o{font-family:var(--m);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--parchment);border:1px solid rgba(240,232,216,.18);padding:0 36px;min-height:50px;text-decoration:none;display:inline-flex;align-items:center;transition:border-color .25s,color .25s;}
 .btn-o:hover{border-color:var(--gold);color:var(--gold);}
+.final-email{font-family:var(--m);font-size:9px;letter-spacing:.14em;color:var(--text-faint);}
+.final-email a{color:var(--text-faint);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;}
+.final-email a:hover{color:var(--gold);}
 
-/* BOTTOM BAR + FOOTER */
-.bottom-bar{background:var(--ink-mid);border-top:1px solid var(--rule);padding:14px 48px;text-align:center;}
-.bottom-bar p{font-family:var(--m);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-mid);}
-footer{background:#040302;border-top:1px solid var(--rule);padding:40px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
-.footer-copy{font-family:var(--m);font-size:9px;color:var(--text-faint);letter-spacing:.07em;line-height:1.7;}
-.footer-copy a{color:var(--text-faint);text-decoration:none;}.footer-copy a:hover{color:var(--gold);}
-.fsocial{display:flex;gap:22px;}
-.fsocial a{font-family:var(--m);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);text-decoration:none;min-height:44px;display:inline-flex;align-items:center;transition:color .25s;}
-.fsocial a:hover{color:var(--gold);}
+/* ━━━━━━━━━━━━━━━ FOOTER ━━━━━━━━━━━━━━━ */
+.bottom-bar{background:var(--black);border-top:1px solid var(--rule);padding:14px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.bottom-bar span,.bottom-bar a{font-family:var(--m);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-faint);text-decoration:none;}
+.bottom-bar a:hover{color:var(--gold);}
+footer{background:#040302;border-top:1px solid var(--rule);padding:52px 48px 36px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;}
+.f-brand{font-family:var(--d);font-size:17px;font-style:italic;font-weight:300;display:block;margin-bottom:12px;}
+.f-desc{font-family:var(--m);font-size:9px;letter-spacing:.07em;color:var(--text-mid);line-height:2;}
+.f-col h4{font-family:var(--m);font-size:8px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+.f-col ul{list-style:none;}
+.f-col li{margin-bottom:10px;}
+.f-col a{font-family:var(--m);font-size:10px;color:var(--text-mid);text-decoration:none;letter-spacing:.06em;min-height:44px;display:inline-flex;align-items:center;transition:color .25s;}
+.f-col a:hover{color:var(--gold);}
+.f-bottom{background:#040302;padding:20px 48px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.f-copy{font-family:var(--m);font-size:9px;color:var(--text-faint);letter-spacing:.07em;}
+.f-copy a{color:var(--text-faint);text-decoration:none;}.f-copy a:hover{color:var(--gold);}
+.f-soc{display:flex;gap:24px;}
+.f-soc a{font-family:var(--m);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-faint);text-decoration:none;min-height:44px;display:inline-flex;align-items:center;transition:color .25s;}
+.f-soc a:hover{color:var(--gold);}
 
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease;}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .85s ease,transform .85s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
-@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}*{animation-duration:.01ms!important;}}
 
 /* MOBILE */
-@media(max-width:860px){
-  nav{padding:0 20px;}.nav-links,.nav-book{display:none;}.hamburger{display:flex;}
+@media(max-width:900px){
+  nav{padding:0 20px;}
+  .nav-links,.nav-book{display:none;}
+  .hamburger{display:flex;}
   .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:var(--black);justify-content:center;align-items:center;gap:32px;z-index:299;}
-  .page-hero{padding:100px 20px 60px;}
-  .courses-wrap{padding:60px 20px;}
-  .pricing-section{padding:60px 20px;}
-  .pricing-inner{grid-template-columns:1fr;gap:44px;}
-  .food-strip{height:180px;grid-template-columns:repeat(3,1fr);}
-  .phil{padding:72px 20px;}
-  .cta{padding:72px 20px;}
+  .nav-links.open a{font-size:12px;letter-spacing:.22em;}
+  .hero-body{padding:0 20px 44px;}
+  .hero-ig{right:20px;}
+  .identity{padding:56px 20px;}
+  .fifty-body{padding:0 28px;max-width:100%;}
+  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px 200px;}
+  .gslot.span-col{grid-column:auto;grid-row:auto;}
+  .menu-tease{grid-template-columns:1fr;min-height:auto;}
+  .mt-left{height:280px;position:relative;}
+  .mt-right{padding:48px 28px;}
+  .clients{padding:52px 20px;}
+  .press{padding:52px 20px;}
+  .producers{padding:56px 20px;}
+  .prod-logos{gap:28px 36px;}
+  .insta-section{padding:64px 20px 0;}
+  .insta-grid{grid-template-columns:repeat(2,1fr);}
+  .final{padding:80px 20px;}
   .bottom-bar{padding:14px 20px;}
-  footer{padding:32px 20px;flex-direction:column;align-items:flex-start;}
-  .ci-body{padding:24px 20px;}
-  .ci{grid-template-columns:52px 1fr;}
+  footer{padding:44px 20px 28px;grid-template-columns:1fr 1fr;gap:28px;}
+  .f-bottom{padding:16px 20px;flex-direction:column;align-items:flex-start;}
 }
 @media(max-width:480px){
-  .ci{grid-template-columns:1fr;}.ci-n{display:none;}
-  .food-strip{height:140px;}
-  .price-amount{font-size:64px;}
+  .hero-title{font-size:clamp(64px,18vw,86px);}
+  .final-title{font-size:clamp(48px,14vw,72px);}
+  .final-actions{flex-direction:column;align-items:center;}
+  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:150px 150px 150px;}
+  .insta-grid{grid-template-columns:repeat(2,1fr);}
+  footer{grid-template-columns:1fr;}
+  .f-soc{flex-wrap:wrap;}
 }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav id="nav">
   <a href="index.html" class="nav-logo">JoEs TaBLe</a>
   <ul class="nav-links" id="navLinks">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="menu.html" class="active">Menu</a></li>
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="menu.html">Menu</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="pairings.html">Pairings</a></li>
   </ul>
   <a href="https://tally.so/r/pbP7Eb" class="nav-book" target="_blank" rel="noopener">Book your spot</a>
-  <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+  <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
-<div class="page-hero">
-  <span class="eyebrow">Menu degustación · Spring 2026</span>
-  <h1 class="page-title">A culinary<br><em>journey</em></h1>
-  <p class="page-sub">Six courses. Each a story from Joe's travels, personal history, and time in Michelin-starred kitchens.</p>
+<!-- ━━━━━━━━━━━━━━━ 1. HERO ━━━━━━━━━━━━━━━ -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="img/hero-event-table.webp" alt="JoEs TaBLe — private culinary event">
+  </div>
+  <div class="hero-veil"></div>
+  <a href="https://www.instagram.com/joses.table" class="hero-ig" target="_blank" rel="noopener">@joses.table</a>
+  <div class="hero-body">
+    <p class="hero-scarcity">
+      <span class="hero-dot"></span>
+      June &nbsp;·&nbsp; Events filling fast &nbsp;·&nbsp; Book your spot before it goes
+    </p>
+    <h1 class="hero-title">Social<br><em>Fine Dining</em></h1>
+    <a href="https://tally.so/r/pbP7Eb" class="hero-cta" target="_blank" rel="noopener">Book your spot</a>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━ 2. IDENTITY ━━━━━━━━━━━━━━━ -->
+<div class="identity reveal">
+  <img src="img/concept-logo.webp" alt="JoEs TaBLe · Conceptional Fine Dining · Food Culture">
+  <p class="identity-line">One table &nbsp;·&nbsp; Emblematic location &nbsp;·&nbsp; Vanguard cuisine</p>
 </div>
 
-<!-- COURSES -->
-<div class="courses-wrap">
-  <div class="courses-list reveal">
+<!-- ━━━━━━━━━━━━━━━ 3. 50 BEST ━━━━━━━━━━━━━━━ -->
+<section class="fifty reveal">
+  <div class="fifty-img">
+    <img src="img/cred-50best.webp" alt="50 Best Discovery — JoEs TaBLe">
+  </div>
+  <div class="fifty-veil"></div>
+  <div class="fifty-body">
+    <span class="fifty-badge">Recognition</span>
+    <h2 class="fifty-title">50 Best<br><em>Discovery</em></h2>
+    <p class="fifty-text">Recognised by the 50 Best Discovery programme — the global authority on culinary excellence.</p>
+  </div>
+</section>
 
-    <div class="ci dish-trigger" data-img="img/menu-oyster.webp" data-name="Tony B's first Oyster" data-ingr="Atlantic sea oyster · 12y aged cabernet sauvignon vinegar">
-      <div class="ci-bg" style="background-image:url('img/menu-oyster.webp');"></div>
-      <div class="ci-n"><span>01</span></div>
-      <div class="ci-body">
-        <span class="ci-label">Amuse-bouche · House Starter</span>
-        <div class="ci-name">Tony B's first Oyster</div>
-        <div class="ci-story">Bourdain's first encounter with a food orgasm? We serve it. <a href="https://www.tastingtable.com/1401642/oyster-anthony-bourdain-childhood-love-food/" target="_blank" rel="noopener">The oyster that changed everything.</a></div>
-        <div class="ci-ingr">Atlantic sea oyster · 12y aged cabernet sauvignon vinegar</div>
-        <span class="ci-peek">View dish ↗</span>
-      </div>
-    </div>
+<!-- ━━━━━━━━━━━━━━━ 4. CLIENT LOGOS ━━━━━━━━━━━━━━━ -->
+<div class="clients reveal">
+  <span class="section-eyebrow">Trusted by</span>
+  <img class="clients-img" src="img/clients-logos.webp" alt="Meta · Microsoft · JPMorgan · Rituals · Autodesk · Virtuoso · Imagination · Anchorage Capital">
+</div>
 
-    <div class="ci dish-trigger" data-img="img/menu-baccala.webp" data-name="Object of beauty" data-ingr="Piquillo · bluefin tuna · anchoa 00 · crème">
-      <div class="ci-bg" style="background-image:url('img/menu-baccala.webp');"></div>
-      <div class="ci-n"><span>02</span></div>
-      <div class="ci-body">
-        <span class="ci-label">First course</span>
-        <div class="ci-name">Object of beauty</div>
-        <div class="ci-story">Basque flavour under a red cap.</div>
-        <div class="ci-ingr">Piquillo · bluefin tuna · anchoa 00 · crème</div>
-        <span class="ci-peek">View dish ↗</span>
-      </div>
-    </div>
-
-    <div class="ci dish-trigger" data-img="img/menu-vichyssoise.webp" data-name="Truffled Vichyssoise 1920" data-ingr="Leek · potato · cream · black truffle · chive">
-      <div class="ci-bg" style="background-image:url('img/menu-vichyssoise.webp');"></div>
-      <div class="ci-n"><span>03</span></div>
-      <div class="ci-body">
-        <span class="ci-label">Second course</span>
-        <div class="ci-name">Truffled Vichyssoise 1920</div>
-        <div class="ci-story">Invented in the first quarter of the 20th century by Louis Diat at the Ritz-Carlton Hotel. The most famous French classic that is actually not French.</div>
-        <div class="ci-ingr">Leek · potato · cream · black truffle · chive</div>
-        <span class="ci-peek">View dish ↗</span>
-      </div>
-    </div>
-
-    <div class="ci dish-trigger" data-img="img/menu-meatballs.webp" data-name="Joe Dog's Mafia Meatballs" data-ingr="Veal · pork · tomato sugo · basil · parmigiano">
-      <div class="ci-bg" style="background-image:url('img/menu-meatballs.webp');"></div>
-      <div class="ci-n"><span>04</span></div>
-      <div class="ci-body">
-        <span class="ci-label">Third course</span>
-        <div class="ci-name">Joe Dog's Mafia Meatballs</div>
-        <div class="ci-story">Ever heard of mobster <a href="https://en.wikipedia.org/wiki/Joseph_Iannuzzi" target="_blank" rel="noopener">Joe "Dogs" Iannuzzi</a>? Personal cook for the Gambino crime family and later FBI informant. Taste Joe's approach on an iconic Italo-New Yorker classic.</div>
-        <div class="ci-ingr">Veal · pork · tomato sugo · basil · parmigiano</div>
-        <span class="ci-peek">View dish ↗</span>
-      </div>
-    </div>
-
-    <div class="ci dish-trigger" data-img="img/menu-bife.webp" data-name='Bife à café "Marraré"' data-ingr="Portuguese beef · café sauce · seasonal garnish">
-      <div class="ci-bg" style="background-image:url('img/menu-bife.webp');"></div>
-      <div class="ci-n"><span>05</span></div>
-      <div class="ci-body">
-        <span class="ci-label">Main course</span>
-        <div class="ci-name">Bife à café "Marraré"</div>
-        <div class="ci-story">The iconic dish of a restaurant in Lisbon of the 1800s, opened by an Italian chef who emigrated from Naples and became nationwide famous until the early 20th century for his signature dish.</div>
-        <div class="ci-ingr">Portuguese beef · café sauce · seasonal garnish</div>
-        <span class="ci-peek">View dish ↗</span>
-      </div>
-    </div>
-
-    <div class="ci dish-trigger" data-img="img/menu-strudel.webp" data-name="Tarantino's Apfelstrudel" data-ingr="Apple · raisin · cinnamon · puff pastry · vanilla cream">
-      <div class="ci-bg" style="background-image:url('img/menu-strudel.webp');"></div>
-      <div class="ci-n"><span>06</span></div>
-      <div class="ci-body">
-        <span class="ci-label">Dessert</span>
-        <div class="ci-name">Tarantino's Apfelstrudel</div>
-        <div class="ci-story">The flagship of South Tyrol pastry and protagonist of one of the cult scenes in <a href="https://www.gamberorossointernational.com/news/food-and-cinema-fast-food-and-brands-in-the-films-by-tarantino-and-the-apple-strudel-in-inglourious-basterds/" target="_blank" rel="noopener">Tarantino's Inglourious Basterds</a>.</div>
-        <div class="ci-ingr">Apple · raisin · cinnamon · puff pastry · vanilla cream</div>
-        <span class="ci-peek">View dish ↗</span>
-      </div>
-    </div>
-
+<!-- ━━━━━━━━━━━━━━━ 5. GALLERY ━━━━━━━━━━━━━━━ -->
+<div class="gallery">
+  <div class="gslot span-col">
+    <img src="img/event-applause.webp" alt="JoEs TaBLe event — guests">
+  </div>
+  <div class="gslot">
+    <img src="img/food-uni-caviar.webp" alt="Uni and caviar dish">
+  </div>
+  <div class="gslot">
+    <img src="img/hero-chef-blowtorch.webp" alt="Chef at work">
+  </div>
+  <div class="gslot">
+    <img src="img/menu-oyster.webp" alt="Tony B's oyster">
+  </div>
+  <div class="gslot">
+    <img src="img/menu-strudel.webp" alt="Tarantino's Apfelstrudel">
+  </div>
+  <div class="gslot">
+    <img src="img/menu-bife.webp" alt="Bife à café Marraré">
   </div>
 </div>
 
-<!-- DISH PHOTO STRIP — 3 actual dish photos, full width, correct context -->
-<div class="food-strip">
-  <div class="fs-slot"><img src="img/menu-oyster.webp" alt="Tony B's first Oyster"></div>
-  <div class="fs-slot"><img src="img/menu-bife.webp" alt="Bife à café Marraré"></div>
-  <div class="fs-slot"><img src="img/menu-strudel.webp" alt="Tarantino's Apfelstrudel"></div>
+<!-- ━━━━━━━━━━━━━━━ MARQUEE ━━━━━━━━━━━━━━━ -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="mi">Private Culinary Events</span><span class="mi dot">·</span>
+    <span class="mi">Corporate &amp; Private Clients</span><span class="mi dot">·</span>
+    <span class="mi">Curated Locations</span><span class="mi dot">·</span>
+    <span class="mi">50 Best Discovery</span><span class="mi dot">·</span>
+    <span class="mi">Seasonal Tasting Menu</span><span class="mi dot">·</span>
+    <span class="mi">Hand-Selected Wines</span><span class="mi dot">·</span>
+    <span class="mi">By Reservation Only</span><span class="mi dot">·</span>
+    <span class="mi">Farm to Table</span><span class="mi dot">·</span>
+    <span class="mi">Private Culinary Events</span><span class="mi dot">·</span>
+    <span class="mi">Corporate &amp; Private Clients</span><span class="mi dot">·</span>
+    <span class="mi">Curated Locations</span><span class="mi dot">·</span>
+    <span class="mi">50 Best Discovery</span><span class="mi dot">·</span>
+    <span class="mi">Seasonal Tasting Menu</span><span class="mi dot">·</span>
+    <span class="mi">Hand-Selected Wines</span><span class="mi dot">·</span>
+    <span class="mi">By Reservation Only</span><span class="mi dot">·</span>
+    <span class="mi">Farm to Table</span><span class="mi dot">·</span>
+  </div>
 </div>
 
-<!-- PRICING -->
-<div class="pricing-section">
-  <div class="pricing-inner reveal">
-    <div class="price-main">
-      <span class="price-label">Signature tasting menu</span>
-      <div class="price-amount">€120</div>
-      <span class="price-sub">per person · all prices inclusive</span>
-      <div class="price-div"></div>
-      <span class="price-label">With house wine pairing</span>
-      <div class="price-amount" style="font-size:64px;">€144</div>
-      <span class="price-sub">per person · Selection pairing included</span>
-      <div class="price-div"></div>
-      <p class="price-note">The menu changes several times within the year. Strong focus on organic, sustainable produce. Slow food and farm-to-table principles throughout. Local farmers and likeminded producers only.</p>
-    </div>
-    <div class="pairings-col">
-      <h3>Wine pairings</h3>
-      <div class="pair-line"><div><span class="pair-name">Selection</span><span class="pair-flag">🍇</span></div><div><span class="pair-price">€48</span><span class="pair-pp"> pp</span></div></div>
-      <div class="pair-line"><div><span class="pair-name">Lusitano</span><span class="pair-flag">🇵🇹</span></div><div><span class="pair-price">€70</span><span class="pair-pp"> pp</span></div></div>
-      <div class="pair-line"><div><span class="pair-name">Iberico</span><span class="pair-flag">🇪🇸</span></div><div><span class="pair-price">€80</span><span class="pair-pp"> pp</span></div></div>
-      <div class="pair-line"><div><span class="pair-name">Tricolore</span><span class="pair-flag">🇫🇷</span></div><div><span class="pair-price">€95</span><span class="pair-pp"> pp</span></div></div>
-      <div class="pair-note">Some wines need aeration to reach their best characteristics. We advise booking pairings when confirming your reservation.</div>
-      <div style="margin-top:24px;"><a href="pairings.html" style="font-family:var(--m);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--rule-s);padding-bottom:2px;">About our wines →</a></div>
+<!-- ━━━━━━━━━━━━━━━ 6. MENU TEASE ━━━━━━━━━━━━━━━ -->
+<section class="menu-tease reveal">
+  <div class="mt-left">
+    <img src="img/menu-baccala.webp" alt="Object of beauty — tasting menu dish">
+  </div>
+  <div class="mt-right">
+    <p class="mt-season">Spring 2026</p>
+    <h2 class="mt-title">A culinary<br><em>journey.</em><br>Six courses.</h2>
+    <p class="mt-desc">Each dish a story. Joe's travels, personal history, and time in Michelin-starred kitchens — served at one table.</p>
+    <a href="menu.html" class="mt-link">Explore the menu</a>
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━ 7. PRESS & PLATFORMS ━━━━━━━━━━━━━━━ -->
+<div class="press reveal">
+  <span class="section-eyebrow">As featured in &amp; available on</span>
+  <div class="press-logos-wrap">
+    <img class="press-logos-img" src="img/press-logos.webp" alt="Eatwith · Monocle · TimeOut · Condé Nast Traveler · Berkshire Eagle · TripAdvisor">
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━ 8. PRODUCERS ━━━━━━━━━━━━━━━ -->
+<div class="producers reveal">
+  <div class="producers-inner">
+    <span class="section-eyebrow">Our producers &amp; partners</span>
+    <p class="producers-sub">We source exclusively from craftsmen<br>who share our philosophy</p>
+    <div class="prod-logos">
+      <img src="img/wine-lafleur.webp" alt="Lafleur Pomerol" style="height:52px;">
+      <img src="img/wine-raulperez.webp" alt="Raúl Pérez Bodegas" style="height:34px;">
+      <img src="img/wine-lopezheredia.webp" alt="R. López de Heredia" style="height:48px;">
+      <img src="img/supplier-schott.webp" alt="Schott Zwiesel" style="height:44px;">
+      <img src="img/supplier-origo.webp" alt="Origo" style="height:40px;">
+      <img src="img/supplier-suriol.webp" alt="Suriol" style="height:40px;">
+      <img src="img/supplier-casacerdanya.webp" alt="Casa Cerdanya" style="height:36px;">
     </div>
   </div>
 </div>
 
-<!-- PHILOSOPHY -->
-<div class="phil reveal">
-  <blockquote>"Our signature tasting menu is a multi-course sensory experience inspired by Joe's travels, personal history, and time in Michelin-starred kitchens — what he describes as food culture."</blockquote>
-  <cite>Joe D'Costa · Chef and founder · JoEs TaBLe</cite>
+<!-- ━━━━━━━━━━━━━━━ 9. INSTAGRAM GRID ━━━━━━━━━━━━━━━ -->
+<div class="insta-section reveal">
+  <div class="insta-header">
+    <h2 class="insta-title">@joses.table</h2>
+    <span class="insta-handle">Follow the journey on Instagram</span>
+  </div>
+  <div class="insta-grid">
+    <a href="https://www.instagram.com/joses.table" class="insta-slot" target="_blank" rel="noopener">
+      <img src="img/food-uni-caviar.webp" alt="">
+    </a>
+    <a href="https://www.instagram.com/joses.table" class="insta-slot" target="_blank" rel="noopener">
+      <img src="img/menu-meatballs.webp" alt="">
+    </a>
+    <a href="https://www.instagram.com/joses.table" class="insta-slot" target="_blank" rel="noopener">
+      <img src="img/menu-oyster.webp" alt="">
+    </a>
+    <a href="https://www.instagram.com/joses.table" class="insta-slot" target="_blank" rel="noopener">
+      <img src="img/menu-strudel.webp" alt="">
+    </a>
+  </div>
+  <div class="insta-follow">
+    <a href="https://www.instagram.com/joses.table" target="_blank" rel="noopener">View all on Instagram ↗</a>
+  </div>
 </div>
 
-<!-- CTA -->
-<div class="cta reveal">
-  <h2>Book your<br><em>spot</em></h2>
-  <a href="https://tally.so/r/pbP7Eb" class="btn-g" target="_blank" rel="noopener">Reserve now</a>
-  <a href="about.html" class="btn-o">About JoEs TaBLe</a>
-</div>
+<!-- ━━━━━━━━━━━━━━━ 10. FINAL CTA ━━━━━━━━━━━━━━━ -->
+<section class="final reveal">
+  <h2 class="final-title">Reserve your<br><em>evening</em></h2>
+  <div class="final-actions">
+    <a href="https://tally.so/r/pbP7Eb" class="btn-g" target="_blank" rel="noopener">Book your spot</a>
+    <a href="mailto:booking@josestable.com?subject=Corporate%20Event%20Enquiry" class="btn-o">Corporate enquiry</a>
+  </div>
+  <p class="final-email">Questions: <a href="mailto:support@josestable.com">support@josestable.com</a></p>
+</section>
 
 <!-- BOTTOM BAR -->
 <div class="bottom-bar">
-  <p>Private culinary events &nbsp;·&nbsp; Corporate &amp; private clients &nbsp;·&nbsp; By reservation only &nbsp;·&nbsp; booking@josestable.com</p>
+  <span>Private culinary events &nbsp;·&nbsp; By reservation only &nbsp;·&nbsp; <a href="mailto:booking@josestable.com">booking@josestable.com</a></span>
+  <span>A brand of CK Events Management &amp; Hospitality Group LLC</span>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <p class="footer-copy">JoEs TaBLe &copy; 2026 &nbsp;·&nbsp; A brand of <a href="https://clandestino.kitchen">CK Events Management &amp; Hospitality Group LLC</a> &nbsp;·&nbsp; <a href="terms.html">Terms &amp; Privacy</a></p>
-  <div class="fsocial">
-    <a href="https://www.instagram.com/joses.table" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://www.linkedin.com/company/joestable/" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="mailto:support@josestable.com">Contact</a>
+  <div>
+    <span class="f-brand">JoEs TaBLe</span>
+    <p class="f-desc">Curated culinary event design.<br>Private events for corporate<br>and private clients.<br>A brand of CK Events Management<br>&amp; Hospitality Group LLC.</p>
+  </div>
+  <div class="f-col">
+    <h4>Navigate</h4>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="pairings.html">Pairings</a></li>
+    </ul>
+  </div>
+  <div class="f-col">
+    <h4>Book</h4>
+    <ul>
+      <li><a href="https://tally.so/r/pbP7Eb" target="_blank" rel="noopener">Book your spot</a></li>
+      <li><a href="mailto:booking@josestable.com?subject=Corporate%20Event%20Enquiry">Corporate events</a></li>
+      <li><a href="mailto:support@josestable.com">Contact</a></li>
+    </ul>
+  </div>
+  <div class="f-col">
+    <h4>Legal</h4>
+    <ul>
+      <li><a href="terms.html">Terms of use</a></li>
+      <li><a href="terms.html">Privacy policy</a></li>
+      <li><a href="https://clandestino.kitchen" target="_blank" rel="noopener">Clandestino Kitchen</a></li>
+    </ul>
   </div>
 </footer>
-
-<!-- LIGHTBOX -->
-<div id="lb" role="dialog" aria-modal="true">
-  <div id="lb-inner">
-    <button id="lb-close" aria-label="Close">✕</button>
-    <img id="lb-img" src="" alt="">
-    <div id="lb-cap">
-      <div>
-        <div id="lb-name"></div>
-        <div id="lb-ingr"></div>
-      </div>
-    </div>
+<div class="f-bottom">
+  <p class="f-copy">JoEs TaBLe &copy; 2026 &nbsp;·&nbsp; <a href="https://clandestino.kitchen">CK Events Management &amp; Hospitality Group LLC</a> &nbsp;·&nbsp; <a href="terms.html">Terms &amp; Privacy</a></p>
+  <div class="f-soc">
+    <a href="https://www.instagram.com/joses.table" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/company/joestable/" target="_blank" rel="noopener">LinkedIn</a>
   </div>
 </div>
 
 <script>
-// Nav
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>56),{passive:true});
 const hb=document.getElementById('hamburger');
 const nl=document.getElementById('navLinks');
 hb.addEventListener('click',()=>{const o=nl.classList.toggle('open');hb.setAttribute('aria-expanded',String(o));});
 nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
-
-// Reveal
-const io=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:.06});
+const io=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:.05,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-
-// Lightbox
-const lb=document.getElementById('lb');
-const lbImg=document.getElementById('lb-img');
-const lbName=document.getElementById('lb-name');
-const lbIngr=document.getElementById('lb-ingr');
-const lbClose=document.getElementById('lb-close');
-
-function openLB(img,name,ingr){
-  lbImg.src=img; lbImg.alt=name;
-  lbName.textContent=name; lbIngr.textContent=ingr;
-  lb.classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function closeLB(){
-  lb.classList.remove('open');
-  document.body.style.overflow='';
-  setTimeout(()=>{lbImg.src='';},320);
-}
-
-lbClose.addEventListener('click',closeLB);
-lb.addEventListener('click',(e)=>{if(e.target===lb)closeLB();});
-document.addEventListener('keydown',(e)=>{if(e.key==='Escape')closeLB();});
-
-document.querySelectorAll('.dish-trigger').forEach(el=>{
-  el.addEventListener('click',()=>{
-    openLB(el.dataset.img, el.dataset.name, el.dataset.ingr);
-  });
-});
 </script>
 </body>
 </html>
