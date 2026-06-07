@@ -18,7 +18,7 @@
   --parchment:#f4ede0;--cream:#e8dece;
   --gold:#c9a96e;--gold-light:#e2c48a;
   --text:#b0a898;--text-mid:#7a7168;--text-faint:#4e4842;
-  --rule:rgba(201,169,110,0.2);--rule-s:rgba(201,169,110,0.42);
+  --rule:rgba(201,169,110,.18);--rule-s:rgba(201,169,110,.4);
   --display:'Fraunces',Georgia,serif;
   --body:'Lora',Georgia,serif;
   --mono:'DM Mono','Courier New',monospace;
@@ -39,136 +39,118 @@ nav.scrolled{background:rgba(8,7,6,.96);border-bottom-color:var(--rule);-webkit-
 .hamburger{display:none;flex-direction:column;justify-content:center;gap:6px;background:none;border:none;cursor:pointer;padding:10px;min-width:44px;min-height:44px;}
 .hamburger span{display:block;width:22px;height:1px;background:var(--parchment);transition:all .3s;}
 
-/* HERO */
-.hero{min-height:100svh;min-height:-webkit-fill-available;display:flex;flex-direction:column;justify-content:flex-end;padding:80px 40px max(env(safe-area-inset-bottom,0px),24px);position:relative;overflow:hidden;}
-.hero-img{position:absolute;inset:0;background:linear-gradient(160deg,#221a10 0%,#0d0b08 100%);}
-.hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.hero-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,7,6,.08) 0%,rgba(8,7,6,.52) 55%,rgba(8,7,6,.97) 100%);z-index:1;}
-.hero-grain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.032;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+/* ── 1. HERO ── */
+.hero{min-height:100svh;min-height:-webkit-fill-available;display:flex;flex-direction:column;justify-content:flex-end;padding:80px 40px max(env(safe-area-inset-bottom,0px),32px);position:relative;overflow:hidden;}
+.hero-img{position:absolute;inset:0;}
+.hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,7,6,.08) 0%,rgba(8,7,6,.45) 45%,rgba(8,7,6,.97) 100%);z-index:1;}
+.hero-grain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.hero-ig{position:absolute;top:80px;right:40px;z-index:3;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:opacity .25s;opacity:.8;}
+.hero-ig:hover{opacity:1;}
 .hero-content{position:relative;z-index:3;}
-.hero-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;display:block;opacity:0;animation:fadeUp 1s .3s forwards;}
-.hero-title{font-family:var(--display);font-size:clamp(56px,11vw,140px);font-weight:300;line-height:.9;letter-spacing:-.02em;margin-bottom:28px;opacity:0;animation:fadeUp 1s .5s forwards;}
+.hero-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:16px;opacity:0;animation:fadeUp 1s .3s forwards;}
+.hero-title{font-family:var(--display);font-size:clamp(60px,12vw,148px);font-weight:300;line-height:.88;letter-spacing:-.025em;margin-bottom:32px;opacity:0;animation:fadeUp 1s .5s forwards;}
 .hero-title em{font-style:italic;color:var(--gold);}
-.hero-sub{font-family:var(--body);font-size:clamp(15px,2vw,19px);font-style:italic;color:var(--text);max-width:500px;line-height:1.6;margin-bottom:44px;opacity:0;animation:fadeUp 1s .7s forwards;}
-.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;opacity:0;animation:fadeUp 1s .9s forwards;}
-
-/* BUTTONS */
-.btn-gold{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0 30px;text-decoration:none;display:inline-flex;align-items:center;min-height:48px;transition:background .25s;}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;opacity:0;animation:fadeUp 1s .7s forwards;}
+.btn-gold{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0 32px;text-decoration:none;display:inline-flex;align-items:center;min-height:50px;transition:background .25s;flex-shrink:0;}
 .btn-gold:hover{background:var(--gold-light);}
-.btn-outline{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--parchment);border:1px solid rgba(244,237,224,.22);padding:0 30px;text-decoration:none;display:inline-flex;align-items:center;min-height:48px;transition:border-color .25s,color .25s;}
+.btn-outline{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--parchment);border:1px solid rgba(244,237,224,.22);padding:0 32px;text-decoration:none;display:inline-flex;align-items:center;min-height:50px;transition:border-color .25s,color .25s;}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
 
-/* MARQUEE */
-.marquee-wrap{overflow:hidden;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:14px 0;background:var(--ink);}
+/* ── 2. SCARCITY STRIP ── */
+.scarcity-strip{background:var(--ink);border-top:1px solid var(--rule-s);border-bottom:1px solid var(--rule-s);padding:14px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.scarcity-strip .sc-left{display:flex;align-items:center;gap:10px;}
+.sc-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 1.8s ease-in-out infinite;flex-shrink:0;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.3;transform:scale(.7);}}
+.sc-text{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+.sc-right{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-faint);}
+
+/* ── 3. MARQUEE ── */
+.marquee-wrap{overflow:hidden;border-bottom:1px solid var(--rule);padding:13px 0;background:var(--black);}
 .marquee-track{display:flex;white-space:nowrap;animation:marquee 40s linear infinite;}
-.marquee-item{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-faint);padding:0 32px;flex-shrink:0;}
-.marquee-item.dot{color:var(--gold);padding:0 8px;}
+.marquee-item{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-faint);padding:0 28px;flex-shrink:0;}
+.marquee-item.dot{color:var(--gold);padding:0 6px;}
 @media(prefers-reduced-motion:reduce){.marquee-track{animation:none;}.marquee-item:nth-child(n+17){display:none;}}
 
-/* SECTIONS */
-.section{padding:100px 40px;}
-.section-inner{max-width:1160px;margin:0 auto;}
-.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);display:block;}
-.rule-row{display:flex;align-items:center;gap:18px;margin-bottom:48px;}
+/* ── 4. IDENTITY ANCHOR ── */
+.identity{background:var(--ink);padding:64px 40px;text-align:center;border-bottom:1px solid var(--rule);}
+.identity img{max-width:720px;width:100%;height:auto;display:block;margin:0 auto 20px;}
+.identity-sub{font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--text-faint);}
+
+/* ── 5. 50 BEST ── */
+.fifty{background:var(--black);border-bottom:1px solid var(--rule);}
+.fifty-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:420px 1fr;min-height:520px;}
+.fifty-img{position:relative;overflow:hidden;}
+.fifty-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;}
+.fifty-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,var(--black) 100%);}
+.fifty-body{padding:64px 56px;display:flex;flex-direction:column;justify-content:center;}
+.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:20px;}
+.fifty-body h2{font-family:var(--display);font-size:clamp(52px,7vw,88px);font-weight:300;line-height:.9;letter-spacing:-.02em;margin-bottom:24px;}
+.fifty-body h2 em{font-style:italic;color:var(--gold);}
+.fifty-body p{color:var(--text);line-height:1.75;font-size:16px;max-width:380px;}
+
+/* ── 6. CLIENT LOGOS ── */
+.clients{background:var(--ink);padding:52px 40px;border-bottom:1px solid var(--rule);text-align:center;}
+.clients .eyebrow{margin-bottom:32px;display:block;}
+.clients-logos-img{max-width:860px;width:100%;height:auto;display:block;margin:0 auto;}
+
+/* ── 7. GALLERY 3×2 ── */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,260px);gap:3px;}
+.gslot{position:relative;overflow:hidden;background:var(--ink);}
+.gslot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .8s ease;}
+.gslot:hover img{transform:scale(1.04);}
+
+/* ── 8. MENU TEASE ── */
+.menu-tease{background:var(--black);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+.menu-tease-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:420px;}
+.mt-img{position:relative;overflow:hidden;}
+.mt-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;}
+.mt-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 50%,var(--black) 100%);}
+.mt-body{padding:60px 56px;display:flex;flex-direction:column;justify-content:center;}
+.mt-body h2{font-family:var(--display);font-size:clamp(36px,4.5vw,58px);font-weight:300;line-height:1.0;margin-bottom:16px;}
+.mt-body h2 em{font-style:italic;color:var(--gold);}
+.mt-body p{color:var(--text);line-height:1.7;font-size:16px;font-style:italic;margin-bottom:32px;}
 .rule-line{flex:1;height:1px;background:var(--rule);}
+.rule-row{display:flex;align-items:center;gap:18px;margin-bottom:40px;}
 
-/* CONCEPT */
-.concept{background:var(--ink);}
-.concept-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
-.concept-text h2{font-family:var(--display);font-size:clamp(38px,5.5vw,70px);font-weight:300;line-height:1.0;letter-spacing:-.01em;margin-bottom:24px;}
-.concept-text h2 em{font-style:italic;color:var(--gold);}
-.concept-text p{color:var(--text);line-height:1.75;margin-bottom:16px;}
-.concept-text p strong{color:var(--parchment);font-weight:500;}
-.pullquote{border-left:2px solid var(--gold);padding:18px 0 18px 22px;margin:32px 0;}
-.pullquote blockquote{font-family:var(--display);font-style:italic;font-size:clamp(17px,2.2vw,22px);font-weight:300;line-height:1.5;color:var(--parchment);}
-.pullquote cite{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:12px;font-style:normal;}
+/* ── 9. PRESS & PLATFORMS ── */
+.press{background:var(--ink);padding:48px 40px;border-bottom:1px solid var(--rule);text-align:center;}
+.press .eyebrow{margin-bottom:28px;display:block;}
+.press-logos-img{max-width:800px;width:100%;height:auto;display:block;margin:0 auto;opacity:.85;}
 
-/* Image grid */
-.concept-images{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
-.ci-main{grid-row:1/3;}
-.img-slot{background:linear-gradient(160deg,#1e1812 0%,#0d0b08 100%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:200px;}
-.img-slot::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(201,169,110,.06) 0%,transparent 60%);}
-.img-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-.img-slot .slot-l{font-family:var(--mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-faint);z-index:1;}
-.ci-main{height:440px;}.ci-a,.ci-b{height:218px;}
+/* ── 10. PRODUCERS ── */
+.producers{background:var(--black);padding:56px 40px;border-bottom:1px solid var(--rule);}
+.producers-inner{max-width:960px;margin:0 auto;text-align:center;}
+.producers .eyebrow{margin-bottom:8px;display:block;}
+.producers-sub{font-family:var(--body);font-style:italic;font-size:16px;color:var(--text-mid);margin-bottom:40px;}
+.producers-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:36px 52px;}
+.producers-logos img{height:48px;width:auto;object-fit:contain;filter:grayscale(100%);opacity:.45;transition:opacity .4s,filter .4s;}
+.producers-logos img:hover{opacity:1;filter:grayscale(0%);}
+.producers-logos img.tall{height:52px;}
+.producers-logos img.short{height:36px;}
 
-/* WHAT WE DO */
-.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--rule);border:1px solid var(--rule);}
-.exp-card{background:var(--ink-mid);padding:36px 32px;transition:background .3s;}
-.exp-card:hover{background:#1e1b17;}
-.exp-num{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--gold);display:block;margin-bottom:18px;}
-.exp-card h3{font-family:var(--display);font-size:24px;font-weight:300;font-style:italic;margin-bottom:12px;line-height:1.2;}
-.exp-card p{font-family:var(--mono);font-size:11px;color:var(--text-mid);line-height:1.65;letter-spacing:.035em;}
+/* ── 11. INSTAGRAM ── */
+.instagram{background:var(--ink);padding:64px 40px;border-bottom:1px solid var(--rule);text-align:center;}
+.instagram h2{font-family:var(--display);font-size:clamp(32px,4vw,52px);font-weight:300;font-style:italic;margin-bottom:8px;}
+.instagram .insta-handle{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:36px;}
+.insta-img-wrap{display:block;max-width:960px;margin:0 auto 32px;transition:opacity .3s;}
+.insta-img-wrap:hover{opacity:.88;}
+.insta-img-wrap img{width:100%;height:auto;display:block;border-radius:2px;}
 
-/* MENU PREVIEW */
-.menu-preview{background:var(--ink);}
-.menu-courses{display:flex;flex-direction:column;border:1px solid var(--rule);margin-bottom:44px;}
-.course-row{display:grid;grid-template-columns:56px 1fr;border-bottom:1px solid var(--rule);transition:background .25s;}
-.course-row:last-child{border-bottom:none;}
-.course-row:hover{background:rgba(201,169,110,.03);}
-.course-n{border-right:1px solid var(--rule);display:flex;align-items:center;justify-content:center;padding:24px 14px;}
-.course-n span{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--gold);}
-.course-body{padding:24px 32px;}
-.course-label{font-family:var(--mono);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-faint);display:block;margin-bottom:5px;}
-.course-name{font-family:var(--display);font-size:22px;font-weight:300;font-style:italic;margin-bottom:5px;line-height:1.1;}
-.course-desc{font-family:var(--mono);font-size:11px;color:var(--text-mid);line-height:1.5;letter-spacing:.03em;}
-.menu-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;padding-top:32px;border-top:1px solid var(--rule);}
-.menu-prices{display:flex;gap:36px;flex-wrap:wrap;}
-.price-item .pl{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-mid);display:block;margin-bottom:3px;}
-.price-item .pa{font-family:var(--display);font-size:36px;font-weight:300;font-style:italic;color:var(--gold);line-height:1;}
-.price-item .ps{font-family:var(--mono);font-size:9px;color:var(--text-faint);display:block;margin-top:2px;}
+/* ── 12. FINAL CTA ── */
+.final-cta{background:var(--black);padding:100px 40px;text-align:center;}
+.final-cta h2{font-family:var(--display);font-size:clamp(44px,7vw,96px);font-weight:300;line-height:.9;letter-spacing:-.02em;margin-bottom:36px;}
+.final-cta h2 em{font-style:italic;color:var(--gold);}
+.final-cta-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:20px;}
+.final-cta-sub{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-faint);}
+.final-cta-sub a{color:var(--text-faint);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;transition:color .25s,border-color .25s;}
+.final-cta-sub a:hover{color:var(--gold);border-color:var(--gold);}
 
-/* PAIRINGS */
-.pairings{background:var(--black);}
-.pairings-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--rule);border:1px solid var(--rule);margin-top:48px;}
-.pairing-card{background:var(--ink-mid);padding:32px 24px;text-align:center;transition:background .3s;}
-.pairing-card:hover{background:#1e1b17;}
-.pairing-flag{font-size:34px;display:block;margin-bottom:14px;}
-.pairing-name{font-family:var(--display);font-size:22px;font-weight:300;font-style:italic;margin-bottom:5px;}
-.pairing-price{font-family:var(--mono);font-size:14px;color:var(--gold);display:block;margin-bottom:10px;}
-.pairing-desc{font-family:var(--mono);font-size:10px;color:var(--text-mid);line-height:1.55;letter-spacing:.04em;}
-
-/* CORPORATE */
-.corporate{background:var(--ink);}
-.corporate-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
-.corporate-text h2{font-family:var(--display);font-size:clamp(34px,5vw,62px);font-weight:300;line-height:1.0;margin-bottom:18px;}
-.corporate-text h2 em{font-style:italic;color:var(--gold);}
-.corporate-text p{color:var(--text);line-height:1.75;margin-bottom:14px;}
-.corp-list{list-style:none;margin:24px 0 36px;}
-.corp-list li{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--text-mid);padding:11px 0;border-bottom:1px solid var(--rule);display:flex;align-items:center;gap:12px;}
-.corp-list li::before{content:'—';color:var(--gold);flex-shrink:0;}
-.corp-images{display:grid;grid-template-rows:240px 240px;gap:3px;}
-
-/* GALLERY ROW */
-.gallery-row{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;height:240px;}
-.gallery-slot{background:linear-gradient(160deg,#1a1410 0%,#0b0907 100%);position:relative;overflow:hidden;}
-.gallery-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
-
-/* PRESS */
-.press-section{background:var(--black);}
-.press-card{background:var(--ink-mid);border:1px solid var(--rule);padding:52px;position:relative;max-width:880px;margin:0 auto;}
-.press-card::before{content:'"';position:absolute;top:-18px;left:40px;font-family:var(--display);font-size:110px;font-style:italic;color:var(--gold);opacity:.22;line-height:1;}
-.press-excerpt{font-family:var(--display);font-size:clamp(17px,2.5vw,23px);font-weight:300;font-style:italic;line-height:1.6;color:var(--parchment);margin-bottom:28px;}
-.press-byline{display:flex;align-items:center;gap:16px;}
-.press-rule{width:32px;height:1px;background:var(--gold);flex-shrink:0;}
-.press-source{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);}
-.press-link{font-family:var(--mono);font-size:10px;letter-spacing:.13em;color:var(--text-mid);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;display:inline-block;margin-top:18px;transition:color .25s,border-color .25s;}
-.press-link:hover{color:var(--gold);border-color:var(--gold);}
-
-/* PHILOSOPHY */
-.philosophy{background:var(--ink);text-align:center;padding:100px 40px;}
-.philosophy blockquote{font-family:var(--display);font-size:clamp(20px,3vw,36px);font-weight:300;font-style:italic;line-height:1.45;max-width:760px;margin:0 auto 20px;}
-.philosophy cite{font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-style:normal;}
-.phil-div{width:1px;height:52px;background:var(--rule);margin:40px auto;}
-.phil-tag{font-family:var(--mono);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--text-faint);}
-
-/* BOTTOM BAR */
+/* ── BOTTOM BAR + FOOTER ── */
 .bottom-bar{background:var(--ink-mid);border-top:1px solid var(--rule);padding:13px 40px;text-align:center;}
 .bottom-bar p{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-mid);}
 .bottom-bar a{color:inherit;text-decoration:none;}
-
-/* FOOTER */
-footer{background:#050403;border-top:1px solid var(--rule);padding:56px 40px 36px;}
+footer{background:#050403;border-top:1px solid var(--rule);padding:52px 40px 36px;}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--rule);margin-bottom:28px;}
 .fbrand{font-family:var(--display);font-size:20px;font-style:italic;font-weight:400;margin-bottom:12px;display:block;}
 .fdesc{font-family:var(--mono);font-size:10px;letter-spacing:.07em;color:var(--text-mid);line-height:1.9;}
@@ -185,50 +167,58 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:56px 40px 36p
 .fsocial a:hover{color:var(--gold);}
 
 /* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
 @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .75s ease,transform .75s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}*{animation-duration:.01ms!important;}}
 
 /* MOBILE */
-@media(max-width:860px){
+@media(max-width:900px){
   nav{padding:0 20px;}
   .nav-links,.nav-cta{display:none;}
   .hamburger{display:flex;}
   .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:var(--black);justify-content:center;align-items:center;gap:28px;z-index:199;}
   .nav-links.open a{font-size:13px;letter-spacing:.2em;}
   .hero{padding:80px 20px 48px;}
-  .section{padding:70px 20px;}
-  .philosophy{padding:70px 20px;}
-  .concept-grid,.corporate-grid{grid-template-columns:1fr;gap:40px;}
-  .ci-main{height:280px;}.ci-a,.ci-b{height:160px;}
-  .corp-images{grid-template-rows:200px 200px;}
-  .exp-grid{grid-template-columns:1fr;}
-  .pairings-grid{grid-template-columns:1fr 1fr;}
-  .gallery-row{grid-template-columns:1fr 1fr;height:auto;}
-  .gallery-slot{height:150px;}
-  .menu-bottom{flex-direction:column;align-items:flex-start;}
-  .menu-prices{gap:20px;}
-  .press-card{padding:36px 22px;}
+  .hero-ig{right:20px;}
+  .scarcity-strip{padding:12px 20px;}
+  .identity{padding:48px 20px;}
+  .fifty-inner{grid-template-columns:1fr;}
+  .fifty-img{height:320px;position:relative;}
+  .fifty-img::after{background:linear-gradient(to bottom,transparent 50%,var(--black) 100%);}
+  .fifty-body{padding:40px 20px;}
+  .clients{padding:40px 20px;}
+  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,180px);}
+  .menu-tease-inner{grid-template-columns:1fr;}
+  .mt-img{height:280px;position:relative;}
+  .mt-img::after{background:linear-gradient(to bottom,transparent 40%,var(--black) 100%);}
+  .mt-body{padding:36px 20px;}
+  .press{padding:40px 20px;}
+  .producers{padding:44px 20px;}
+  .producers-logos{gap:24px 36px;}
+  .producers-logos img{height:36px;}
+  .instagram{padding:48px 20px;}
+  .final-cta{padding:72px 20px;}
+  .final-cta-actions{flex-direction:column;align-items:center;}
+  .bottom-bar{padding:13px 20px;}
+  footer{padding:44px 20px 32px;}
   .footer-grid{grid-template-columns:1fr 1fr;gap:28px;}
   .footer-bottom{flex-direction:column;align-items:flex-start;}
-  .bottom-bar,.footer{padding-left:20px;padding-right:20px;}
 }
 @media(max-width:480px){
-  .hero-title{font-size:clamp(48px,15vw,64px);}
+  .hero-title{font-size:clamp(52px,15vw,72px);}
   .hero-actions{flex-direction:column;align-items:flex-start;}
-  .pairings-grid{grid-template-columns:1fr;}
-  .course-row{grid-template-columns:1fr;}
-  .course-n{display:none;}
+  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,140px);}
   .footer-grid{grid-template-columns:1fr;}
   .fsocial{flex-wrap:wrap;gap:14px;}
-  .menu-prices{flex-direction:column;gap:16px;}
+  .scarcity-strip{flex-direction:column;align-items:flex-start;gap:6px;}
 }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav id="nav">
   <a href="index.html" class="nav-logo">JoEs TaBLe</a>
   <ul class="nav-links" id="navLinks">
@@ -237,31 +227,40 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:56px 40px 36p
     <li><a href="about.html">About</a></li>
     <li><a href="pairings.html">Pairings</a></li>
   </ul>
-  <a href="https://tally.so/r/pbP7Eb" class="nav-cta" target="_blank" rel="noopener">Book an event</a>
+  <a href="https://tally.so/r/pbP7Eb" class="nav-cta" target="_blank" rel="noopener">Book your spot</a>
   <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- HERO -->
+<!-- ── 1. HERO ── -->
 <section class="hero">
   <div class="hero-img">
     <img src="img/hero-event-table.webp" alt="JoEs TaBLe private culinary event — guests at the table">
   </div>
   <div class="hero-bg"></div>
   <div class="hero-grain"></div>
+  <a href="https://www.instagram.com/joses.table" class="hero-ig" target="_blank" rel="noopener">@joses.table</a>
   <div class="hero-content">
     <span class="hero-eyebrow">Private culinary events · By reservation only</span>
     <h1 class="hero-title">Social<br><em>Fine Dining</em></h1>
-    <p class="hero-sub">Exclusive private culinary events for corporate and private clients. Curated locations. Vanguard cuisine.</p>
     <div class="hero-actions">
-      <a href="https://tally.so/r/pbP7Eb" class="btn-gold" target="_blank" rel="noopener">Submit an enquiry</a>
+      <a href="https://tally.so/r/pbP7Eb" class="btn-gold" target="_blank" rel="noopener">Book your spot</a>
       <a href="menu.html" class="btn-outline">Explore the menu</a>
     </div>
   </div>
 </section>
 
-<!-- MARQUEE -->
+<!-- ── 2. SCARCITY STRIP ── -->
+<div class="scarcity-strip">
+  <div class="sc-left">
+    <span class="sc-dot"></span>
+    <span class="sc-text">June · Events filling fast · No waiting list for short-term reservations</span>
+  </div>
+  <span class="sc-right">Spots sell out within 48 hours of announcement</span>
+</div>
+
+<!-- ── 3. MARQUEE ── -->
 <div class="marquee-wrap">
   <div class="marquee-track">
     <span class="marquee-item">Private Culinary Events</span><span class="marquee-item dot">·</span>
@@ -271,6 +270,7 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:56px 40px 36p
     <span class="marquee-item">Hand-Selected Wines</span><span class="marquee-item dot">·</span>
     <span class="marquee-item">By Reservation Only</span><span class="marquee-item dot">·</span>
     <span class="marquee-item">Farm to Table</span><span class="marquee-item dot">·</span>
+    <span class="marquee-item">50 Best Discovery</span><span class="marquee-item dot">·</span>
     <span class="marquee-item">Private Culinary Events</span><span class="marquee-item dot">·</span>
     <span class="marquee-item">Corporate &amp; Private Clients</span><span class="marquee-item dot">·</span>
     <span class="marquee-item">Curated Locations</span><span class="marquee-item dot">·</span>
@@ -278,195 +278,107 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:56px 40px 36p
     <span class="marquee-item">Hand-Selected Wines</span><span class="marquee-item dot">·</span>
     <span class="marquee-item">By Reservation Only</span><span class="marquee-item dot">·</span>
     <span class="marquee-item">Farm to Table</span><span class="marquee-item dot">·</span>
+    <span class="marquee-item">50 Best Discovery</span><span class="marquee-item dot">·</span>
   </div>
 </div>
 
-<!-- CONCEPT -->
-<section class="concept section">
-  <div class="section-inner">
-    <div class="concept-grid">
-      <div class="concept-text reveal">
-        <div class="rule-row">
-          <span class="eyebrow">The concept</span>
-          <span class="rule-line"></span>
-        </div>
-        <h2>A clandestine<br><em>culinary movement</em></h2>
-        <p>We design and produce exclusive private culinary events at hand-selected locations. Each event is a one-table experience — part private gathering, part cultural occasion — for clients who value discretion, quality, and a truly considered evening.</p>
-        <p>We are <strong>not a restaurant</strong>. We are an event format: a curated culinary concept that arrives, creates something extraordinary, and moves on. Every location is chosen. Every team is assembled for the occasion.</p>
-        <div class="pullquote">
-          <blockquote>"Do not simply eat. Taste. Savor. Relish. Be mindful. But please do not simply eat. The menu is too precious for that."</blockquote>
-          <cite>Julian Slowik</cite>
-        </div>
-        <a href="about.html" class="btn-outline">About JoEs TaBLe</a>
-      </div>
-      <div class="concept-images reveal">
-        <!-- TO ADD images: replace each .img-slot with <div class="img-slot ci-main"><img src="img/event-01.jpg" alt="..."></div> -->
-        <div class="img-slot ci-main"><img src="img/food-uni-caviar.webp" alt="Uni, caviar and radish dish"></div>
-        <div class="img-slot ci-a"><img src="img/food-gnocchi.webp" alt="Gnocchi in saffron butter with sage"></div>
-        <div class="img-slot ci-b"><img src="img/food-burrata.webp" alt="Burrata on tomato sauce"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- GALLERY ROW -->
-<div class="gallery-row">
-  <!-- TO ADD: <div class="gallery-slot"><img src="img/gallery-01.jpg" alt="..."></div> x4 -->
-  <div class="gallery-slot"><img src="img/food-octopus.webp" alt="" aria-hidden="true"></div>
-  <div class="gallery-slot"><img src="img/food-egg-leek.webp" alt="" aria-hidden="true"></div>
-  <div class="gallery-slot"><img src="img/food-amuse.webp" alt="" aria-hidden="true"></div>
-  <div class="gallery-slot"><img src="img/service-cake.webp" alt="" aria-hidden="true"></div>
+<!-- ── 4. IDENTITY ANCHOR ── -->
+<div class="identity reveal">
+  <img src="img/concept-logo.webp" alt="JoEs TaBLe · Conceptional Fine Dining · Food Culture">
+  <p class="identity-sub">One table &nbsp;·&nbsp; Emblematic location &nbsp;·&nbsp; Vanguard cuisine</p>
 </div>
 
-<!-- WHAT WE DO -->
-<section class="section" style="background:var(--black);">
-  <div class="section-inner">
-    <div class="rule-row reveal">
-      <span class="eyebrow">What we do</span>
-      <span class="rule-line"></span>
+<!-- ── 5. 50 BEST DISCOVERY ── -->
+<section class="fifty reveal">
+  <div class="fifty-inner">
+    <div class="fifty-img">
+      <img src="img/cred-50best.webp" alt="50 Best Discovery — JoEs TaBLe">
     </div>
-    <h2 class="reveal" style="font-family:var(--display);font-size:clamp(36px,5vw,64px);font-weight:300;margin-bottom:12px;">The full event <em>experience</em></h2>
-    <p class="reveal" style="color:var(--text);max-width:520px;margin-bottom:56px;font-style:italic;">From first enquiry to the final course, every element is designed, sourced, and managed by JoEs TaBLe.</p>
-    <div class="exp-grid reveal">
-      <div class="exp-card">
-        <span class="exp-num">01</span>
-        <h3>Venue curation</h3>
-        <p>Hand-selected locations matched to your group, occasion, and desired atmosphere. Private residences, galleries, boutique hotels, and emblematic spaces.</p>
-      </div>
-      <div class="exp-card">
-        <span class="exp-num">02</span>
-        <h3>Culinary design</h3>
-        <p>A seasonal, multi-course tasting menu built around culinary history and Joe's personal journey through Michelin-starred kitchens. Each dish carries a story.</p>
-      </div>
-      <div class="exp-card">
-        <span class="exp-num">03</span>
-        <h3>Wine programme</h3>
-        <p>Hand-selected pairings from low-intervention producers. Four pairing tiers across Portugal, Spain, and France. Sourced in person by our sommelier.</p>
-      </div>
-      <div class="exp-card">
-        <span class="exp-num">04</span>
-        <h3>Team &amp; logistics</h3>
-        <p>A curated team of chefs, service staff, and logistics professionals assembled for each event. Full setup and breakdown managed by JoEs TaBLe.</p>
-      </div>
-      <div class="exp-card">
-        <span class="exp-num">05</span>
-        <h3>Corporate events</h3>
-        <p>Custom-designed events for company teams, client entertainment, and executive occasions. Groups from 6 to 50+. Tailored to your brief and guests.</p>
-      </div>
-      <div class="exp-card">
-        <span class="exp-num">06</span>
-        <h3>By reservation only</h3>
-        <p>All events by reservation. Private clients enquire via our form. Corporate clients contact us directly for a tailored event proposal.</p>
-      </div>
+    <div class="fifty-body">
+      <span class="eyebrow">Recognition</span>
+      <h2>50 Best<br><em>Discovery</em></h2>
+      <p>Recognised by the 50 Best Discovery programme — the global authority on culinary excellence. A distinction earned by fewer than a handful of private dining concepts worldwide.</p>
     </div>
   </div>
 </section>
 
-<!-- MENU PREVIEW -->
-<section class="menu-preview section">
-  <div class="section-inner">
-    <div class="rule-row reveal">
-      <span class="eyebrow">Spring 2026</span>
-      <span class="rule-line"></span>
-    </div>
-    <h2 class="reveal" style="font-family:var(--display);font-size:clamp(34px,5vw,58px);font-weight:300;margin-bottom:10px;">The <em>tasting menu</em></h2>
-    <p class="reveal" style="color:var(--text);max-width:520px;margin-bottom:44px;font-style:italic;">Six courses. Each a story from Joe's travels, personal history, and time in Michelin-starred kitchens.</p>
-    <div class="menu-courses reveal">
-      <div class="course-row"><div class="course-n"><span>01</span></div><div class="course-body"><span class="course-label">Amuse-bouche</span><div class="course-name">Tony B's first Oyster</div><div class="course-desc">Atlantic sea oyster · 12y aged cabernet sauvignon vinegar</div></div></div>
-      <div class="course-row"><div class="course-n"><span>02</span></div><div class="course-body"><span class="course-label">First course</span><div class="course-name">Object of beauty</div><div class="course-desc">Piquillo · bluefin tuna · anchoa 00 · crème</div></div></div>
-      <div class="course-row"><div class="course-n"><span>03</span></div><div class="course-body"><span class="course-label">Second course</span><div class="course-name">Truffled Vichyssoise 1920</div><div class="course-desc">Leek · potato · cream · black truffle — Louis Diat's Ritz-Carlton creation</div></div></div>
-      <div class="course-row"><div class="course-n"><span>04</span></div><div class="course-body"><span class="course-label">Third course</span><div class="course-name">Joe Dog's Mafia Meatballs</div><div class="course-desc">Veal · pork · tomato sugo — after Joe "Dogs" Iannuzzi, Gambino family cook and FBI informant</div></div></div>
-      <div class="course-row"><div class="course-n"><span>05</span></div><div class="course-body"><span class="course-label">Main course</span><div class="course-name">Bife à café "Marraré"</div><div class="course-desc">Portuguese beef · café sauce — the iconic dish of 1800s Lisbon</div></div></div>
-      <div class="course-row"><div class="course-n"><span>06</span></div><div class="course-body"><span class="course-label">Dessert</span><div class="course-name">Tarantino's Apfelstrudel</div><div class="course-desc">Apple · raisin · cinnamon · puff pastry — protagonist of the cult scene in Inglourious Basterds</div></div></div>
-    </div>
-    <div class="menu-bottom reveal">
-      <div class="menu-prices">
-        <div class="price-item"><span class="pl">Tasting menu</span><span class="pa">€120</span><span class="ps">per person</span></div>
-        <div class="price-item"><span class="pl">With house pairing</span><span class="pa">€144</span><span class="ps">per person · wine included</span></div>
-      </div>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <a href="menu.html" class="btn-gold">Full menu</a>
-        <a href="pairings.html" class="btn-outline">Wine pairings</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PAIRINGS -->
-<section class="pairings section">
-  <div class="section-inner">
-    <div class="rule-row reveal"><span class="eyebrow">Wine pairings</span><span class="rule-line"></span></div>
-    <h2 class="reveal" style="font-family:var(--display);font-size:clamp(32px,4.5vw,54px);font-weight:300;margin-bottom:6px;">Hand-selected <em>wines</em></h2>
-    <p class="reveal" style="color:var(--text);max-width:480px;font-style:italic;font-size:16px;">Handpicked in person by our sommelier from low-intervention producers.</p>
-    <div class="pairings-grid reveal">
-      <div class="pairing-card"><span class="pairing-flag">🍇</span><div class="pairing-name">Selection</div><span class="pairing-price">€48 <small style="font-size:10px;color:var(--text-mid);font-family:var(--mono);">pp</small></span><div class="pairing-desc">House pairing · sommelier's choice</div></div>
-      <div class="pairing-card"><span class="pairing-flag">🇵🇹</span><div class="pairing-name">Lusitano</div><span class="pairing-price">€70 <small style="font-size:10px;color:var(--text-mid);font-family:var(--mono);">pp</small></span><div class="pairing-desc">Portugal's finest natural producers</div></div>
-      <div class="pairing-card"><span class="pairing-flag">🇪🇸</span><div class="pairing-name">Iberico</div><span class="pairing-price">€80 <small style="font-size:10px;color:var(--text-mid);font-family:var(--mono);">pp</small></span><div class="pairing-desc">Spain's emblematic terroir, estate-bottled</div></div>
-      <div class="pairing-card"><span class="pairing-flag">🇫🇷</span><div class="pairing-name">Tricolore</div><span class="pairing-price">€95 <small style="font-size:10px;color:var(--text-mid);font-family:var(--mono);">pp</small></span><div class="pairing-desc">France's great appellations · grower champagnes</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- CORPORATE — primary driver -->
-<section class="corporate section">
-  <div class="section-inner">
-    <div class="corporate-grid">
-      <div class="corporate-text reveal">
-        <div class="rule-row">
-          <span class="eyebrow">Corporate &amp; private events</span>
-          <span class="rule-line"></span>
-        </div>
-        <h2>Designed for<br><em>your company</em></h2>
-        <p>We design and produce bespoke private culinary events for corporate teams, client entertainment, executive occasions, and private gatherings. Each event is built from scratch around your brief, your guests, and your goals.</p>
-        <p>We are not a venue or a catering company. We are an experience design and event management service — our network of co-op chefs, venue partners, and logistics operators deploy wherever you need us.</p>
-        <ul class="corp-list">
-          <li>Private events from 6 to 50+ guests</li>
-          <li>Custom tasting menu for your occasion</li>
-          <li>Curated venue selection and full setup</li>
-          <li>Wine and beverage programme for your group</li>
-          <li>Full event management from enquiry to close</li>
-          <li>Available across European locations and beyond</li>
-        </ul>
-        <img src="img/clients-logos.webp" alt="Corporate clients: Meta, Microsoft, JPMorgan, Rituals and more" style="width:100%;max-width:520px;height:auto;display:block;margin-bottom:28px;border-radius:2px;">
-        <a href="mailto:booking@josestable.com?subject=Corporate%20Event%20Enquiry" class="btn-gold">Send us your event brief</a>
-      </div>
-      <div class="corp-images reveal">
-        <!-- TO ADD images -->
-        <div class="img-slot" style="height:240px;"><img src="img/event-applause.webp" alt="JoEs TaBLe corporate event — guests applauding"></div>
-        <div class="img-slot" style="height:240px;"><img src="img/hero-chef-blowtorch.webp" alt="Chef at work — JoEs TaBLe culinary event"></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRESS -->
-<section class="press-section section">
-  <div class="section-inner">
-    <div class="rule-row reveal"><span class="eyebrow">In the press</span><span class="rule-line"></span></div>
-    <div class="press-card reveal">
-      <p class="press-excerpt">"What I learned is that it is not about the eating. It is all about the sharing. Joe's Table — finding Joe's pop-up spot in a dark alley, far from our hotel, heightened our sense of adventure."</p>
-      <div class="press-byline">
-        <span class="press-rule"></span>
-        <span class="press-source">Richard Reiss · The Berkshire Eagle · New England Newspapers Inc.</span>
-      </div>
-      <a href="https://www.berkshireeagle.com/opinion/columnists/richard-reiss-food-for-thought/article_72578b9c-53c1-11ed-8d63-cf52e38cefab.html" target="_blank" rel="noopener" class="press-link">Read the full article →</a>
-    </div>
-    <div class="reveal" style="margin-top:32px;text-align:center;">
-      <img src="img/press-logos.webp" alt="Featured in: Eatwith, Monocle, TimeOut, Condé Nast Traveler, Berkshire Eagle, TripAdvisor" style="max-width:720px;width:100%;height:auto;opacity:0.65;filter:grayscale(100%);">
-    </div>
-    <div style="display:none;visibility:hidden;
-    </div>
-  </div>
-</section>
-
-<!-- PHILOSOPHY -->
-<div class="philosophy reveal">
-  <div class="phil-div"></div>
-  <blockquote>"Food culture is one of the most important pillars of civilization. An extension of our nationalistic feeling, our ethnic feeling, our personal history, our province, our region, our tribe, our origins. Food is everything we are."</blockquote>
-  <cite>Anthony Bourdain</cite>
-  <div class="phil-div"></div>
-  <p class="phil-tag">eat &nbsp;·&nbsp; connect &nbsp;·&nbsp; experience &nbsp;·&nbsp; food culture</p>
+<!-- ── 6. CLIENT LOGOS ── -->
+<div class="clients reveal">
+  <span class="eyebrow">Trusted by</span>
+  <img class="clients-logos-img" src="img/clients-logos.webp" alt="Corporate clients: Meta, Microsoft, JPMorgan, Rituals, Autodesk, Virtuoso, Imagination, Anchorage Capital and more">
 </div>
+
+<!-- ── 7. GALLERY 3×2 ── -->
+<div class="gallery">
+  <div class="gslot"><img src="img/hero-event-table.webp" alt="JoEs TaBLe event"></div>
+  <div class="gslot"><img src="img/food-uni-caviar.webp" alt="Uni and caviar dish"></div>
+  <div class="gslot"><img src="img/event-applause.webp" alt="Guests at JoEs TaBLe event"></div>
+  <div class="gslot"><img src="img/food-burrata.webp" alt="Burrata dish"></div>
+  <div class="gslot"><img src="img/hero-chef-blowtorch.webp" alt="Chef at work"></div>
+  <div class="gslot"><img src="img/food-gnocchi.webp" alt="Gnocchi dish"></div>
+</div>
+
+<!-- ── 8. MENU TEASE ── -->
+<section class="menu-tease reveal">
+  <div class="menu-tease-inner">
+    <div class="mt-img">
+      <img src="img/menu-oyster.webp" alt="Tony B's first oyster — JoEs TaBLe tasting menu">
+    </div>
+    <div class="mt-body">
+      <div class="rule-row">
+        <span class="eyebrow">Spring 2026</span>
+        <span class="rule-line"></span>
+      </div>
+      <h2>A culinary<br><em>journey.</em><br>Six courses.</h2>
+      <p>Each dish a story from Joe's travels, personal history, and time in Michelin-starred kitchens. Seasonal. Honest. Unforgettable.</p>
+      <a href="menu.html" class="btn-gold" style="align-self:flex-start;">Explore the menu</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── 9. PRESS & PLATFORMS ── -->
+<div class="press reveal">
+  <span class="eyebrow">As featured in &amp; available on</span>
+  <img class="press-logos-img" src="img/press-logos.webp" alt="Eatwith · Monocle · Clandestino Kitchen · TimeOut · Condé Nast Traveler · Berkshire Eagle · TripAdvisor">
+</div>
+
+<!-- ── 10. PRODUCERS ── -->
+<div class="producers reveal">
+  <div class="producers-inner">
+    <span class="eyebrow">Our producers &amp; partners</span>
+    <p class="producers-sub">We source exclusively from craftsmen who share our philosophy</p>
+    <div class="producers-logos">
+      <img src="img/wine-lafleur.webp" alt="Lafleur — Pomerol" class="tall">
+      <img src="img/wine-raulperez.webp" alt="Raúl Pérez Bodegas y Viñedos" class="short">
+      <img src="img/wine-lopezheredia.webp" alt="R. López de Heredia">
+      <img src="img/supplier-schott.webp" alt="Schott Zwiesel">
+      <img src="img/supplier-origo.webp" alt="Origo">
+      <img src="img/supplier-suriol.webp" alt="Suriol">
+      <img src="img/supplier-casacerdanya.webp" alt="Casa Cerdanya — Carn ecològica">
+      <img src="img/food-oysters.webp" alt="Mare Ostrum Gourmet" style="border-radius:50%;object-position:center;">
+    </div>
+  </div>
+</div>
+
+<!-- ── 11. INSTAGRAM ── -->
+<div class="instagram reveal">
+  <h2>Follow the journey</h2>
+  <span class="insta-handle">@joses.table</span>
+  <a href="https://www.instagram.com/joses.table" class="insta-img-wrap" target="_blank" rel="noopener">
+    <img src="img/social-instagram.webp" alt="JoEs TaBLe on Instagram — @joses.table">
+  </a>
+  <a href="https://www.instagram.com/joses.table" class="btn-gold" target="_blank" rel="noopener" style="display:inline-flex;">Follow on Instagram</a>
+</div>
+
+<!-- ── 12. FINAL CTA ── -->
+<section class="final-cta reveal">
+  <h2>Reserve your<br><em>evening</em></h2>
+  <div class="final-cta-actions">
+    <a href="https://tally.so/r/pbP7Eb" class="btn-gold" target="_blank" rel="noopener">Book your spot</a>
+    <a href="mailto:booking@josestable.com?subject=Corporate%20Event%20Enquiry" class="btn-outline">Corporate enquiry</a>
+  </div>
+  <p class="final-cta-sub">Questions? <a href="mailto:support@josestable.com">support@josestable.com</a></p>
+</section>
 
 <!-- BOTTOM BAR -->
 <div class="bottom-bar">
@@ -492,7 +404,7 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:56px 40px 36p
     <div class="footer-col">
       <h4>Book an event</h4>
       <ul>
-        <li><a href="https://tally.so/r/pbP7Eb" target="_blank" rel="noopener">Reservation enquiry</a></li>
+        <li><a href="https://tally.so/r/pbP7Eb" target="_blank" rel="noopener">Book your spot</a></li>
         <li><a href="mailto:booking@josestable.com?subject=Corporate%20Event%20Enquiry">Corporate events</a></li>
         <li><a href="mailto:support@josestable.com">Contact &amp; support</a></li>
       </ul>
@@ -522,7 +434,7 @@ const hamburger=document.getElementById('hamburger');
 const navLinks=document.getElementById('navLinks');
 hamburger.addEventListener('click',()=>{const o=navLinks.classList.toggle('open');hamburger.setAttribute('aria-expanded',String(o));});
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
-const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+const io=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 </body>
