@@ -103,29 +103,6 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
   .ci-body{padding:24px 20px;}.pricing-block{padding:28px 18px;}
 }
 
-/* ── DISH LIGHTBOX ── */
-.dish-trigger {
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-}
-.dish-trigger:hover .ci-name {
-  color: var(--gold);
-}
-.dish-trigger .ci-peek {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--gold);
-  opacity: 0;
-  transition: opacity .25s;
-  margin-top: 8px;
-}
-.dish-trigger:hover .ci-peek { opacity: 1; }
 
 /* Lightbox overlay */
 #dish-lb {
@@ -217,30 +194,121 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
   #dish-lb-name { font-size: 18px; }
 }
 
-/* Course row — persistent dim background, lifts on hover */
-.dish-trigger {
+
+/* ── DISH LIGHTBOX ── */
+
+/* Course row background — always dim, lifts on hover */
+.ci {
   position: relative;
   overflow: hidden;
 }
-.dish-trigger::before {
-  content: '';
+.ci-img-bg {
   position: absolute;
   inset: 0;
-  background-image: var(--bg);
   background-size: cover;
   background-position: center;
   opacity: 0.1;
-  transition: opacity 0.6s ease;
-  z-index: 0;
+  transition: opacity 0.5s ease;
   pointer-events: none;
+  z-index: 0;
 }
-.dish-trigger:hover::before {
+.ci:hover .ci-img-bg {
   opacity: 0.32;
 }
-.dish-trigger .ci-n,
-.dish-trigger .ci-body {
+.ci-n, .ci-body {
   position: relative;
   z-index: 1;
+}
+
+/* Clickable cursor + peek hint */
+.dish-trigger {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.dish-trigger:hover .ci-name { color: var(--gold); }
+.dish-trigger .ci-peek {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0;
+  transition: opacity .25s;
+  margin-top: 8px;
+}
+.dish-trigger:hover .ci-peek { opacity: 1; }
+
+/* Lightbox overlay */
+#dish-lb {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgba(5,4,3,.92);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  cursor: pointer;
+}
+#dish-lb.open { display: flex; }
+#dish-lb-inner {
+  position: relative;
+  max-width: 680px;
+  width: 100%;
+  cursor: default;
+  animation: lbIn .3s cubic-bezier(.22,1,.36,1) forwards;
+}
+#dish-lb-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+  max-height: 75vh;
+  object-fit: cover;
+  object-position: center;
+}
+#dish-lb-caption { padding: 16px 0 0; }
+#dish-lb-name {
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--parchment);
+}
+#dish-lb-ingr {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--text-mid);
+  letter-spacing: .06em;
+  margin-top: 5px;
+}
+#dish-lb-close {
+  position: absolute;
+  top: -16px; right: -16px;
+  width: 36px; height: 36px;
+  background: var(--gold);
+  border: none; border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: var(--black);
+  font-family: var(--mono);
+  transition: background .2s;
+}
+#dish-lb-close:hover { background: var(--gold-light); }
+@keyframes lbIn {
+  from { opacity: 0; transform: scale(.94) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+@media(max-width:480px){
+  #dish-lb { padding: 16px; }
+  #dish-lb-close { top: -12px; right: -12px; }
+  #dish-lb-name { font-size: 18px; }
 }
 </style>
 </head>
@@ -267,7 +335,8 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
 <div class="section">
   <div class="rule-row reveal"><span class="eyebrow">Soirée d'ouverture</span><span class="rule-line"></span></div>
   <div class="courses-list reveal">
-    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-oyster.webp" data-name="Tony B's first Oyster" data-ingr="Atlantic sea oyster · 12y aged cabernet sauvignon vinegar" style="--bg:url('img/menu-oyster.webp');">
+    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-oyster.webp" data-name="Tony B's first Oyster" data-ingr="Atlantic sea oyster · 12y aged cabernet sauvignon vinegar">
+      <div class="ci-img-bg" style="background-image:url('img/menu-oyster.webp');"></div>
       <div class="ci-n"><span>01</span></div>
       <div class="ci-body">
         <span class="ci-label">Amuse-bouche · House Starter</span>
@@ -277,7 +346,8 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
           <span class="ci-peek">View dish ↗</span>
       </div>
     </div>
-    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-baccala.webp" data-name="Object of beauty" data-ingr="Piquillo · bluefin tuna · anchoa 00 · crème" style="--bg:url('img/menu-baccala.webp');">
+    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-baccala.webp" data-name="Object of beauty" data-ingr="Piquillo · bluefin tuna · anchoa 00 · crème">
+      <div class="ci-img-bg" style="background-image:url('img/menu-baccala.webp');"></div>
       <div class="ci-n"><span>02</span></div>
       <div class="ci-body">
         <span class="ci-label">First course</span>
@@ -287,7 +357,8 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
           <span class="ci-peek">View dish ↗</span>
       </div>
     </div>
-    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-vichyssoise.webp" data-name="Truffled Vichyssoise 1920" data-ingr="Leek · potato · cream · black truffle · chive" style="--bg:url('img/menu-vichyssoise.webp');">
+    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-vichyssoise.webp" data-name="Truffled Vichyssoise 1920" data-ingr="Leek · potato · cream · black truffle · chive">
+      <div class="ci-img-bg" style="background-image:url('img/menu-vichyssoise.webp');"></div>
       <div class="ci-n"><span>03</span></div>
       <div class="ci-body">
         <span class="ci-label">Second course</span>
@@ -297,7 +368,8 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
           <span class="ci-peek">View dish ↗</span>
       </div>
     </div>
-    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-meatballs.webp" data-name="Joe Dog's Mafia Meatballs" data-ingr="Veal · pork · tomato sugo · basil · parmigiano" style="--bg:url('img/menu-meatballs.webp');">
+    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-meatballs.webp" data-name="Joe Dog's Mafia Meatballs" data-ingr="Veal · pork · tomato sugo · basil · parmigiano">
+      <div class="ci-img-bg" style="background-image:url('img/menu-meatballs.webp');"></div>
       <div class="ci-n"><span>04</span></div>
       <div class="ci-body">
         <span class="ci-label">Third course</span>
@@ -307,7 +379,8 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
           <span class="ci-peek">View dish ↗</span>
       </div>
     </div>
-    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-bife.webp" data-name="Bife à café "Marraré"" data-ingr="Portuguese beef · café sauce · seasonal garnish" style="--bg:url('img/menu-bife.webp');">
+    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-bife.webp" data-name="Bife à café "Marraré"" data-ingr="Portuguese beef · café sauce · seasonal garnish">
+      <div class="ci-img-bg" style="background-image:url('img/menu-bife.webp');"></div>
       <div class="ci-n"><span>05</span></div>
       <div class="ci-body">
         <span class="ci-label">Main course</span>
@@ -317,7 +390,8 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:40px;display:
           <span class="ci-peek">View dish ↗</span>
       </div>
     </div>
-    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-strudel.webp" data-name="Tarantino's Apfelstrudel" data-ingr="Apple · raisin · cinnamon · puff pastry · vanilla cream" style="--bg:url('img/menu-strudel.webp');">
+    <div class="ci dish-trigger" role="button" tabindex="0" data-img="img/menu-strudel.webp" data-name="Tarantino's Apfelstrudel" data-ingr="Apple · raisin · cinnamon · puff pastry · vanilla cream">
+      <div class="ci-img-bg" style="background-image:url('img/menu-strudel.webp');"></div>
       <div class="ci-n"><span>06</span></div>
       <div class="ci-body">
         <span class="ci-label">Dessert</span>
