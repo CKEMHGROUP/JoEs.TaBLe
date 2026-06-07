@@ -3,216 +3,205 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>JoEs TaBLe — Private Culinary Events · Corporate &amp; Private Clients</title>
+<title>JoEs TaBLe — Private Culinary Events</title>
 <meta name="description" content="JoEs TaBLe designs and produces exclusive private culinary events for corporate and private clients. Curated locations. Vanguard cuisine. By reservation only.">
 <meta property="og:title" content="JoEs TaBLe — Private Culinary Events">
-<meta property="og:description" content="Exclusive private culinary events for corporate and private clients. Curated locations. Vanguard cuisine.">
+<meta property="og:description" content="Exclusive private culinary events. Curated locations. Vanguard cuisine.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://joestable.clandestino.kitchen">
+<meta property="og:image" content="img/hero-event-table.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Lora:ital,wght@0,400;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;1,9..144,200;1,9..144,300;1,9..144,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --black:#080706;--ink:#141210;--ink-mid:#1a1714;
-  --parchment:#f4ede0;--cream:#e8dece;
-  --gold:#c9a96e;--gold-light:#e2c48a;
-  --text:#b0a898;--text-mid:#7a7168;--text-faint:#4e4842;
-  --rule:rgba(201,169,110,.18);--rule-s:rgba(201,169,110,.4);
-  --display:'Fraunces',Georgia,serif;
-  --body:'Lora',Georgia,serif;
-  --mono:'DM Mono','Courier New',monospace;
+  --black:#080706;--ink:#0e0c0a;
+  --parchment:#f0e8d8;--cream:#d8cfc0;
+  --gold:#c9a96e;--gold-light:#dfc08a;--gold-dim:#8a6e3e;
+  --text:#9a9088;--text-mid:#6a6058;--text-faint:#3e3830;
+  --rule:rgba(201,169,110,.15);--rule-s:rgba(201,169,110,.35);
+  --d:'Fraunces',Georgia,serif;
+  --m:'DM Mono','Courier New',monospace;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
-body{background:var(--black);color:var(--parchment);font-family:var(--body);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body{background:var(--black);color:var(--parchment);font-family:var(--d);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:0 40px;height:64px;transition:background .4s,border-color .4s;border-bottom:1px solid transparent;}
-nav.scrolled{background:rgba(8,7,6,.96);border-bottom-color:var(--rule);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);}
-.nav-logo{font-family:var(--display);font-size:17px;font-weight:400;font-style:italic;letter-spacing:.04em;color:var(--parchment);text-decoration:none;flex-shrink:0;}
-.nav-links{display:flex;gap:32px;list-style:none;}
-.nav-links a{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;transition:color .25s;min-height:44px;display:flex;align-items:center;}
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;padding:0 48px;height:60px;transition:background .5s,border-color .5s;border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(8,7,6,.95);border-bottom-color:var(--rule);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);}
+.nav-logo{font-family:var(--d);font-size:15px;font-weight:300;font-style:italic;letter-spacing:.06em;color:var(--parchment);text-decoration:none;}
+.nav-links{display:flex;gap:36px;list-style:none;}
+.nav-links a{font-family:var(--m);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;transition:color .3s;min-height:44px;display:flex;align-items:center;}
 .nav-links a:hover,.nav-links a.active{color:var(--gold);}
-.nav-cta{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0 22px;text-decoration:none;transition:background .25s;min-height:44px;display:flex;align-items:center;flex-shrink:0;}
-.nav-cta:hover{background:var(--gold-light);}
-.hamburger{display:none;flex-direction:column;justify-content:center;gap:6px;background:none;border:none;cursor:pointer;padding:10px;min-width:44px;min-height:44px;}
-.hamburger span{display:block;width:22px;height:1px;background:var(--parchment);transition:all .3s;}
+.nav-book{font-family:var(--m);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0 24px;text-decoration:none;min-height:44px;display:flex;align-items:center;transition:background .25s;}
+.nav-book:hover{background:var(--gold-light);}
+.hamburger{display:none;flex-direction:column;gap:6px;background:none;border:none;cursor:pointer;padding:10px;min-width:44px;min-height:44px;justify-content:center;}
+.hamburger span{display:block;width:20px;height:1px;background:var(--parchment);}
 
-/* ── 1. HERO ── */
-.hero{min-height:100svh;min-height:-webkit-fill-available;display:flex;flex-direction:column;justify-content:flex-end;padding:80px 40px max(env(safe-area-inset-bottom,0px),32px);position:relative;overflow:hidden;}
-.hero-img{position:absolute;inset:0;}
-.hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;}
-.hero-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(8,7,6,.08) 0%,rgba(8,7,6,.45) 45%,rgba(8,7,6,.97) 100%);z-index:1;}
-.hero-grain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
-.hero-ig{position:absolute;top:80px;right:40px;z-index:3;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);text-decoration:none;transition:opacity .25s;opacity:.8;}
-.hero-ig:hover{opacity:1;}
-.hero-content{position:relative;z-index:3;}
-.hero-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:16px;opacity:0;animation:fadeUp 1s .3s forwards;}
-.hero-title{font-family:var(--display);font-size:clamp(60px,12vw,148px);font-weight:300;line-height:.88;letter-spacing:-.025em;margin-bottom:32px;opacity:0;animation:fadeUp 1s .5s forwards;}
+/* ━━━━━━━━━━━━━━━ 1. HERO ━━━━━━━━━━━━━━━ */
+.hero{height:100svh;height:100vh;min-height:600px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 25%;}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,7,6,0) 20%,rgba(8,7,6,.5) 55%,rgba(8,7,6,.98) 100%);}
+.hero-ig{position:absolute;top:76px;right:48px;z-index:2;font-family:var(--m);font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(201,169,110,.7);text-decoration:none;transition:color .3s;}
+.hero-ig:hover{color:var(--gold);}
+.hero-body{position:relative;z-index:2;padding:0 48px 56px;}
+.hero-scarcity{font-family:var(--m);font-size:9px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px;margin-bottom:20px;opacity:0;animation:rise 1s .2s forwards;}
+.hero-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+.hero-title{font-family:var(--d);font-size:clamp(72px,13vw,172px);font-weight:200;line-height:.88;letter-spacing:-.03em;opacity:0;animation:rise 1.1s .35s forwards;}
 .hero-title em{font-style:italic;color:var(--gold);}
-.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;opacity:0;animation:fadeUp 1s .7s forwards;}
-.btn-gold{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0 32px;text-decoration:none;display:inline-flex;align-items:center;min-height:50px;transition:background .25s;flex-shrink:0;}
-.btn-gold:hover{background:var(--gold-light);}
-.btn-outline{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--parchment);border:1px solid rgba(244,237,224,.22);padding:0 32px;text-decoration:none;display:inline-flex;align-items:center;min-height:50px;transition:border-color .25s,color .25s;}
-.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.hero-cta{display:inline-flex;align-items:center;margin-top:32px;font-family:var(--m);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0 32px;min-height:48px;text-decoration:none;transition:background .25s;opacity:0;animation:rise 1s .55s forwards;}
+.hero-cta:hover{background:var(--gold-light);}
+@keyframes rise{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
-/* ── 2. SCARCITY STRIP ── */
-.scarcity-strip{background:var(--ink);border-top:1px solid var(--rule-s);border-bottom:1px solid var(--rule-s);padding:14px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
-.scarcity-strip .sc-left{display:flex;align-items:center;gap:10px;}
-.sc-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 1.8s ease-in-out infinite;flex-shrink:0;}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.3;transform:scale(.7);}}
-.sc-text{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
-.sc-right{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-faint);}
+/* ━━━━━━━━━━━━━━━ 2. IDENTITY ━━━━━━━━━━━━━━━ */
+.identity{background:var(--ink);padding:80px 48px;text-align:center;border-bottom:1px solid var(--rule);}
+.identity img{max-width:660px;width:92%;height:auto;display:block;margin:0 auto 18px;}
+.identity-line{font-family:var(--m);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--text-faint);}
 
-/* ── 3. MARQUEE ── */
-.marquee-wrap{overflow:hidden;border-bottom:1px solid var(--rule);padding:13px 0;background:var(--black);}
-.marquee-track{display:flex;white-space:nowrap;animation:marquee 40s linear infinite;}
-.marquee-item{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-faint);padding:0 28px;flex-shrink:0;}
-.marquee-item.dot{color:var(--gold);padding:0 6px;}
-@media(prefers-reduced-motion:reduce){.marquee-track{animation:none;}.marquee-item:nth-child(n+17){display:none;}}
+/* ━━━━━━━━━━━━━━━ 3. 50 BEST — full bleed ━━━━━━━━━━━━━━━ */
+.fifty{height:90vh;min-height:520px;position:relative;overflow:hidden;display:flex;align-items:center;}
+.fifty-img{position:absolute;inset:0;}
+.fifty-img img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.fifty-veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,7,6,.92) 0%,rgba(8,7,6,.6) 55%,rgba(8,7,6,.1) 100%);}
+.fifty-body{position:relative;z-index:1;padding:0 80px;max-width:600px;}
+.fifty-badge{font-family:var(--m);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:20px;}
+.fifty-title{font-family:var(--d);font-size:clamp(56px,9vw,116px);font-weight:200;line-height:.88;letter-spacing:-.02em;margin-bottom:24px;}
+.fifty-title em{font-style:italic;color:var(--gold);}
+.fifty-text{font-family:var(--m);font-size:11px;letter-spacing:.05em;color:var(--text);line-height:1.8;max-width:340px;}
 
-/* ── 4. IDENTITY ANCHOR ── */
-.identity{background:var(--ink);padding:64px 40px;text-align:center;border-bottom:1px solid var(--rule);}
-.identity img{max-width:720px;width:100%;height:auto;display:block;margin:0 auto 20px;}
-.identity-sub{font-family:var(--mono);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--text-faint);}
+/* ━━━━━━━━━━━━━━━ 4. CLIENTS ━━━━━━━━━━━━━━━ */
+.clients{background:var(--black);padding:72px 48px;text-align:center;border-bottom:1px solid var(--rule);}
+.section-eyebrow{font-family:var(--m);font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:40px;}
+.clients-img{max-width:920px;width:100%;height:auto;display:block;margin:0 auto;}
 
-/* ── 5. 50 BEST ── */
-.fifty{background:var(--black);border-bottom:1px solid var(--rule);}
-.fifty-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:420px 1fr;min-height:520px;}
-.fifty-img{position:relative;overflow:hidden;}
-.fifty-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;}
-.fifty-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,var(--black) 100%);}
-.fifty-body{padding:64px 56px;display:flex;flex-direction:column;justify-content:center;}
-.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:20px;}
-.fifty-body h2{font-family:var(--display);font-size:clamp(52px,7vw,88px);font-weight:300;line-height:.9;letter-spacing:-.02em;margin-bottom:24px;}
-.fifty-body h2 em{font-style:italic;color:var(--gold);}
-.fifty-body p{color:var(--text);line-height:1.75;font-size:16px;max-width:380px;}
-
-/* ── 6. CLIENT LOGOS ── */
-.clients{background:var(--ink);padding:52px 40px;border-bottom:1px solid var(--rule);text-align:center;}
-.clients .eyebrow{margin-bottom:32px;display:block;}
-.clients-logos-img{max-width:860px;width:100%;height:auto;display:block;margin:0 auto;}
-
-/* ── 7. GALLERY 3×2 ── */
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,260px);gap:3px;}
+/* ━━━━━━━━━━━━━━━ 5. GALLERY ━━━━━━━━━━━━━━━ */
+.gallery{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:320px 280px;gap:3px;background:var(--rule);}
 .gslot{position:relative;overflow:hidden;background:var(--ink);}
-.gslot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .8s ease;}
-.gslot:hover img{transform:scale(1.04);}
+.gslot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .9s cubic-bezier(.25,.46,.45,.94);}
+.gslot:hover img{transform:scale(1.06);}
+.gslot.span-col{grid-column:1/2;grid-row:1/3;}
+.gslot.tall{grid-row:1/3;}
 
-/* ── 8. MENU TEASE ── */
-.menu-tease{background:var(--black);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
-.menu-tease-inner{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;min-height:420px;}
-.mt-img{position:relative;overflow:hidden;}
-.mt-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;}
-.mt-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,transparent 50%,var(--black) 100%);}
-.mt-body{padding:60px 56px;display:flex;flex-direction:column;justify-content:center;}
-.mt-body h2{font-family:var(--display);font-size:clamp(36px,4.5vw,58px);font-weight:300;line-height:1.0;margin-bottom:16px;}
-.mt-body h2 em{font-style:italic;color:var(--gold);}
-.mt-body p{color:var(--text);line-height:1.7;font-size:16px;font-style:italic;margin-bottom:32px;}
-.rule-line{flex:1;height:1px;background:var(--rule);}
-.rule-row{display:flex;align-items:center;gap:18px;margin-bottom:40px;}
+/* ━━━━━━━━━━━━━━━ 6. MARQUEE ━━━━━━━━━━━━━━━ */
+.marquee-wrap{overflow:hidden;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:16px 0;background:var(--ink);}
+.marquee-track{display:flex;white-space:nowrap;animation:ticker 45s linear infinite;}
+.mi{font-family:var(--m);font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--text-faint);padding:0 32px;flex-shrink:0;}
+.mi.dot{color:var(--gold);padding:0 8px;}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+@media(prefers-reduced-motion:reduce){.marquee-track{animation:none;}.mi:nth-child(n+17){display:none;}}
 
-/* ── 9. PRESS & PLATFORMS ── */
-.press{background:var(--ink);padding:48px 40px;border-bottom:1px solid var(--rule);text-align:center;}
-.press .eyebrow{margin-bottom:28px;display:block;}
-.press-logos-img{max-width:800px;width:100%;height:auto;display:block;margin:0 auto;opacity:.85;}
+/* ━━━━━━━━━━━━━━━ 7. MENU TEASE ━━━━━━━━━━━━━━━ */
+.menu-tease{display:grid;grid-template-columns:1fr 1fr;min-height:600px;border-top:1px solid var(--rule);}
+.mt-left{position:relative;overflow:hidden;}
+.mt-left img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;}
+.mt-right{background:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:80px 72px;}
+.mt-season{font-family:var(--m);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:32px;}
+.mt-title{font-family:var(--d);font-size:clamp(44px,6vw,78px);font-weight:200;line-height:.92;letter-spacing:-.02em;margin-bottom:28px;}
+.mt-title em{font-style:italic;color:var(--gold);}
+.mt-desc{font-family:var(--m);font-size:11px;letter-spacing:.05em;color:var(--text);line-height:1.8;margin-bottom:44px;max-width:320px;}
+.mt-link{font-family:var(--m);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0 28px;min-height:46px;display:inline-flex;align-items:center;text-decoration:none;transition:background .25s;align-self:flex-start;}
+.mt-link:hover{background:var(--gold-light);}
 
-/* ── 10. PRODUCERS ── */
-.producers{background:var(--black);padding:56px 40px;border-bottom:1px solid var(--rule);}
-.producers-inner{max-width:960px;margin:0 auto;text-align:center;}
-.producers .eyebrow{margin-bottom:8px;display:block;}
-.producers-sub{font-family:var(--body);font-style:italic;font-size:16px;color:var(--text-mid);margin-bottom:40px;}
-.producers-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:36px 52px;}
-.producers-logos img{height:48px;width:auto;object-fit:contain;filter:grayscale(100%);opacity:.45;transition:opacity .4s,filter .4s;}
-.producers-logos img:hover{opacity:1;filter:grayscale(0%);}
-.producers-logos img.tall{height:52px;}
-.producers-logos img.short{height:36px;}
+/* ━━━━━━━━━━━━━━━ 8. PRESS ━━━━━━━━━━━━━━━ */
+.press{background:var(--black);padding:72px 48px;text-align:center;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+.press-logos-wrap{max-width:820px;margin:0 auto;}
+.press-logos-img{width:100%;height:auto;display:block;}
 
-/* ── 11. INSTAGRAM ── */
-.instagram{background:var(--ink);padding:64px 40px;border-bottom:1px solid var(--rule);text-align:center;}
-.instagram h2{font-family:var(--display);font-size:clamp(32px,4vw,52px);font-weight:300;font-style:italic;margin-bottom:8px;}
-.instagram .insta-handle{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:36px;}
-.insta-img-wrap{display:block;max-width:960px;margin:0 auto 32px;transition:opacity .3s;}
-.insta-img-wrap:hover{opacity:.88;}
-.insta-img-wrap img{width:100%;height:auto;display:block;border-radius:2px;}
+/* ━━━━━━━━━━━━━━━ 9. PRODUCERS ━━━━━━━━━━━━━━━ */
+.producers{background:var(--ink);padding:80px 48px;border-bottom:1px solid var(--rule);}
+.producers-inner{max-width:1000px;margin:0 auto;text-align:center;}
+.producers-sub{font-family:var(--d);font-style:italic;font-weight:200;font-size:clamp(18px,2vw,24px);color:var(--text);margin-bottom:52px;line-height:1.5;}
+.prod-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:44px 60px;}
+.prod-logos img{object-fit:contain;filter:grayscale(100%);opacity:.38;transition:opacity .5s,filter .5s;}
+.prod-logos img:hover{opacity:1;filter:grayscale(0%);}
 
-/* ── 12. FINAL CTA ── */
-.final-cta{background:var(--black);padding:100px 40px;text-align:center;}
-.final-cta h2{font-family:var(--display);font-size:clamp(44px,7vw,96px);font-weight:300;line-height:.9;letter-spacing:-.02em;margin-bottom:36px;}
-.final-cta h2 em{font-style:italic;color:var(--gold);}
-.final-cta-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-bottom:20px;}
-.final-cta-sub{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-faint);}
-.final-cta-sub a{color:var(--text-faint);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;transition:color .25s,border-color .25s;}
-.final-cta-sub a:hover{color:var(--gold);border-color:var(--gold);}
+/* ━━━━━━━━━━━━━━━ 10. INSTAGRAM — real grid ━━━━━━━━━━━━━━━ */
+.insta-section{background:var(--black);padding:80px 48px 0;border-top:1px solid var(--rule);}
+.insta-header{text-align:center;margin-bottom:48px;}
+.insta-title{font-family:var(--d);font-size:clamp(40px,6vw,80px);font-weight:200;font-style:italic;line-height:.92;margin-bottom:10px;}
+.insta-handle{font-family:var(--m);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);}
+.insta-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;}
+.insta-slot{aspect-ratio:1;position:relative;overflow:hidden;background:var(--ink);display:block;}
+.insta-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .8s ease;}
+.insta-slot:hover img{transform:scale(1.08);}
+.insta-follow{display:block;text-align:center;padding:36px;border-top:1px solid var(--rule);}
+.insta-follow a{font-family:var(--m);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--text-mid);text-decoration:none;border-bottom:1px solid var(--rule-s);padding-bottom:2px;transition:color .25s,border-color .25s;}
+.insta-follow a:hover{color:var(--gold);border-color:var(--gold);}
 
-/* ── BOTTOM BAR + FOOTER ── */
-.bottom-bar{background:var(--ink-mid);border-top:1px solid var(--rule);padding:13px 40px;text-align:center;}
-.bottom-bar p{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-mid);}
-.bottom-bar a{color:inherit;text-decoration:none;}
-footer{background:#050403;border-top:1px solid var(--rule);padding:52px 40px 36px;}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid var(--rule);margin-bottom:28px;}
-.fbrand{font-family:var(--display);font-size:20px;font-style:italic;font-weight:400;margin-bottom:12px;display:block;}
-.fdesc{font-family:var(--mono);font-size:10px;letter-spacing:.07em;color:var(--text-mid);line-height:1.9;}
-.footer-col h4{font-family:var(--mono);font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
-.footer-col ul{list-style:none;}
-.footer-col li{margin-bottom:8px;}
-.footer-col a{font-family:var(--mono);font-size:11px;color:var(--text-mid);text-decoration:none;letter-spacing:.06em;min-height:44px;display:inline-flex;align-items:center;transition:color .25s;}
-.footer-col a:hover{color:var(--gold);}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
-.footer-copy{font-family:var(--mono);font-size:10px;color:var(--text-faint);letter-spacing:.07em;line-height:1.7;}
-.footer-copy a{color:var(--text-faint);text-decoration:none;}.footer-copy a:hover{color:var(--gold);}
-.fsocial{display:flex;gap:22px;}
-.fsocial a{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);text-decoration:none;min-height:44px;display:inline-flex;align-items:center;transition:color .25s;}
-.fsocial a:hover{color:var(--gold);}
+/* ━━━━━━━━━━━━━━━ 11. FINAL CTA ━━━━━━━━━━━━━━━ */
+.final{background:var(--ink);padding:120px 48px;text-align:center;border-top:1px solid var(--rule);}
+.final-title{font-family:var(--d);font-size:clamp(52px,10vw,128px);font-weight:200;line-height:.88;letter-spacing:-.025em;margin-bottom:48px;}
+.final-title em{font-style:italic;color:var(--gold);}
+.final-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:20px;}
+.btn-g{font-family:var(--m);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--black);background:var(--gold);padding:0 36px;min-height:50px;text-decoration:none;display:inline-flex;align-items:center;transition:background .25s;}
+.btn-g:hover{background:var(--gold-light);}
+.btn-o{font-family:var(--m);font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--parchment);border:1px solid rgba(240,232,216,.18);padding:0 36px;min-height:50px;text-decoration:none;display:inline-flex;align-items:center;transition:border-color .25s,color .25s;}
+.btn-o:hover{border-color:var(--gold);color:var(--gold);}
+.final-email{font-family:var(--m);font-size:9px;letter-spacing:.14em;color:var(--text-faint);}
+.final-email a{color:var(--text-faint);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:1px;}
+.final-email a:hover{color:var(--gold);}
 
-/* ANIMATIONS */
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-.reveal{opacity:0;transform:translateY(20px);transition:opacity .75s ease,transform .75s ease;}
+/* ━━━━━━━━━━━━━━━ FOOTER ━━━━━━━━━━━━━━━ */
+.bottom-bar{background:var(--black);border-top:1px solid var(--rule);padding:14px 48px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.bottom-bar span,.bottom-bar a{font-family:var(--m);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-faint);text-decoration:none;}
+.bottom-bar a:hover{color:var(--gold);}
+footer{background:#040302;border-top:1px solid var(--rule);padding:52px 48px 36px;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;}
+.f-brand{font-family:var(--d);font-size:17px;font-style:italic;font-weight:300;display:block;margin-bottom:12px;}
+.f-desc{font-family:var(--m);font-size:9px;letter-spacing:.07em;color:var(--text-mid);line-height:2;}
+.f-col h4{font-family:var(--m);font-size:8px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+.f-col ul{list-style:none;}
+.f-col li{margin-bottom:10px;}
+.f-col a{font-family:var(--m);font-size:10px;color:var(--text-mid);text-decoration:none;letter-spacing:.06em;min-height:44px;display:inline-flex;align-items:center;transition:color .25s;}
+.f-col a:hover{color:var(--gold);}
+.f-bottom{background:#040302;padding:20px 48px;border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
+.f-copy{font-family:var(--m);font-size:9px;color:var(--text-faint);letter-spacing:.07em;}
+.f-copy a{color:var(--text-faint);text-decoration:none;}.f-copy a:hover{color:var(--gold);}
+.f-soc{display:flex;gap:24px;}
+.f-soc a{font-family:var(--m);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-faint);text-decoration:none;min-height:44px;display:inline-flex;align-items:center;transition:color .25s;}
+.f-soc a:hover{color:var(--gold);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .85s ease,transform .85s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}*{animation-duration:.01ms!important;}}
 
 /* MOBILE */
 @media(max-width:900px){
   nav{padding:0 20px;}
-  .nav-links,.nav-cta{display:none;}
+  .nav-links,.nav-book{display:none;}
   .hamburger{display:flex;}
-  .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:var(--black);justify-content:center;align-items:center;gap:28px;z-index:199;}
-  .nav-links.open a{font-size:13px;letter-spacing:.2em;}
-  .hero{padding:80px 20px 48px;}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;inset:0;background:var(--black);justify-content:center;align-items:center;gap:32px;z-index:299;}
+  .nav-links.open a{font-size:12px;letter-spacing:.22em;}
+  .hero-body{padding:0 20px 44px;}
   .hero-ig{right:20px;}
-  .scarcity-strip{padding:12px 20px;}
-  .identity{padding:48px 20px;}
-  .fifty-inner{grid-template-columns:1fr;}
-  .fifty-img{height:320px;position:relative;}
-  .fifty-img::after{background:linear-gradient(to bottom,transparent 50%,var(--black) 100%);}
-  .fifty-body{padding:40px 20px;}
-  .clients{padding:40px 20px;}
-  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,180px);}
-  .menu-tease-inner{grid-template-columns:1fr;}
-  .mt-img{height:280px;position:relative;}
-  .mt-img::after{background:linear-gradient(to bottom,transparent 40%,var(--black) 100%);}
-  .mt-body{padding:36px 20px;}
-  .press{padding:40px 20px;}
-  .producers{padding:44px 20px;}
-  .producers-logos{gap:24px 36px;}
-  .producers-logos img{height:36px;}
-  .instagram{padding:48px 20px;}
-  .final-cta{padding:72px 20px;}
-  .final-cta-actions{flex-direction:column;align-items:center;}
-  .bottom-bar{padding:13px 20px;}
-  footer{padding:44px 20px 32px;}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:28px;}
-  .footer-bottom{flex-direction:column;align-items:flex-start;}
+  .identity{padding:56px 20px;}
+  .fifty-body{padding:0 28px;max-width:100%;}
+  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px 200px;}
+  .gslot.span-col{grid-column:auto;grid-row:auto;}
+  .menu-tease{grid-template-columns:1fr;min-height:auto;}
+  .mt-left{height:280px;position:relative;}
+  .mt-right{padding:48px 28px;}
+  .clients{padding:52px 20px;}
+  .press{padding:52px 20px;}
+  .producers{padding:56px 20px;}
+  .prod-logos{gap:28px 36px;}
+  .insta-section{padding:64px 20px 0;}
+  .insta-grid{grid-template-columns:repeat(2,1fr);}
+  .final{padding:80px 20px;}
+  .bottom-bar{padding:14px 20px;}
+  footer{padding:44px 20px 28px;grid-template-columns:1fr 1fr;gap:28px;}
+  .f-bottom{padding:16px 20px;flex-direction:column;align-items:flex-start;}
 }
 @media(max-width:480px){
-  .hero-title{font-size:clamp(52px,15vw,72px);}
-  .hero-actions{flex-direction:column;align-items:flex-start;}
-  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,140px);}
-  .footer-grid{grid-template-columns:1fr;}
-  .fsocial{flex-wrap:wrap;gap:14px;}
-  .scarcity-strip{flex-direction:column;align-items:flex-start;gap:6px;}
+  .hero-title{font-size:clamp(64px,18vw,86px);}
+  .final-title{font-size:clamp(48px,14vw,72px);}
+  .final-actions{flex-direction:column;align-items:center;}
+  .gallery{grid-template-columns:1fr 1fr;grid-template-rows:150px 150px 150px;}
+  .insta-grid{grid-template-columns:repeat(2,1fr);}
+  footer{grid-template-columns:1fr;}
+  .f-soc{flex-wrap:wrap;}
 }
 </style>
 </head>
@@ -227,214 +216,225 @@ footer{background:#050403;border-top:1px solid var(--rule);padding:52px 40px 36p
     <li><a href="about.html">About</a></li>
     <li><a href="pairings.html">Pairings</a></li>
   </ul>
-  <a href="https://tally.so/r/pbP7Eb" class="nav-cta" target="_blank" rel="noopener">Book your spot</a>
+  <a href="https://tally.so/r/pbP7Eb" class="nav-book" target="_blank" rel="noopener">Book your spot</a>
   <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- ── 1. HERO ── -->
+<!-- ━━━━━━━━━━━━━━━ 1. HERO ━━━━━━━━━━━━━━━ -->
 <section class="hero">
-  <div class="hero-img">
-    <img src="img/hero-event-table.webp" alt="JoEs TaBLe private culinary event — guests at the table">
+  <div class="hero-bg">
+    <img src="img/hero-event-table.webp" alt="JoEs TaBLe — private culinary event">
   </div>
-  <div class="hero-bg"></div>
-  <div class="hero-grain"></div>
+  <div class="hero-veil"></div>
   <a href="https://www.instagram.com/joses.table" class="hero-ig" target="_blank" rel="noopener">@joses.table</a>
-  <div class="hero-content">
-    <span class="hero-eyebrow">Private culinary events · By reservation only</span>
+  <div class="hero-body">
+    <p class="hero-scarcity">
+      <span class="hero-dot"></span>
+      June &nbsp;·&nbsp; Events filling fast &nbsp;·&nbsp; Book your spot before it goes
+    </p>
     <h1 class="hero-title">Social<br><em>Fine Dining</em></h1>
-    <div class="hero-actions">
-      <a href="https://tally.so/r/pbP7Eb" class="btn-gold" target="_blank" rel="noopener">Book your spot</a>
-      <a href="menu.html" class="btn-outline">Explore the menu</a>
-    </div>
+    <a href="https://tally.so/r/pbP7Eb" class="hero-cta" target="_blank" rel="noopener">Book your spot</a>
   </div>
 </section>
 
-<!-- ── 2. SCARCITY STRIP ── -->
-<div class="scarcity-strip">
-  <div class="sc-left">
-    <span class="sc-dot"></span>
-    <span class="sc-text">June · Events filling fast · No waiting list for short-term reservations</span>
-  </div>
-  <span class="sc-right">Spots sell out within 48 hours of announcement</span>
-</div>
-
-<!-- ── 3. MARQUEE ── -->
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <span class="marquee-item">Private Culinary Events</span><span class="marquee-item dot">·</span>
-    <span class="marquee-item">Corporate &amp; Private Clients</span><span class="marquee-item dot">·</span>
-    <span class="marquee-item">Curated Locations</span><span class="marquee-item dot">·</span>
-    <span class="marquee-item">Seasonal Tasting Menu</span><span class="marquee-item dot">·</span>
-    <span class="marquee-item">Hand-Selected Wines</span><span class="marquee-item dot">·</span>
-    <span class="marquee-item">By Reservation Only</span><span class="marquee-item dot">·</span>
-    <span class="marquee-item">Farm to Table</span><span class="marquee-item dot">·</span>
-    <span class="marquee-item">50 Best Discovery</span><span class="marquee-item dot">·</span>
-    <span class="marquee-item">Private Culinary Events</span><span class="marquee-item dot">·</span>
-    <span class="marquee-item">Corporate &amp; Private Clients</span><span class="marquee-item dot">·</span>
-    <span class="marquee-item">Curated Locations</span><span class="marquee-item dot">·</span>
-    <span class="marquee-item">Seasonal Tasting Menu</span><span class="marquee-item dot">·</span>
-    <span class="marquee-item">Hand-Selected Wines</span><span class="marquee-item dot">·</span>
-    <span class="marquee-item">By Reservation Only</span><span class="marquee-item dot">·</span>
-    <span class="marquee-item">Farm to Table</span><span class="marquee-item dot">·</span>
-    <span class="marquee-item">50 Best Discovery</span><span class="marquee-item dot">·</span>
-  </div>
-</div>
-
-<!-- ── 4. IDENTITY ANCHOR ── -->
+<!-- ━━━━━━━━━━━━━━━ 2. IDENTITY ━━━━━━━━━━━━━━━ -->
 <div class="identity reveal">
   <img src="img/concept-logo.webp" alt="JoEs TaBLe · Conceptional Fine Dining · Food Culture">
-  <p class="identity-sub">One table &nbsp;·&nbsp; Emblematic location &nbsp;·&nbsp; Vanguard cuisine</p>
+  <p class="identity-line">One table &nbsp;·&nbsp; Emblematic location &nbsp;·&nbsp; Vanguard cuisine</p>
 </div>
 
-<!-- ── 5. 50 BEST DISCOVERY ── -->
+<!-- ━━━━━━━━━━━━━━━ 3. 50 BEST ━━━━━━━━━━━━━━━ -->
 <section class="fifty reveal">
-  <div class="fifty-inner">
-    <div class="fifty-img">
-      <img src="img/cred-50best.webp" alt="50 Best Discovery — JoEs TaBLe">
-    </div>
-    <div class="fifty-body">
-      <span class="eyebrow">Recognition</span>
-      <h2>50 Best<br><em>Discovery</em></h2>
-      <p>Recognised by the 50 Best Discovery programme — the global authority on culinary excellence. A distinction earned by fewer than a handful of private dining concepts worldwide.</p>
-    </div>
+  <div class="fifty-img">
+    <img src="img/cred-50best.webp" alt="50 Best Discovery — JoEs TaBLe">
+  </div>
+  <div class="fifty-veil"></div>
+  <div class="fifty-body">
+    <span class="fifty-badge">Recognition</span>
+    <h2 class="fifty-title">50 Best<br><em>Discovery</em></h2>
+    <p class="fifty-text">Recognised by the 50 Best Discovery programme — the global authority on culinary excellence.</p>
   </div>
 </section>
 
-<!-- ── 6. CLIENT LOGOS ── -->
+<!-- ━━━━━━━━━━━━━━━ 4. CLIENT LOGOS ━━━━━━━━━━━━━━━ -->
 <div class="clients reveal">
-  <span class="eyebrow">Trusted by</span>
-  <img class="clients-logos-img" src="img/clients-logos.webp" alt="Corporate clients: Meta, Microsoft, JPMorgan, Rituals, Autodesk, Virtuoso, Imagination, Anchorage Capital and more">
+  <span class="section-eyebrow">Trusted by</span>
+  <img class="clients-img" src="img/clients-logos.webp" alt="Meta · Microsoft · JPMorgan · Rituals · Autodesk · Virtuoso · Imagination · Anchorage Capital">
 </div>
 
-<!-- ── 7. GALLERY 3×2 ── -->
+<!-- ━━━━━━━━━━━━━━━ 5. GALLERY ━━━━━━━━━━━━━━━ -->
 <div class="gallery">
-  <div class="gslot"><img src="img/hero-event-table.webp" alt="JoEs TaBLe event"></div>
-  <div class="gslot"><img src="img/food-uni-caviar.webp" alt="Uni and caviar dish"></div>
-  <div class="gslot"><img src="img/event-applause.webp" alt="Guests at JoEs TaBLe event"></div>
-  <div class="gslot"><img src="img/food-burrata.webp" alt="Burrata dish"></div>
-  <div class="gslot"><img src="img/hero-chef-blowtorch.webp" alt="Chef at work"></div>
-  <div class="gslot"><img src="img/food-gnocchi.webp" alt="Gnocchi dish"></div>
+  <div class="gslot span-col">
+    <img src="img/event-applause.webp" alt="JoEs TaBLe event — guests">
+  </div>
+  <div class="gslot">
+    <img src="img/food-uni-caviar.webp" alt="Uni and caviar dish">
+  </div>
+  <div class="gslot">
+    <img src="img/hero-chef-blowtorch.webp" alt="Chef at work">
+  </div>
+  <div class="gslot">
+    <img src="img/menu-oyster.webp" alt="Tony B's oyster">
+  </div>
+  <div class="gslot">
+    <img src="img/menu-strudel.webp" alt="Tarantino's Apfelstrudel">
+  </div>
+  <div class="gslot">
+    <img src="img/menu-bife.webp" alt="Bife à café Marraré">
+  </div>
 </div>
 
-<!-- ── 8. MENU TEASE ── -->
+<!-- ━━━━━━━━━━━━━━━ MARQUEE ━━━━━━━━━━━━━━━ -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="mi">Private Culinary Events</span><span class="mi dot">·</span>
+    <span class="mi">Corporate &amp; Private Clients</span><span class="mi dot">·</span>
+    <span class="mi">Curated Locations</span><span class="mi dot">·</span>
+    <span class="mi">50 Best Discovery</span><span class="mi dot">·</span>
+    <span class="mi">Seasonal Tasting Menu</span><span class="mi dot">·</span>
+    <span class="mi">Hand-Selected Wines</span><span class="mi dot">·</span>
+    <span class="mi">By Reservation Only</span><span class="mi dot">·</span>
+    <span class="mi">Farm to Table</span><span class="mi dot">·</span>
+    <span class="mi">Private Culinary Events</span><span class="mi dot">·</span>
+    <span class="mi">Corporate &amp; Private Clients</span><span class="mi dot">·</span>
+    <span class="mi">Curated Locations</span><span class="mi dot">·</span>
+    <span class="mi">50 Best Discovery</span><span class="mi dot">·</span>
+    <span class="mi">Seasonal Tasting Menu</span><span class="mi dot">·</span>
+    <span class="mi">Hand-Selected Wines</span><span class="mi dot">·</span>
+    <span class="mi">By Reservation Only</span><span class="mi dot">·</span>
+    <span class="mi">Farm to Table</span><span class="mi dot">·</span>
+  </div>
+</div>
+
+<!-- ━━━━━━━━━━━━━━━ 6. MENU TEASE ━━━━━━━━━━━━━━━ -->
 <section class="menu-tease reveal">
-  <div class="menu-tease-inner">
-    <div class="mt-img">
-      <img src="img/menu-oyster.webp" alt="Tony B's first oyster — JoEs TaBLe tasting menu">
-    </div>
-    <div class="mt-body">
-      <div class="rule-row">
-        <span class="eyebrow">Spring 2026</span>
-        <span class="rule-line"></span>
-      </div>
-      <h2>A culinary<br><em>journey.</em><br>Six courses.</h2>
-      <p>Each dish a story from Joe's travels, personal history, and time in Michelin-starred kitchens. Seasonal. Honest. Unforgettable.</p>
-      <a href="menu.html" class="btn-gold" style="align-self:flex-start;">Explore the menu</a>
-    </div>
+  <div class="mt-left">
+    <img src="img/menu-baccala.webp" alt="Object of beauty — tasting menu dish">
+  </div>
+  <div class="mt-right">
+    <p class="mt-season">Spring 2026</p>
+    <h2 class="mt-title">A culinary<br><em>journey.</em><br>Six courses.</h2>
+    <p class="mt-desc">Each dish a story. Joe's travels, personal history, and time in Michelin-starred kitchens — served at one table.</p>
+    <a href="menu.html" class="mt-link">Explore the menu</a>
   </div>
 </section>
 
-<!-- ── 9. PRESS & PLATFORMS ── -->
+<!-- ━━━━━━━━━━━━━━━ 7. PRESS & PLATFORMS ━━━━━━━━━━━━━━━ -->
 <div class="press reveal">
-  <span class="eyebrow">As featured in &amp; available on</span>
-  <img class="press-logos-img" src="img/press-logos.webp" alt="Eatwith · Monocle · Clandestino Kitchen · TimeOut · Condé Nast Traveler · Berkshire Eagle · TripAdvisor">
+  <span class="section-eyebrow">As featured in &amp; available on</span>
+  <div class="press-logos-wrap">
+    <img class="press-logos-img" src="img/press-logos.webp" alt="Eatwith · Monocle · TimeOut · Condé Nast Traveler · Berkshire Eagle · TripAdvisor">
+  </div>
 </div>
 
-<!-- ── 10. PRODUCERS ── -->
+<!-- ━━━━━━━━━━━━━━━ 8. PRODUCERS ━━━━━━━━━━━━━━━ -->
 <div class="producers reveal">
   <div class="producers-inner">
-    <span class="eyebrow">Our producers &amp; partners</span>
-    <p class="producers-sub">We source exclusively from craftsmen who share our philosophy</p>
-    <div class="producers-logos">
-      <img src="img/wine-lafleur.webp" alt="Lafleur — Pomerol" class="tall">
-      <img src="img/wine-raulperez.webp" alt="Raúl Pérez Bodegas y Viñedos" class="short">
-      <img src="img/wine-lopezheredia.webp" alt="R. López de Heredia">
-      <img src="img/supplier-schott.webp" alt="Schott Zwiesel">
-      <img src="img/supplier-origo.webp" alt="Origo">
-      <img src="img/supplier-suriol.webp" alt="Suriol">
-      <img src="img/supplier-casacerdanya.webp" alt="Casa Cerdanya — Carn ecològica">
-      <img src="img/food-oysters.webp" alt="Mare Ostrum Gourmet" style="border-radius:50%;object-position:center;">
+    <span class="section-eyebrow">Our producers &amp; partners</span>
+    <p class="producers-sub">We source exclusively from craftsmen<br>who share our philosophy</p>
+    <div class="prod-logos">
+      <img src="img/wine-lafleur.webp" alt="Lafleur Pomerol" style="height:52px;">
+      <img src="img/wine-raulperez.webp" alt="Raúl Pérez Bodegas" style="height:34px;">
+      <img src="img/wine-lopezheredia.webp" alt="R. López de Heredia" style="height:48px;">
+      <img src="img/supplier-schott.webp" alt="Schott Zwiesel" style="height:44px;">
+      <img src="img/supplier-origo.webp" alt="Origo" style="height:40px;">
+      <img src="img/supplier-suriol.webp" alt="Suriol" style="height:40px;">
+      <img src="img/supplier-casacerdanya.webp" alt="Casa Cerdanya" style="height:36px;">
     </div>
   </div>
 </div>
 
-<!-- ── 11. INSTAGRAM ── -->
-<div class="instagram reveal">
-  <h2>Follow the journey</h2>
-  <span class="insta-handle">@joses.table</span>
-  <a href="https://www.instagram.com/joses.table" class="insta-img-wrap" target="_blank" rel="noopener">
-    <img src="img/social-instagram.webp" alt="JoEs TaBLe on Instagram — @joses.table">
-  </a>
-  <a href="https://www.instagram.com/joses.table" class="btn-gold" target="_blank" rel="noopener" style="display:inline-flex;">Follow on Instagram</a>
+<!-- ━━━━━━━━━━━━━━━ 9. INSTAGRAM GRID ━━━━━━━━━━━━━━━ -->
+<div class="insta-section reveal">
+  <div class="insta-header">
+    <h2 class="insta-title">@joses.table</h2>
+    <span class="insta-handle">Follow the journey on Instagram</span>
+  </div>
+  <div class="insta-grid">
+    <a href="https://www.instagram.com/joses.table" class="insta-slot" target="_blank" rel="noopener">
+      <img src="img/food-uni-caviar.webp" alt="">
+    </a>
+    <a href="https://www.instagram.com/joses.table" class="insta-slot" target="_blank" rel="noopener">
+      <img src="img/menu-meatballs.webp" alt="">
+    </a>
+    <a href="https://www.instagram.com/joses.table" class="insta-slot" target="_blank" rel="noopener">
+      <img src="img/menu-oyster.webp" alt="">
+    </a>
+    <a href="https://www.instagram.com/joses.table" class="insta-slot" target="_blank" rel="noopener">
+      <img src="img/menu-strudel.webp" alt="">
+    </a>
+  </div>
+  <div class="insta-follow">
+    <a href="https://www.instagram.com/joses.table" target="_blank" rel="noopener">View all on Instagram ↗</a>
+  </div>
 </div>
 
-<!-- ── 12. FINAL CTA ── -->
-<section class="final-cta reveal">
-  <h2>Reserve your<br><em>evening</em></h2>
-  <div class="final-cta-actions">
-    <a href="https://tally.so/r/pbP7Eb" class="btn-gold" target="_blank" rel="noopener">Book your spot</a>
-    <a href="mailto:booking@josestable.com?subject=Corporate%20Event%20Enquiry" class="btn-outline">Corporate enquiry</a>
+<!-- ━━━━━━━━━━━━━━━ 10. FINAL CTA ━━━━━━━━━━━━━━━ -->
+<section class="final reveal">
+  <h2 class="final-title">Reserve your<br><em>evening</em></h2>
+  <div class="final-actions">
+    <a href="https://tally.so/r/pbP7Eb" class="btn-g" target="_blank" rel="noopener">Book your spot</a>
+    <a href="mailto:booking@josestable.com?subject=Corporate%20Event%20Enquiry" class="btn-o">Corporate enquiry</a>
   </div>
-  <p class="final-cta-sub">Questions? <a href="mailto:support@josestable.com">support@josestable.com</a></p>
+  <p class="final-email">Questions: <a href="mailto:support@josestable.com">support@josestable.com</a></p>
 </section>
 
 <!-- BOTTOM BAR -->
 <div class="bottom-bar">
-  <p>Private culinary events &nbsp;·&nbsp; Corporate &amp; private clients &nbsp;·&nbsp; By reservation only &nbsp;·&nbsp; <a href="mailto:booking@josestable.com">booking@josestable.com</a></p>
+  <span>Private culinary events &nbsp;·&nbsp; By reservation only &nbsp;·&nbsp; <a href="mailto:booking@josestable.com">booking@josestable.com</a></span>
+  <span>A brand of CK Events Management &amp; Hospitality Group LLC</span>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-grid">
-    <div>
-      <span class="fbrand">JoEs TaBLe</span>
-      <p class="fdesc">Curated culinary event design.<br>Private events for corporate and private clients.<br>A brand of CK Events Management<br>&amp; Hospitality Group LLC.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Navigate</h4>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="menu.html">Menu</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="pairings.html">Pairings</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Book an event</h4>
-      <ul>
-        <li><a href="https://tally.so/r/pbP7Eb" target="_blank" rel="noopener">Book your spot</a></li>
-        <li><a href="mailto:booking@josestable.com?subject=Corporate%20Event%20Enquiry">Corporate events</a></li>
-        <li><a href="mailto:support@josestable.com">Contact &amp; support</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Legal</h4>
-      <ul>
-        <li><a href="terms.html">Terms of use</a></li>
-        <li><a href="terms.html">Privacy policy</a></li>
-        <li><a href="https://clandestino.kitchen" target="_blank" rel="noopener">Clandestino Kitchen</a></li>
-      </ul>
-    </div>
+  <div>
+    <span class="f-brand">JoEs TaBLe</span>
+    <p class="f-desc">Curated culinary event design.<br>Private events for corporate<br>and private clients.<br>A brand of CK Events Management<br>&amp; Hospitality Group LLC.</p>
   </div>
-  <div class="footer-bottom">
-    <p class="footer-copy">JoEs TaBLe &copy; 2026 &nbsp;·&nbsp; A brand of <a href="https://clandestino.kitchen">CK Events Management &amp; Hospitality Group LLC</a> &nbsp;·&nbsp; <a href="terms.html">Terms &amp; Privacy</a></p>
-    <div class="fsocial">
-      <a href="https://www.instagram.com/joses.table" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.linkedin.com/company/joestable/" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
+  <div class="f-col">
+    <h4>Navigate</h4>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="pairings.html">Pairings</a></li>
+    </ul>
+  </div>
+  <div class="f-col">
+    <h4>Book</h4>
+    <ul>
+      <li><a href="https://tally.so/r/pbP7Eb" target="_blank" rel="noopener">Book your spot</a></li>
+      <li><a href="mailto:booking@josestable.com?subject=Corporate%20Event%20Enquiry">Corporate events</a></li>
+      <li><a href="mailto:support@josestable.com">Contact</a></li>
+    </ul>
+  </div>
+  <div class="f-col">
+    <h4>Legal</h4>
+    <ul>
+      <li><a href="terms.html">Terms of use</a></li>
+      <li><a href="terms.html">Privacy policy</a></li>
+      <li><a href="https://clandestino.kitchen" target="_blank" rel="noopener">Clandestino Kitchen</a></li>
+    </ul>
   </div>
 </footer>
+<div class="f-bottom">
+  <p class="f-copy">JoEs TaBLe &copy; 2026 &nbsp;·&nbsp; <a href="https://clandestino.kitchen">CK Events Management &amp; Hospitality Group LLC</a> &nbsp;·&nbsp; <a href="terms.html">Terms &amp; Privacy</a></p>
+  <div class="f-soc">
+    <a href="https://www.instagram.com/joses.table" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.linkedin.com/company/joestable/" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</div>
 
 <script>
 const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>48),{passive:true});
-const hamburger=document.getElementById('hamburger');
-const navLinks=document.getElementById('navLinks');
-hamburger.addEventListener('click',()=>{const o=navLinks.classList.toggle('open');hamburger.setAttribute('aria-expanded',String(o));});
-navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
-const io=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>56),{passive:true});
+const hb=document.getElementById('hamburger');
+const nl=document.getElementById('navLinks');
+hb.addEventListener('click',()=>{const o=nl.classList.toggle('open');hb.setAttribute('aria-expanded',String(o));});
+nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
+const io=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}});},{threshold:.05,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 </body>
