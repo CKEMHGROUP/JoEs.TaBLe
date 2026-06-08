@@ -3,126 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>JoEs TaBLe — Social Fine Dining</title>
-<meta name="description" content="Private culinary events for corporate and private clients. One table. Curated locations. Vanguard cuisine.">
-<meta property="og:title" content="JoEs TaBLe — Social Fine Dining">
-<meta property="og:image" content="img/hero-event-table.webp">
+<title>JoEs TaBLe</title>
+<meta name="description" content="A clandestine culinary experience. One table. By invitation only.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;1,9..144,200;1,9..144,300;1,9..144,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100;0,9..144,200;1,9..144,100;1,9..144,200;1,9..144,300&family=DM+Mono:wght@300&display=swap" rel="stylesheet">
 <style>
 
-/* ─────────────────────────────────────────
-   TOKENS
-───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 :root {
-  --black:    #080706;
-  --ink:      #0e0c0a;
-  --parchment:#f0e8d8;
-  --gold:     #c9a96e;
-  --gold-hi:  #dfc08a;
-  --text:     #9a9088;
-  --dim:      #4e4842;
-  --rule:     rgba(201,169,110,.13);
-  --rule-s:   rgba(201,169,110,.30);
+  --bg:    #06050400;
+  --ink:   #06060500;
+  --off:   #ede8de;
+  --gold:  #b89a5e;
+  --dim:   #3a3530;
+  --rule:  rgba(184,154,94,.12);
   --F: 'Fraunces', Georgia, serif;
-  --M: 'DM Mono', 'Courier New', monospace;
+  --M: 'DM Mono', monospace;
 }
 
-/* ─────────────────────────────────────────
-   RESET
-───────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { 
+  background: #060504;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--black);
-  color: var(--parchment);
+  background: #060504;
+  color: var(--off);
   font-family: var(--F);
+  font-weight: 100;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
-img { display: block; max-width: 100%; }
 
-/* ─────────────────────────────────────────
-   VERSION STAMP
-───────────────────────────────────────── */
-.version {
+/* ── LOADING SCREEN ── */
+#loader {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
-  z-index: 999;
-  font-family: var(--M);
-  font-size: 8px;
-  letter-spacing: .14em;
-  color: var(--dim);
-  pointer-events: none;
+  inset: 0;
+  background: #060504;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1.2s ease;
+}
+#loader.gone { opacity: 0; pointer-events: none; }
+.loader-word {
+  font-family: var(--F);
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 100;
+  font-style: italic;
+  letter-spacing: .08em;
+  color: var(--off);
+  opacity: 0;
+  animation: lw 2s ease forwards;
+}
+.loader-word em { color: var(--gold); font-style: normal; }
+@keyframes lw {
+  0%   { opacity: 0; transform: translateY(8px); }
+  40%  { opacity: 1; transform: translateY(0); }
+  80%  { opacity: 1; }
+  100% { opacity: 0; }
 }
 
-/* ─────────────────────────────────────────
-   NAV
-───────────────────────────────────────── */
+/* ── NAV ── */
 nav {
   position: fixed;
   inset: 0 0 auto;
-  z-index: 400;
-  height: 58px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  z-index: 500;
   padding: 0 52px;
-  transition: background .5s, border-color .5s;
-  border-bottom: 1px solid transparent;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  mix-blend-mode: normal;
+  transition: background .6s;
 }
-nav.scrolled {
-  background: rgba(8,7,6,.96);
-  border-bottom-color: var(--rule);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-}
+nav.dark { background: rgba(6,5,4,.94); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
 .n-logo {
   font-family: var(--F);
-  font-size: 16px;
-  font-weight: 300;
+  font-size: 14px;
+  font-weight: 200;
   font-style: italic;
-  letter-spacing: .04em;
-  color: var(--parchment);
+  letter-spacing: .06em;
+  color: var(--off);
   text-decoration: none;
-  flex-shrink: 0;
+  opacity: .9;
 }
-.n-links {
-  list-style: none;
-  display: flex;
-  gap: 38px;
-}
+.n-r { display: flex; align-items: center; gap: 40px; }
+.n-links { display: flex; gap: 36px; list-style: none; }
 .n-links a {
   font-family: var(--M);
   font-size: 9px;
-  letter-spacing: .26em;
+  font-weight: 300;
+  letter-spacing: .28em;
   text-transform: uppercase;
-  color: var(--text);
+  color: rgba(237,232,222,.45);
   text-decoration: none;
   transition: color .3s;
   min-height: 44px;
   display: flex;
   align-items: center;
 }
-.n-links a:hover, .n-links a.active { color: var(--gold); }
-.n-cta {
+.n-links a:hover { color: var(--off); }
+.n-res {
   font-family: var(--M);
   font-size: 9px;
-  letter-spacing: .2em;
+  font-weight: 300;
+  letter-spacing: .22em;
   text-transform: uppercase;
-  color: var(--black);
-  background: var(--gold);
-  padding: 0 24px;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(184,154,94,.4);
+  padding-bottom: 2px;
+  transition: color .25s, border-color .25s;
   min-height: 44px;
   display: flex;
   align-items: center;
-  text-decoration: none;
-  transition: background .25s;
-  flex-shrink: 0;
 }
-.n-cta:hover { background: var(--gold-hi); }
+.n-res:hover { color: var(--off); border-color: var(--off); }
 .burger {
   display: none;
   flex-direction: column;
@@ -135,258 +136,287 @@ nav.scrolled {
   min-height: 44px;
   justify-content: center;
 }
-.burger span {
-  display: block;
-  width: 20px;
-  height: 1px;
-  background: var(--parchment);
-  transition: all .3s;
-}
+.burger span { display: block; width: 18px; height: 1px; background: var(--off); opacity: .6; }
 
-/* ─────────────────────────────────────────
-   SHARED UTILITIES
-───────────────────────────────────────── */
-.ey {                              /* eyebrow label */
-  font-family: var(--M);
-  font-size: 9px;
-  letter-spacing: .28em;
-  text-transform: uppercase;
-  color: var(--gold);
-  display: block;
-}
-.reveal {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity .9s ease, transform .9s ease;
-}
-.reveal.on { opacity: 1; transform: translateY(0); }
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
-  * { animation-duration: .01ms !important; }
-}
-
-/* ─────────────────────────────────────────
-   1. HERO  100vh · full bleed
-───────────────────────────────────────── */
+/* ── HERO ── */
 .hero {
   height: 100svh;
-  height: 100vh;
-  min-height: 620px;
+  height: 100dvh;
+  min-height: 640px;
   position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  overflow: hidden;
 }
-.hero-img {
+
+.hero-media {
   position: absolute;
   inset: 0;
 }
-.hero-img img {
+.hero-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 28%;
+  object-position: center 35%;
+  filter: brightness(.72);
+  transform: scale(1.04);
+  animation: hscale 12s ease-out forwards;
 }
+@keyframes hscale { to { transform: scale(1); } }
+
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  opacity: .04;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
 .hero-veil {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(8,7,6,.04) 0%,
-    rgba(8,7,6,.28) 38%,
-    rgba(8,7,6,.96) 100%
-  );
+  background: 
+    linear-gradient(to bottom, rgba(6,5,4,0) 20%, rgba(6,5,4,.96) 100%),
+    linear-gradient(to right, rgba(6,5,4,.2) 0%, transparent 60%);
 }
+
 .hero-ig {
   position: absolute;
-  top: 74px;
+  top: 80px;
   right: 52px;
-  z-index: 3;
   font-family: var(--M);
   font-size: 9px;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: rgba(201,169,110,.55);
+  color: rgba(237,232,222,.35);
   text-decoration: none;
+  writing-mode: vertical-rl;
   transition: color .3s;
+  z-index: 2;
 }
 .hero-ig:hover { color: var(--gold); }
+
 .hero-body {
   position: relative;
   z-index: 2;
-  padding: 0 52px max(env(safe-area-inset-bottom, 0px), 52px);
+  padding: 0 52px 56px;
+  max-width: 900px;
 }
-.hero-scarcity {
+.hero-kicker {
+  font-family: var(--M);
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: var(--gold);
   display: flex;
   align-items: center;
-  gap: 9px;
-  margin-bottom: 20px;
+  gap: 10px;
+  margin-bottom: 22px;
   opacity: 0;
-  animation: fadeup .9s .2s forwards;
+  animation: up .9s .3s forwards;
 }
-.hdot {
-  width: 5px;
-  height: 5px;
+.live-dot {
+  width: 5px; height: 5px;
   border-radius: 50%;
   background: var(--gold);
+  animation: pulse 2.5s ease-in-out infinite;
   flex-shrink: 0;
-  animation: blink 2.4s ease-in-out infinite;
 }
-.hsc {
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.2;transform:scale(.6)} }
+
+.hero-h {
+  font-family: var(--F);
+  font-size: clamp(96px, 17vw, 220px);
+  font-weight: 100;
+  line-height: .82;
+  letter-spacing: -.04em;
+  margin-bottom: 36px;
+  opacity: 0;
+  animation: up 1.2s .5s forwards;
+}
+.hero-h em { font-style: italic; color: rgba(237,232,222,.55); }
+
+.hero-bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  opacity: 0;
+  animation: up .9s .8s forwards;
+}
+.hero-sub {
+  font-family: var(--F);
+  font-size: clamp(14px, 1.6vw, 18px);
+  font-weight: 100;
+  font-style: italic;
+  color: rgba(237,232,222,.5);
+  line-height: 1.6;
+  max-width: 320px;
+}
+.hero-cta {
   font-family: var(--M);
   font-size: 9px;
-  letter-spacing: .18em;
+  font-weight: 300;
+  letter-spacing: .24em;
   text-transform: uppercase;
-  color: rgba(201,169,110,.6);
-}
-.hero-title {
-  font-family: var(--F);
-  font-size: clamp(88px, 15vw, 192px);
-  font-weight: 200;
-  line-height: .84;
-  letter-spacing: -.03em;
-  opacity: 0;
-  animation: fadeup 1.1s .38s forwards;
-}
-.hero-title em { font-style: italic; color: var(--gold); }
-.hero-cta {
+  color: var(--off);
+  text-decoration: none;
+  border: 1px solid rgba(237,232,222,.25);
+  padding: 14px 36px;
+  transition: background .3s, border-color .3s, color .3s;
+  white-space: nowrap;
+  min-height: 48px;
   display: inline-flex;
   align-items: center;
-  margin-top: 32px;
-  font-family: var(--M);
-  font-size: 9px;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--black);
+}
+.hero-cta:hover {
   background: var(--gold);
-  padding: 0 32px;
-  min-height: 50px;
-  text-decoration: none;
-  transition: background .25s;
-  opacity: 0;
-  animation: fadeup 1s .58s forwards;
+  border-color: var(--gold);
+  color: #060504;
 }
-.hero-cta:hover { background: var(--gold-hi); }
-@keyframes fadeup {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: .15; }
+@keyframes up { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:none} }
+
+/* ── HORIZONTAL RULE STRIP ── */
+.hline {
+  height: 1px;
+  background: var(--rule);
+  margin: 0;
 }
 
-/* ─────────────────────────────────────────
-   2. IDENTITY  concept-logo full width
-───────────────────────────────────────── */
-.identity {
-  background: var(--ink);
-  padding: 80px 52px;
-  text-align: center;
+/* ── CONCEPT — full page dark, large italic type ── */
+.concept {
+  background: #060504;
+  padding: 140px 52px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
   border-bottom: 1px solid var(--rule);
 }
-.identity img {
-  max-width: 660px;
-  width: 88%;
-  height: auto;
-  margin: 0 auto 18px;
+.concept-left img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  filter: brightness(.75) contrast(1.05);
 }
-.id-tag {
+.concept-right {}
+.concept-pre {
   font-family: var(--M);
   font-size: 9px;
+  font-weight: 300;
   letter-spacing: .3em;
   text-transform: uppercase;
-  color: var(--dim);
+  color: var(--gold);
+  display: block;
+  margin-bottom: 32px;
 }
+.concept-h {
+  font-family: var(--F);
+  font-size: clamp(44px, 6vw, 80px);
+  font-weight: 100;
+  line-height: .92;
+  letter-spacing: -.025em;
+  margin-bottom: 36px;
+}
+.concept-h em { font-style: italic; color: rgba(237,232,222,.5); }
+.concept-p {
+  font-family: var(--M);
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: .05em;
+  line-height: 1.95;
+  color: rgba(237,232,222,.38);
+  max-width: 340px;
+  margin-bottom: 52px;
+}
+.concept-p strong { color: rgba(237,232,222,.65); font-weight: 300; }
+.txt-link {
+  font-family: var(--M);
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(237,232,222,.35);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 3px;
+  transition: color .3s, border-color .3s;
+}
+.txt-link:hover { color: var(--gold); border-color: var(--gold); }
 
-/* ─────────────────────────────────────────
-   3. 50 BEST  90vh full bleed
-───────────────────────────────────────── */
+/* ── 50 BEST — full viewport, text over dark image ── */
 .fifty {
-  height: 90vh;
-  min-height: 500px;
   position: relative;
+  height: 92vh;
+  min-height: 500px;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
 }
-.fifty-photo {
+.fifty img {
   position: absolute;
   inset: 0;
-}
-.fifty-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
+  filter: brightness(.45);
 }
 .fifty-veil {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(8,7,6,.96) 0%,
-    rgba(8,7,6,.72) 48%,
-    rgba(8,7,6,.08) 100%
-  );
+  background: linear-gradient(to top, rgba(6,5,4,.98) 0%, rgba(6,5,4,.3) 60%, transparent 100%);
 }
 .fifty-body {
   position: relative;
   z-index: 1;
-  padding: 0 80px;
-  max-width: 580px;
+  padding: 72px 52px;
+  max-width: 700px;
 }
-.fifty-body .ey { margin-bottom: 20px; }
+.fifty-pre {
+  font-family: var(--M);
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 20px;
+}
 .fifty-h {
   font-family: var(--F);
-  font-size: clamp(64px, 10vw, 124px);
-  font-weight: 200;
-  line-height: .86;
-  letter-spacing: -.025em;
+  font-size: clamp(56px, 9vw, 116px);
+  font-weight: 100;
+  line-height: .84;
+  letter-spacing: -.03em;
   margin-bottom: 24px;
 }
-.fifty-h em { font-style: italic; color: var(--gold); }
+.fifty-h em { font-style: italic; color: rgba(237,232,222,.5); }
 .fifty-p {
   font-family: var(--M);
   font-size: 10px;
+  font-weight: 300;
   letter-spacing: .05em;
-  line-height: 1.85;
-  color: var(--text);
-  max-width: 300px;
+  line-height: 1.9;
+  color: rgba(237,232,222,.35);
+  max-width: 380px;
 }
 
-/* ─────────────────────────────────────────
-   4. CLIENTS  logo wall
-───────────────────────────────────────── */
-.clients {
-  background: var(--black);
-  padding: 72px 52px;
-  text-align: center;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-}
-.clients .ey { margin-bottom: 36px; }
-.clients img {
-  max-width: 900px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-/* ─────────────────────────────────────────
-   5. GALLERY  asymmetric grid
-───────────────────────────────────────── */
+/* ── GALLERY — full bleed, edge to edge ── */
 .gallery {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: 320px 260px;
-  gap: 3px;
-  background: var(--dim);
+  grid-template-rows: 380px 280px;
+  gap: 2px;
+  background: #060504;
 }
 .gs {
   position: relative;
   overflow: hidden;
-  background: var(--ink);
+  background: #0d0b09;
 }
 .gs img {
   position: absolute;
@@ -394,218 +424,234 @@ nav.scrolled {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 1s cubic-bezier(.25,.46,.45,.94);
+  filter: brightness(.7) contrast(1.08);
+  transition: transform 1.2s cubic-bezier(.16,1,.3,1), filter .8s ease;
 }
-.gs:hover img { transform: scale(1.06); }
-.gs-main {
-  grid-column: 1;
-  grid-row: 1 / 3;
+.gs:hover img {
+  transform: scale(1.08);
+  filter: brightness(.85) contrast(1.05);
 }
+.gs-tall { grid-row: 1 / 3; }
 
-/* ─────────────────────────────────────────
-   MARQUEE
-───────────────────────────────────────── */
+/* ── MARQUEE ── */
 .marquee {
   overflow: hidden;
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
-  padding: 15px 0;
-  background: var(--ink);
+  padding: 18px 0;
+  background: #060504;
 }
 .mtrack {
   display: flex;
   white-space: nowrap;
-  animation: scroll 46s linear infinite;
+  animation: march 50s linear infinite;
 }
 .mi {
   font-family: var(--M);
   font-size: 9px;
-  letter-spacing: .24em;
+  font-weight: 300;
+  letter-spacing: .28em;
   text-transform: uppercase;
   color: var(--dim);
-  padding: 0 28px;
+  padding: 0 32px;
   flex-shrink: 0;
 }
-.mi.dot { color: var(--gold); padding: 0 6px; }
-@keyframes scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
+.mi.g { color: var(--gold); padding: 0 8px; }
+@keyframes march { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@media(prefers-reduced-motion:reduce){.mtrack{animation:none}.mi:nth-child(n+17){display:none}}
 
-/* ─────────────────────────────────────────
-   6. MENU TEASE  half/half
-───────────────────────────────────────── */
+/* ── MENU TEASE ── */
 .menu-tease {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 580px;
+  background: #0a0907;
   border-top: 1px solid var(--rule);
   border-bottom: 1px solid var(--rule);
 }
-.mt-photo {
+.mt-media {
   position: relative;
+  min-height: 600px;
   overflow: hidden;
-  background: var(--ink);
 }
-.mt-photo img {
+.mt-media img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: brightness(.6);
 }
-.mt-copy {
-  background: var(--ink);
+.mt-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 80px 68px;
+  padding: 100px 72px;
 }
-.mt-copy .ey { margin-bottom: 30px; }
+.mt-pre {
+  font-family: var(--M);
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 30px;
+}
 .mt-h {
   font-family: var(--F);
-  font-size: clamp(42px, 5.5vw, 74px);
-  font-weight: 200;
+  font-size: clamp(42px, 5vw, 68px);
+  font-weight: 100;
   line-height: .9;
   letter-spacing: -.02em;
-  margin-bottom: 24px;
+  margin-bottom: 28px;
 }
-.mt-h em { font-style: italic; color: var(--gold); }
+.mt-h em { font-style: italic; color: rgba(237,232,222,.45); }
 .mt-p {
   font-family: var(--M);
   font-size: 10px;
+  font-weight: 300;
   letter-spacing: .05em;
-  line-height: 1.85;
-  color: var(--text);
-  margin-bottom: 44px;
-  max-width: 280px;
+  line-height: 1.9;
+  color: rgba(237,232,222,.35);
+  max-width: 300px;
+  margin-bottom: 52px;
 }
-.btn-g {
+.mt-link {
   font-family: var(--M);
   font-size: 9px;
-  letter-spacing: .2em;
+  font-weight: 300;
+  letter-spacing: .22em;
   text-transform: uppercase;
-  color: var(--black);
-  background: var(--gold);
-  padding: 0 28px;
-  min-height: 48px;
+  color: var(--off);
   text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  transition: background .25s;
+  border: 1px solid rgba(237,232,222,.2);
+  padding: 14px 32px;
   align-self: flex-start;
-}
-.btn-g:hover { background: var(--gold-hi); }
-.btn-o {
-  font-family: var(--M);
-  font-size: 9px;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--parchment);
-  border: 1px solid rgba(240,232,216,.16);
-  padding: 0 28px;
+  transition: background .3s, border-color .3s, color .3s;
   min-height: 48px;
-  text-decoration: none;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  transition: border-color .25s, color .25s;
 }
-.btn-o:hover { border-color: var(--gold); color: var(--gold); }
+.mt-link:hover { background: var(--gold); border-color: var(--gold); color: #060504; }
 
-/* ─────────────────────────────────────────
-   7. PRESS
-───────────────────────────────────────── */
-.press {
-  background: var(--black);
-  padding: 72px 52px;
+/* ── CLIENTS ── */
+.clients {
+  background: #060504;
+  padding: 100px 52px;
   text-align: center;
   border-bottom: 1px solid var(--rule);
 }
-.press .ey { margin-bottom: 36px; }
-.press img {
-  max-width: 800px;
+.sec-pre {
+  font-family: var(--M);
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 52px;
+}
+.clients img {
+  max-width: 860px;
   width: 100%;
   margin: 0 auto;
+  opacity: .75;
+  filter: grayscale(20%);
 }
 
-/* ─────────────────────────────────────────
-   8. PRODUCERS
-───────────────────────────────────────── */
-.producers {
-  background: var(--ink);
-  padding: 80px 52px;
+/* ── PRESS ── */
+.press {
+  background: #0a0907;
+  padding: 88px 52px;
+  text-align: center;
   border-bottom: 1px solid var(--rule);
 }
-.prod-wrap {
-  max-width: 960px;
+.press img {
+  max-width: 760px;
+  width: 100%;
+  margin: 0 auto;
+  opacity: .55;
+  filter: grayscale(40%);
+}
+
+/* ── PRODUCERS ── */
+.producers {
+  background: #060504;
+  padding: 100px 52px;
+  border-bottom: 1px solid var(--rule);
+}
+.prod-inner {
+  max-width: 1000px;
   margin: 0 auto;
   text-align: center;
 }
-.prod-wrap .ey { margin-bottom: 12px; }
-.prod-sub {
+.prod-stmt {
   font-family: var(--F);
+  font-size: clamp(22px, 3vw, 36px);
+  font-weight: 100;
   font-style: italic;
-  font-weight: 200;
-  font-size: clamp(17px, 2vw, 23px);
-  color: var(--text);
-  margin-bottom: 52px;
-  line-height: 1.5;
+  color: rgba(237,232,222,.3);
+  margin-bottom: 64px;
+  line-height: 1.4;
 }
 .prod-logos {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 44px 60px;
+  gap: 48px 64px;
 }
 .prod-logos img {
   object-fit: contain;
-  filter: grayscale(100%);
-  opacity: .36;
-  transition: opacity .5s ease, filter .5s ease;
+  filter: grayscale(100%) brightness(.5);
+  opacity: .6;
+  transition: all .6s ease;
 }
 .prod-logos img:hover {
+  filter: grayscale(0%) brightness(1);
   opacity: 1;
-  filter: grayscale(0%);
 }
 
-/* ─────────────────────────────────────────
-   9. INSTAGRAM  4-square grid
-───────────────────────────────────────── */
+/* ── INSTAGRAM ── */
 .insta {
-  background: var(--black);
+  background: #060504;
   border-top: 1px solid var(--rule);
 }
 .insta-head {
+  padding: 100px 52px 52px;
   text-align: center;
-  padding: 80px 52px 44px;
 }
-.insta-t {
+.insta-big {
   font-family: var(--F);
-  font-size: clamp(48px, 7.5vw, 96px);
-  font-weight: 200;
+  font-size: clamp(52px, 8.5vw, 108px);
+  font-weight: 100;
   font-style: italic;
-  line-height: .86;
+  line-height: .82;
+  color: rgba(237,232,222,.2);
+  letter-spacing: -.03em;
+  transition: color .4s;
 }
-.insta-h {
+.insta-big:hover { color: rgba(237,232,222,.45); }
+.insta-sub {
   font-family: var(--M);
   font-size: 9px;
+  font-weight: 300;
   letter-spacing: .26em;
   text-transform: uppercase;
   color: var(--gold);
   display: block;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 .insta-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 3px;
+  gap: 2px;
 }
 .ig {
   aspect-ratio: 1;
   position: relative;
   overflow: hidden;
-  background: var(--ink);
+  background: #0d0b09;
   display: block;
 }
 .ig img {
@@ -614,139 +660,146 @@ nav.scrolled {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform .8s ease;
+  filter: brightness(.55) contrast(1.1);
+  transition: filter .7s ease, transform .9s cubic-bezier(.16,1,.3,1);
 }
-.ig:hover img { transform: scale(1.08); }
+.ig:hover img { filter: brightness(.85); transform: scale(1.07); }
 .insta-foot {
+  padding: 28px 52px;
   text-align: center;
-  padding: 24px 52px 28px;
   border-top: 1px solid var(--rule);
 }
 .insta-foot a {
   font-family: var(--M);
   font-size: 9px;
+  font-weight: 300;
   letter-spacing: .2em;
   text-transform: uppercase;
-  color: var(--dim);
+  color: rgba(237,232,222,.25);
   text-decoration: none;
-  border-bottom: 1px solid var(--rule-s);
-  padding-bottom: 2px;
-  transition: color .25s, border-color .25s;
+  transition: color .3s;
 }
-.insta-foot a:hover { color: var(--gold); border-color: var(--gold); }
+.insta-foot a:hover { color: var(--gold); }
 
-/* ─────────────────────────────────────────
-   10. FINAL CTA
-───────────────────────────────────────── */
-.final {
-  background: var(--ink);
-  padding: 120px 52px;
+/* ── CLOSING — full dark, oversized type ── */
+.closing {
+  background: #060504;
+  padding: 160px 52px;
   text-align: center;
   border-top: 1px solid var(--rule);
 }
-.final-t {
+.closing-h {
   font-family: var(--F);
-  font-size: clamp(60px, 11vw, 140px);
-  font-weight: 200;
-  line-height: .84;
-  letter-spacing: -.03em;
-  margin-bottom: 48px;
+  font-size: clamp(72px, 13vw, 168px);
+  font-weight: 100;
+  line-height: .82;
+  letter-spacing: -.04em;
+  margin-bottom: 56px;
+  color: rgba(237,232,222,.88);
 }
-.final-t em { font-style: italic; color: var(--gold); }
-.final-btns {
+.closing-h em { font-style: italic; color: var(--gold); }
+.closing-actions {
   display: flex;
   justify-content: center;
-  gap: 12px;
+  gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
-.final-email {
+.btn-prim {
   font-family: var(--M);
   font-size: 9px;
-  letter-spacing: .1em;
-  color: var(--dim);
-}
-.final-email a {
-  color: var(--dim);
-  text-decoration: none;
-  border-bottom: 1px solid var(--rule);
-  padding-bottom: 1px;
-  transition: color .25s;
-}
-.final-email a:hover { color: var(--gold); }
-
-/* ─────────────────────────────────────────
-   BOTTOM BAR + FOOTER
-───────────────────────────────────────── */
-.bbar {
-  background: var(--black);
-  border-top: 1px solid var(--rule);
-  padding: 14px 52px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.bbar span, .bbar a {
-  font-family: var(--M);
-  font-size: 9px;
-  letter-spacing: .12em;
+  font-weight: 300;
+  letter-spacing: .24em;
   text-transform: uppercase;
-  color: var(--dim);
+  color: #060504;
+  background: var(--gold);
+  padding: 0 44px;
+  min-height: 52px;
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: background .25s;
 }
-.bbar a:hover { color: var(--gold); }
+.btn-prim:hover { background: #ccaa70; }
+.btn-sec {
+  font-family: var(--M);
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: rgba(237,232,222,.4);
+  border: 1px solid rgba(237,232,222,.12);
+  padding: 0 44px;
+  min-height: 52px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: all .25s;
+}
+.btn-sec:hover { color: var(--gold); border-color: rgba(184,154,94,.4); }
+.closing-note {
+  font-family: var(--M);
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: .1em;
+  color: rgba(237,232,222,.18);
+}
+.closing-note a { color: inherit; text-decoration: none; }
+.closing-note a:hover { color: var(--gold); }
 
+/* ── FOOTER ── */
 footer {
   background: #040302;
   border-top: 1px solid var(--rule);
-  padding: 52px 52px 32px;
+  padding: 64px 52px 48px;
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 40px;
+  gap: 48px;
 }
-.f-brand {
+.f-name {
   font-family: var(--F);
-  font-size: 17px;
+  font-size: 15px;
+  font-weight: 200;
   font-style: italic;
-  font-weight: 300;
   display: block;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+  color: rgba(237,232,222,.5);
 }
 .f-desc {
   font-family: var(--M);
   font-size: 9px;
-  letter-spacing: .06em;
-  color: var(--text);
-  line-height: 2;
+  font-weight: 300;
+  letter-spacing: .05em;
+  color: rgba(237,232,222,.18);
+  line-height: 2.1;
 }
 .f-col h4 {
   font-family: var(--M);
   font-size: 8px;
+  font-weight: 300;
   letter-spacing: .3em;
   text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 18px;
+  color: rgba(184,154,94,.5);
+  margin-bottom: 20px;
 }
 .f-col ul { list-style: none; }
-.f-col li { margin-bottom: 10px; }
+.f-col li { margin-bottom: 12px; }
 .f-col a {
   font-family: var(--M);
   font-size: 9px;
-  color: var(--text);
+  font-weight: 300;
+  color: rgba(237,232,222,.22);
   text-decoration: none;
   letter-spacing: .06em;
+  transition: color .25s;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
-  transition: color .25s;
 }
-.f-col a:hover { color: var(--gold); }
-
-.f-bottom {
+.f-col a:hover { color: rgba(237,232,222,.65); }
+.f-base {
   background: #040302;
-  padding: 16px 52px;
+  padding: 18px 52px;
   border-top: 1px solid var(--rule);
   display: flex;
   justify-content: space-between;
@@ -757,279 +810,292 @@ footer {
 .f-copy {
   font-family: var(--M);
   font-size: 9px;
-  color: var(--dim);
+  font-weight: 300;
   letter-spacing: .06em;
+  color: rgba(237,232,222,.15);
 }
-.f-copy a { color: var(--dim); text-decoration: none; }
-.f-copy a:hover { color: var(--gold); }
-.f-soc { display: flex; gap: 22px; }
+.f-copy a { color: inherit; text-decoration: none; }
+.f-soc { display: flex; gap: 24px; }
 .f-soc a {
   font-family: var(--M);
   font-size: 9px;
+  font-weight: 300;
   letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--dim);
+  color: rgba(237,232,222,.15);
   text-decoration: none;
   min-height: 44px;
   display: inline-flex;
   align-items: center;
   transition: color .25s;
 }
-.f-soc a:hover { color: var(--gold); }
+.f-soc a:hover { color: rgba(237,232,222,.55); }
 
-/* ─────────────────────────────────────────
-   MOBILE
-───────────────────────────────────────── */
-@media (max-width: 900px) {
+/* ── VERSION MARK ── */
+.ver {
+  position: fixed;
+  bottom: 14px;
+  right: 18px;
+  font-family: var(--M);
+  font-size: 8px;
+  font-weight: 300;
+  letter-spacing: .1em;
+  color: rgba(237,232,222,.12);
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* ── REVEAL ── */
+.r {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.r.on { opacity: 1; transform: none; }
+@media(prefers-reduced-motion:reduce){.r{opacity:1;transform:none;transition:none}*{animation-duration:.01ms!important}}
+
+/* ── MOBILE ── */
+@media(max-width:900px){
   nav { padding: 0 20px; }
-  .n-links, .n-cta { display: none; }
+  .n-links, .n-res { display: none; }
   .burger { display: flex; }
   .n-links.open {
     display: flex;
     flex-direction: column;
     position: fixed;
     inset: 0;
-    background: var(--black);
+    background: #060504;
     justify-content: center;
     align-items: center;
-    gap: 32px;
-    z-index: 399;
+    gap: 36px;
+    z-index: 499;
   }
-  .n-links.open a { font-size: 13px; letter-spacing: .22em; }
-
+  .n-links.open a { font-size: 14px; letter-spacing: .24em; color: rgba(237,232,222,.6); }
   .hero-body { padding: 0 20px 44px; }
-  .hero-ig { right: 20px; top: 70px; }
-
-  .identity { padding: 60px 20px; }
-
-  .fifty-body { padding: 0 28px; max-width: 100%; }
-  .fifty-h { font-size: clamp(52px, 14vw, 80px); }
-
-  .clients, .press { padding: 56px 20px; }
-
-  .gallery {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 200px 180px 180px;
-  }
-  .gs-main { grid-column: auto; grid-row: auto; }
-
-  .menu-tease { grid-template-columns: 1fr; min-height: auto; }
-  .mt-photo { height: 300px; position: relative; }
-  .mt-copy { padding: 48px 24px; }
-
-  .producers { padding: 60px 20px; }
-  .prod-logos { gap: 28px 36px; }
-  .prod-logos img { height: 32px !important; }
-
-  .insta-head { padding: 64px 20px 36px; }
-  .insta-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-ig { display: none; }
+  .concept { grid-template-columns: 1fr; gap: 48px; padding: 80px 20px; }
+  .concept-left img { height: 300px; }
+  .fifty-body { padding: 48px 20px; max-width: 100%; }
+  .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 180px 180px; }
+  .gs-tall { grid-row: auto; grid-column: auto; }
+  .menu-tease { grid-template-columns: 1fr; }
+  .mt-media { min-height: 300px; }
+  .mt-text { padding: 56px 24px; }
+  .clients, .press { padding: 72px 20px; }
+  .producers { padding: 80px 20px; }
+  .prod-logos { gap: 32px 40px; }
+  .insta-head { padding: 80px 20px 40px; }
+  .insta-grid { grid-template-columns: repeat(2,1fr); }
   .insta-foot { padding: 20px; }
-
-  .final { padding: 88px 20px; }
-  .final-btns { flex-direction: column; align-items: center; }
-
-  .bbar { padding: 14px 20px; flex-direction: column; align-items: flex-start; }
-  footer { padding: 44px 20px 28px; grid-template-columns: 1fr 1fr; gap: 28px; }
-  .f-bottom { padding: 16px 20px; flex-direction: column; align-items: flex-start; }
-}
-
-@media (max-width: 480px) {
-  .hero-title { font-size: clamp(72px, 19vw, 96px); }
-  .gallery {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 150px 150px 150px;
-  }
-  .insta-grid { grid-template-columns: repeat(2, 1fr); }
-  footer { grid-template-columns: 1fr; }
+  .closing { padding: 100px 20px; }
+  .closing-actions { flex-direction: column; align-items: center; }
+  footer { padding: 52px 20px 36px; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .f-base { padding: 16px 20px; flex-direction: column; align-items: flex-start; }
   .f-soc { flex-wrap: wrap; }
+}
+@media(max-width:480px){
+  .hero-h { font-size: clamp(80px, 20vw, 104px); }
+  .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 160px 160px 160px; }
+  footer { grid-template-columns: 1fr; }
+  .closing-h { font-size: clamp(60px, 16vw, 88px); }
 }
 
 </style>
 </head>
 <body>
 
-<!-- VERSION STAMP -->
-<div class="version">v10</div>
+<!-- VERSION -->
+<div class="ver">v11</div>
 
-<!-- ─── NAV ─── -->
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-word">JoEs <em>TaBLe</em></div>
+</div>
+
+<!-- NAV -->
 <nav id="nav">
   <a href="index.html" class="n-logo">JoEs TaBLe</a>
-  <ul class="n-links" id="nLinks">
-    <li><a href="index.html" class="active">Home</a></li>
-    <li><a href="menu.html">Menu</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="pairings.html">Pairings</a></li>
-  </ul>
-  <a href="https://tally.so/r/pbP7Eb" class="n-cta" target="_blank" rel="noopener">Book your spot</a>
-  <button class="burger" id="burger" aria-label="Open navigation" aria-expanded="false">
+  <div class="n-r">
+    <ul class="n-links" id="nLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="pairings.html">Pairings</a></li>
+    </ul>
+    <a href="https://tally.so/r/pbP7Eb" class="n-res" target="_blank" rel="noopener">Reserve</a>
+  </div>
+  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- ─── 1. HERO ─── -->
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-img">
-    <img src="img/hero-event-table.webp" alt="JoEs TaBLe private culinary event — guests at the table" fetchpriority="high">
+  <div class="hero-media">
+    <img src="img/hero-event-table.webp" alt="" fetchpriority="high">
   </div>
+  <div class="hero-grain"></div>
   <div class="hero-veil"></div>
   <a href="https://www.instagram.com/joses.table" class="hero-ig" target="_blank" rel="noopener">@joses.table</a>
   <div class="hero-body">
-    <div class="hero-scarcity">
-      <span class="hdot"></span>
-      <span class="hsc">June &nbsp;·&nbsp; Events filling fast &nbsp;·&nbsp; Book before it goes</span>
+    <div class="hero-kicker">
+      <span class="live-dot"></span>
+      June 2026 &nbsp;·&nbsp; Spots filling fast
     </div>
-    <h1 class="hero-title">Social<br><em>Fine Dining</em></h1>
-    <a href="https://tally.so/r/pbP7Eb" class="hero-cta" target="_blank" rel="noopener">Book your spot</a>
+    <h1 class="hero-h">Social<br><em>Fine</em><br>Dining</h1>
+    <div class="hero-bottom">
+      <p class="hero-sub">A clandestine culinary experience.<br>One table. Curated locations.<br>By reservation only.</p>
+      <a href="https://tally.so/r/pbP7Eb" class="hero-cta" target="_blank" rel="noopener">Book your spot</a>
+    </div>
   </div>
 </section>
 
-<!-- ─── 2. IDENTITY ─── -->
-<div class="identity reveal">
-  <img src="img/concept-logo.webp" alt="JoEs TaBLe · Conceptional Fine Dining · Food Culture">
-  <p class="id-tag">One table &nbsp;·&nbsp; Emblematic location &nbsp;·&nbsp; Vanguard cuisine</p>
-</div>
+<div class="hline"></div>
 
-<!-- ─── 3. 50 BEST ─── -->
-<section class="fifty reveal">
-  <div class="fifty-photo">
-    <img src="img/50b.webp" alt="JoEs TaBLe — 50 Best Discovery">
+<!-- CONCEPT -->
+<section class="concept r">
+  <div class="concept-left">
+    <img src="img/concept-logo.webp" alt="JoEs TaBLe — Conceptional Fine Dining">
   </div>
+  <div class="concept-right">
+    <span class="concept-pre">The concept</span>
+    <h2 class="concept-h">Not a restaurant.<br><em>An experience</em><br>that arrives.</h2>
+    <p class="concept-p">
+      We design and produce exclusive private culinary events at hand-selected locations. One table. A chef who has worked in Michelin-starred kitchens. A tasting menu built on <strong>food culture, personal history, and storytelling.</strong> Wines sourced in person from producers who share the same philosophy.
+      <br><br>
+      The kind of evening you talk about for years.
+    </p>
+    <a href="about.html" class="txt-link">About JoEs TaBLe</a>
+  </div>
+</section>
+
+<!-- 50 BEST -->
+<section class="fifty r">
+  <img src="img/50b.webp" alt="50 Best Discovery">
   <div class="fifty-veil"></div>
   <div class="fifty-body">
-    <span class="ey">Recognition</span>
+    <span class="fifty-pre">Recognition</span>
     <h2 class="fifty-h">50 Best<br><em>Discovery</em></h2>
-    <p class="fifty-p">Recognised by the 50 Best Discovery programme — the global authority on culinary excellence. A distinction earned by fewer than a handful of private dining concepts worldwide.</p>
+    <p class="fifty-p">Recognised by the 50 Best Discovery programme — the global authority on culinary excellence. A distinction shared by fewer than a handful of private dining concepts worldwide.</p>
   </div>
 </section>
 
-<!-- ─── 4. CLIENTS ─── -->
-<div class="clients reveal">
-  <span class="ey">Trusted by</span>
-  <img src="img/clients-logos.webp" alt="Meta · Microsoft · JPMorgan · Rituals · Autodesk · Virtuoso · Imagination · Anchorage Capital">
-</div>
-
-<!-- ─── 5. GALLERY ─── -->
+<!-- GALLERY -->
 <div class="gallery">
-  <div class="gs gs-main">
-    <img src="img/hero-event-table.webp" alt="JoEs TaBLe private culinary event">
+  <div class="gs gs-tall">
+    <img src="img/hero-event-table.webp" alt="">
   </div>
-  <div class="gs"><img src="img/oys.webp" alt="Tony B's first oyster"></div>
-  <div class="gs"><img src="img/ab.webp" alt="Uni and caviar dish"></div>
-  <div class="gs"><img src="img/bif.webp" alt="Bife à café Marraré"></div>
-  <div class="gs"><img src="img/str.webp" alt="Tarantino's Apfelstrudel"></div>
+  <div class="gs"><img src="img/oys.webp" alt=""></div>
+  <div class="gs"><img src="img/ab.webp" alt=""></div>
+  <div class="gs"><img src="img/bif.webp" alt=""></div>
+  <div class="gs"><img src="img/str.webp" alt=""></div>
 </div>
 
-<!-- ─── MARQUEE ─── -->
+<!-- MARQUEE -->
 <div class="marquee">
   <div class="mtrack">
-    <span class="mi">Private Culinary Events</span><span class="mi dot">·</span>
-    <span class="mi">50 Best Discovery</span><span class="mi dot">·</span>
-    <span class="mi">Curated Locations</span><span class="mi dot">·</span>
-    <span class="mi">Vanguard Cuisine</span><span class="mi dot">·</span>
-    <span class="mi">By Reservation Only</span><span class="mi dot">·</span>
-    <span class="mi">Farm to Table</span><span class="mi dot">·</span>
-    <span class="mi">Hand-Selected Wines</span><span class="mi dot">·</span>
-    <span class="mi">One Table · One Evening</span><span class="mi dot">·</span>
-    <span class="mi">Private Culinary Events</span><span class="mi dot">·</span>
-    <span class="mi">50 Best Discovery</span><span class="mi dot">·</span>
-    <span class="mi">Curated Locations</span><span class="mi dot">·</span>
-    <span class="mi">Vanguard Cuisine</span><span class="mi dot">·</span>
-    <span class="mi">By Reservation Only</span><span class="mi dot">·</span>
-    <span class="mi">Farm to Table</span><span class="mi dot">·</span>
-    <span class="mi">Hand-Selected Wines</span><span class="mi dot">·</span>
-    <span class="mi">One Table · One Evening</span><span class="mi dot">·</span>
+    <span class="mi">Private Culinary Events</span><span class="mi g">·</span>
+    <span class="mi">50 Best Discovery</span><span class="mi g">·</span>
+    <span class="mi">One Table</span><span class="mi g">·</span>
+    <span class="mi">Vanguard Cuisine</span><span class="mi g">·</span>
+    <span class="mi">By Reservation Only</span><span class="mi g">·</span>
+    <span class="mi">Farm to Table</span><span class="mi g">·</span>
+    <span class="mi">Hand-Selected Wines</span><span class="mi g">·</span>
+    <span class="mi">Food Culture</span><span class="mi g">·</span>
+    <span class="mi">Private Culinary Events</span><span class="mi g">·</span>
+    <span class="mi">50 Best Discovery</span><span class="mi g">·</span>
+    <span class="mi">One Table</span><span class="mi g">·</span>
+    <span class="mi">Vanguard Cuisine</span><span class="mi g">·</span>
+    <span class="mi">By Reservation Only</span><span class="mi g">·</span>
+    <span class="mi">Farm to Table</span><span class="mi g">·</span>
+    <span class="mi">Hand-Selected Wines</span><span class="mi g">·</span>
+    <span class="mi">Food Culture</span><span class="mi g">·</span>
   </div>
 </div>
 
-<!-- ─── 6. MENU TEASE ─── -->
-<section class="menu-tease reveal">
-  <div class="mt-photo">
-    <img src="img/bac.webp" alt="Object of beauty — JoEs TaBLe tasting menu">
+<!-- MENU TEASE -->
+<section class="menu-tease r">
+  <div class="mt-media">
+    <img src="img/bac.webp" alt="JoEs TaBLe tasting menu">
   </div>
-  <div class="mt-copy">
-    <span class="ey">Spring 2026</span>
+  <div class="mt-text">
+    <span class="mt-pre">Spring 2026 · Tasting menu</span>
     <h2 class="mt-h">A culinary<br><em>journey.</em><br>Six courses.</h2>
-    <p class="mt-p">Each dish a story. Joe's travels, personal history, and time in Michelin-starred kitchens — served at one table.</p>
-    <a href="menu.html" class="btn-g">Explore the menu</a>
+    <p class="mt-p">Each dish a story from Joe's travels, personal history, and time in Michelin-starred kitchens. Seasonal. Honest. Unrepeatable.</p>
+    <a href="menu.html" class="mt-link">Explore the menu</a>
   </div>
 </section>
 
-<!-- ─── 7. PRESS ─── -->
-<div class="press reveal">
-  <span class="ey">As featured in &amp; available on</span>
-  <img src="img/press-logos.webp" alt="Eatwith · Monocle · TimeOut · Condé Nast Traveler · Berkshire Eagle · TripAdvisor">
+<!-- CLIENTS -->
+<div class="clients r">
+  <span class="sec-pre">Trusted by</span>
+  <img src="img/clients-logos.webp" alt="Meta · Microsoft · JPMorgan · Rituals · Autodesk · Virtuoso">
 </div>
 
-<!-- ─── 8. PRODUCERS ─── -->
-<div class="producers reveal">
-  <div class="prod-wrap">
-    <span class="ey">Our producers &amp; partners</span>
-    <p class="prod-sub">We source exclusively from craftsmen<br>who share our philosophy</p>
+<!-- PRESS -->
+<div class="press r">
+  <span class="sec-pre">As featured in · Available on</span>
+  <img src="img/press-logos.webp" alt="Eatwith · Monocle · TimeOut · Condé Nast Traveler · TripAdvisor · Berkshire Eagle">
+</div>
+
+<!-- PRODUCERS -->
+<div class="producers r">
+  <div class="prod-inner">
+    <p class="prod-stmt">We source only from craftsmen<br>who share our philosophy</p>
     <div class="prod-logos">
-      <img src="img/laf.webp" alt="Lafleur — Pomerol"           style="height:50px;">
-      <img src="img/rl.webp"  alt="Raúl Pérez Bodegas"          style="height:32px;">
-      <img src="img/lh.webp"  alt="R. López de Heredia"         style="height:46px;">
-      <img src="img/sw.webp"  alt="Schott Zwiesel"              style="height:42px;">
-      <img src="img/jo.webp"  alt="Joselito"                    style="height:36px;">
-      <img src="img/ori.webp" alt="Origo"                       style="height:36px;">
-      <img src="img/sur.webp" alt="Suriol"                      style="height:36px;">
-      <img src="img/sard.webp" alt="Casa Cerdanya"              style="height:32px;">
+      <img src="img/laf.webp"  alt="Lafleur"           style="height:50px;">
+      <img src="img/rl.webp"   alt="Raúl Pérez"        style="height:30px;">
+      <img src="img/lh.webp"   alt="López de Heredia"  style="height:44px;">
+      <img src="img/sw.webp"   alt="Schott Zwiesel"    style="height:40px;">
+      <img src="img/jo.webp"   alt="Joselito"          style="height:34px;">
+      <img src="img/ori.webp"  alt="Origo"             style="height:34px;">
+      <img src="img/sur.webp"  alt="Suriol"            style="height:34px;">
+      <img src="img/sard.webp" alt="Casa Cerdanya"     style="height:30px;">
     </div>
   </div>
 </div>
 
-<!-- ─── 9. INSTAGRAM ─── -->
-<div class="insta reveal">
+<!-- INSTAGRAM -->
+<div class="insta r">
   <div class="insta-head">
-    <h2 class="insta-t">@joses.table</h2>
-    <span class="insta-h">Follow the journey on Instagram</span>
+    <a href="https://www.instagram.com/joses.table" target="_blank" rel="noopener" style="text-decoration:none;">
+      <div class="insta-big">@joses.table</div>
+    </a>
+    <span class="insta-sub">Follow the journey</span>
   </div>
   <div class="insta-grid">
-    <a href="https://www.instagram.com/joses.table" class="ig" target="_blank" rel="noopener" aria-label="View on Instagram">
-      <img src="img/oys.webp" alt="">
-    </a>
-    <a href="https://www.instagram.com/joses.table" class="ig" target="_blank" rel="noopener" aria-label="View on Instagram">
-      <img src="img/bac.webp" alt="">
-    </a>
-    <a href="https://www.instagram.com/joses.table" class="ig" target="_blank" rel="noopener" aria-label="View on Instagram">
-      <img src="img/bif.webp" alt="">
-    </a>
-    <a href="https://www.instagram.com/joses.table" class="ig" target="_blank" rel="noopener" aria-label="View on Instagram">
-      <img src="img/str.webp" alt="">
-    </a>
+    <a href="https://www.instagram.com/joses.table" class="ig" target="_blank" rel="noopener"><img src="img/oys.webp" alt=""></a>
+    <a href="https://www.instagram.com/joses.table" class="ig" target="_blank" rel="noopener"><img src="img/bac.webp" alt=""></a>
+    <a href="https://www.instagram.com/joses.table" class="ig" target="_blank" rel="noopener"><img src="img/bif.webp" alt=""></a>
+    <a href="https://www.instagram.com/joses.table" class="ig" target="_blank" rel="noopener"><img src="img/str.webp" alt=""></a>
   </div>
   <div class="insta-foot">
     <a href="https://www.instagram.com/joses.table" target="_blank" rel="noopener">View all on Instagram ↗</a>
   </div>
 </div>
 
-<!-- ─── 10. FINAL CTA ─── -->
-<section class="final reveal">
-  <h2 class="final-t">Reserve your<br><em>evening</em></h2>
-  <div class="final-btns">
-    <a href="https://tally.so/r/pbP7Eb" class="btn-g" target="_blank" rel="noopener">Book your spot</a>
-    <a href="mailto:booking@josestable.com?subject=Corporate%20Event%20Enquiry" class="btn-o">Corporate enquiry</a>
+<!-- CLOSING CTA -->
+<section class="closing r">
+  <h2 class="closing-h">Reserve your<br><em>evening</em></h2>
+  <div class="closing-actions">
+    <a href="https://tally.so/r/pbP7Eb" class="btn-prim" target="_blank" rel="noopener">Book your spot</a>
+    <a href="mailto:booking@josestable.com?subject=Corporate%20Event%20Enquiry" class="btn-sec">Corporate enquiry</a>
   </div>
-  <p class="final-email">Questions: <a href="mailto:support@josestable.com">support@josestable.com</a></p>
+  <p class="closing-note">
+    Questions: <a href="mailto:support@josestable.com">support@josestable.com</a>
+  </p>
 </section>
 
-<!-- ─── BOTTOM BAR ─── -->
-<div class="bbar">
-  <span>Private culinary events &nbsp;·&nbsp; By reservation only &nbsp;·&nbsp;
-    <a href="mailto:booking@josestable.com">booking@josestable.com</a>
-  </span>
-  <span>A brand of CK Events Management &amp; Hospitality Group LLC</span>
-</div>
-
-<!-- ─── FOOTER ─── -->
+<!-- FOOTER -->
 <footer>
   <div>
-    <span class="f-brand">JoEs TaBLe</span>
+    <span class="f-name">JoEs TaBLe</span>
     <p class="f-desc">
-      Curated culinary event design.<br>
-      Private events for corporate<br>
-      and private clients.<br>
-      A brand of CK Events Management<br>
+      Private culinary events.<br>
+      Corporate &amp; private clients.<br>
+      By reservation only.<br><br>
+      A brand of<br>
+      CK Events Management<br>
       &amp; Hospitality Group LLC.
     </p>
   </div>
@@ -1059,9 +1125,9 @@ footer {
     </ul>
   </div>
 </footer>
-<div class="f-bottom">
+<div class="f-base">
   <p class="f-copy">
-    JoEs TaBLe &copy; 2026 &nbsp;·&nbsp;
+    JoEs TaBLe © 2026 &nbsp;·&nbsp;
     <a href="https://clandestino.kitchen">CK Events Management &amp; Hospitality Group LLC</a>
     &nbsp;·&nbsp; <a href="terms.html">Terms &amp; Privacy</a>
   </p>
@@ -1072,33 +1138,37 @@ footer {
 </div>
 
 <script>
-// Nav scroll
+// Loader
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('gone');
+  }, 2200);
+});
+
+// Nav
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 56);
+  nav.classList.toggle('dark', window.scrollY > 60);
 }, { passive: true });
 
-// Hamburger
+// Burger
 const burger = document.getElementById('burger');
 const nLinks = document.getElementById('nLinks');
 burger.addEventListener('click', () => {
-  const open = nLinks.classList.toggle('open');
-  burger.setAttribute('aria-expanded', String(open));
+  const o = nLinks.classList.toggle('open');
+  burger.setAttribute('aria-expanded', String(o));
 });
 nLinks.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => nLinks.classList.remove('open'));
 });
 
-// Scroll reveal
+// Reveal
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('on');
-      io.unobserve(e.target);
-    }
+    if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
   });
-}, { threshold: .05, rootMargin: '0px 0px -28px 0px' });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+}, { threshold: .04, rootMargin: '0px 0px -24px 0px' });
+document.querySelectorAll('.r').forEach(el => io.observe(el));
 </script>
 </body>
 </html>
